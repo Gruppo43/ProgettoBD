@@ -1,0 +1,85 @@
+set search_path to  'progettoBD';
+
+
+CREATE TABLE Utente(
+username varchar(20) primary key,
+psw varchar(20) NOT NULL,
+nome varchar(20) NOT NULL,
+cognome varchar(20) NOT NULL,
+annoN date NOT NULL,
+luogoN varchar(20) NOT NULL,
+foto boolean,
+tel int NOT NULL,
+matricola varchar(8) NOT NULL,
+CorsoDiStudio varchar(20) NOT NULL,
+tipo varchar(8) NOT NULL
+check (tipo = 'standard' or tipo = 'premium')
+check (annoN < current_date)
+);
+
+CREATE TABLE Torneo(
+id varchar(20) primary key,
+restrizioni varchar(50) default NULL,
+descrizione varchar(60) default NULL,
+modalità varchar(20) NOT NULL,
+sponsor varchar(20) default NULL,
+premi varchar(20) NOT NULL,
+tipo varchar(10) NOT NULL,
+creatore varchar(20) default NULL,
+foreign key(creatore) references Utente(username),
+check(tipo = 'singolo' or tipo = 'a squadre')
+);
+
+
+CREATE TABLE Categoria(
+nome varchar(20) primary key,
+regolamento varchar(50) NOT NULL,
+numGiocatori int NOT NULL,
+foto boolean default false
+);
+
+CREATE TABLE Squadra(
+nome varchar(20) NOT NULL,
+categoria varchar(20) NOT NULL,
+creatore varchar(20) default NULL,
+maxGiocatori int NOT NULL,
+minGiocatori int NOT NULL,
+coloreMaglia varchar(10) NOT NULL,
+note varchar(50) default NULL,
+primary key(nome,categoria),
+foreign key(categoria) references Categoria(nome),
+foreign key(creatore) references Utente(username),
+check(minGiocatori < maxGiocatori)
+);
+
+
+
+CREATE TABLE impianto (
+nome varchar(20) primary key,
+via varchar(50) NOT NULL,
+telefono int NOT NULL,
+email varchar(20) NOT NULL,
+longitudine float NOT NULL,
+latitudine float NOT NULL
+);
+
+
+CREATE TABLE evento (
+id varchar(20) primary key,
+data date NOT NULL,
+stato varchar(15) NOT NULL,
+durata int NOT NULL,
+nomeSquadraCasa varchar(20) default NULL,
+nomeSquadraOspite varchar(20) default NULL,
+impianto varchar(20) NOT NULL,
+categoria varchar(20) NOT NULL,
+tipo varchar(15) NOT NULL,
+foreign key(impianto) references Impianto(nome),
+foreign key(categoria) references Categoria(nome),
+check(data < current_date),
+check(durata > 0),
+check(stato = 'aperto' or stato = 'chiuso'),
+check(tipo = 'singolo' or tipo = 'a squadre')
+-- maybe, should i add player 1 and player 2?
+-- remember to create the trigger!! cannot exist sq1 or sq2 field if type == singolo!
+);
