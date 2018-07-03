@@ -1,0 +1,38 @@
+﻿CREATE TABLE Forma(
+idT integer(8) REFERENCES Torneo (id) ON DELETE NO ACTION ON UPDATE CASCADE,
+idEv integer(8) REFERENCES Evento (id) ON DELETE NO ACTION ON UPDATE CASCADE,
+PRIMARY KEY(idT, idEv)
+);
+
+CREATE TABLE PartecipaEv(
+nomeS varchar(30) REFERENCE Squadra (nomeS) ON DELETE NO ACTION ON UPDATE CASCADE,
+nomeC varchar(30) REFERENCE Categoria (nomeC) ON DELETE NO ACTION ON UPDATE CASCADE,
+idEv integer(8) REFERNCE Evento (id) ON DELETE NO ACTION ON UPDATE CASCADE,
+punti integer(5) NOT NULL,
+PRIMARY KEY(nomeS, nomeC, idEv)
+);
+
+CREATE TABLE UtenteGioca(
+username varchar(30) REFERENCE Utente (username) ON DELETE NO ACTION ON UPDATE CASCADE,
+idEv integer(8) REFERNCE Evento (id) ON DELETE NO ACTION ON UPDATE CASCADE,
+setvinti integer(3),
+PRIMARY KEY(username, idEv)
+);
+
+CREATE TABLE Gare(
+username varchar(30) REFERENCE Utente (username) ON DELETE NO ACTION ON UPDATE CASCADE,
+nomeC varchar(30) REFERENCE Categoria (nomeC) ON DELETE NO ACTION ON UPDATE CASCADE,
+gareDisputate integer(5),
+PRIMARY KEY(username, nomeC)
+);
+
+CREATE TABLE Valutazione(
+usernameValutatore varchar(30) REFERENCE Utente (username) ON DELETE NO ACTION ON UPDATE CASCADE,
+usernameValutato varchar(30) REFERENCE Utente (username) ON DELETE NO ACTION ON UPDATE CASCADE,
+idEv integer(8) REFERNCE Evento (id) ON DELETE NO ACTION ON UPDATE CASCADE,
+voto integer(2) check (voto  between 0 and 10),
+PRIMARY KEY(usernameValutatore, usernameValutato, username)
+);
+
+
+
