@@ -55,6 +55,17 @@ INSERT INTO Squadra VALUES(01056,'Team Alexandria','Pallavolo','LaMiaLucille',20
 INSERT INTO Squadra VALUES(56571,'Virtus Piscatella', 'Pallavolo','CantaStorie',20,12,'blu','Crazy eyes');
 
 
+
+/* impianti */
+
+INSERT INTO Impianto VALUES ('La Terra di mezzo','Baker street 21B','345692145','Orda@gmail.com',314.22,112.13);
+INSERT INTO Impianto VALUES ('Accademia Beauxbaton','via dei babbani 14','333999838','Fleaur@gmail.com',390.22,10.43);
+INSERT INTO Impianto VALUES ('Castel Granito','fondo delle pulci 24','345673845','HoldTheDoor@gmail.it',4.1,22.13);
+INSERT INTO Impianto VALUES ('Terminus','via segui le rotaie 11','949490015','SafePlace@gmail.com',10,2.112);
+
+
+
+
 /* to be modified */
 /*
 INSERT INTO Forma  VALUES (12, 132);
