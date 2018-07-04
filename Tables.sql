@@ -1,4 +1,4 @@
-set search_path to  'ProgettoBDfinale';
+set search_path to  'ProgettoBD';
 
 
 CREATE TABLE Utente(
@@ -9,12 +9,13 @@ cognome varchar(20) not null,
 annoN date not null,
 luogoN varchar(35) not null,
 foto boolean,
-tel numeric(10) not null,
+tel varchar(10) not null,
 matricola varchar(8) not null,
 CorsoDiStudio varchar(20) not null,
 tipo varchar(8) not null
 check (tipo = 'standard' or tipo = 'premium')
-check (annoN < current_date)
+check (annoN < current_date),
+check(tel SIMILAR TO '([0-9]+)')
 );
 
 CREATE TABLE Torneo(
@@ -57,10 +58,11 @@ check(minGiocatori < maxGiocatori)
 CREATE TABLE Impianto (
 nome varchar(20) primary key,
 via varchar(50) not null,
-telefono numeric(10) not null,
+telefono varchar(10) not null,
 email varchar(20) not null,
 longitudine float not null,
-latitudine float not null
+latitudine float not null,
+check(telefono SIMILAR TO '([0-9]+)')
 );
 
 
