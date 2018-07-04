@@ -21,6 +21,39 @@ INSERT INTO Categoria VALUES ('PingPong', 'vince chi fa più punti',2);
 INSERT INTO Categoria VALUES ('Quiddich','vince chi cattura il boccino fatto di oro', 12);
 INSERT INTO Categoria VALUES ('Scacchi','vince chi fa scacco matto',2 ,true);
 
+
+/* Teams */
+
+/*Quiddich*/
+
+INSERT INTO Squadra VALUES(87027,'The North Remembers','Quiddich','YouKnowNothing',12,8,'bianco','The King of the north');
+INSERT INTO Squadra VALUES(44560,'Guardians of the Galaxy','Quiddich','StarLord',12,8,'rosso','Rocket mi ha rubato di nuovo il pc?');
+INSERT INTO Squadra VALUES(43367,'Ordine della Fenice','Quiddich','Pagina394',12,8,'verde','Giuro solennemente di non avere buone intenzioni');
+INSERT INTO Squadra VALUES(32450,'Compagnia dell''anello', 'Quiddich','HobbitCoraggioso',12,8,'viola','il mio tesoro');
+INSERT INTO Squadra VALUES(11765,'Team Alexandria','Quiddich','LaMiaLucille',12,8,'giallo','Ambarabaccicicoco');
+INSERT INTO Squadra VALUES(65413,'Virtus Piscatella', 'Quiddich','CantaStorie',12,8,'blu','Crazy eyes');
+
+
+/*Calcio */
+
+INSERT INTO Squadra VALUES(17560,'The North Remembers','Calcio','YouKnowNothing',30,15,'bianco','The King of the north');
+INSERT INTO Squadra VALUES(84026,'Guardians of the Galaxy','Calcio','StarLord',30,15,'rosso','Rocket mi ha rubato di nuovo il pc?');
+INSERT INTO Squadra VALUES(11189,'Ordine della Fenice','Calcio','Pagina394',30,15,'verde','Giuro solennemente di non avere buone intenzioni');
+INSERT INTO Squadra VALUES(33459,'Compagnia dell''anello', 'Calcio','HobbitCoraggioso',30,15,'viola','il mio tesoro');
+INSERT INTO Squadra VALUES(98118,'Team Alexandria','Calcio','LaMiaLucille',30,15,'giallo','Ambarabaccicicoco');
+INSERT INTO Squadra VALUES(11855,'Virtus Piscatella', 'Calcio','CantaStorie',30,15,'blu','Crazy eyes');
+
+
+/*pallavolo*/
+
+INSERT INTO Squadra VALUES(22256,'The North Remembers','Pallavolo','YouKnowNothing',20,12,'bianco','The King of the north');
+INSERT INTO Squadra VALUES(18947,'Guardians of the Galaxy','Pallavolo','StarLord',20,12,'rosso','Rocket mi ha rubato di nuovo il pc?');
+INSERT INTO Squadra VALUES(00347,'Ordine della Fenice','Pallavolo','Pagina394',20,12,'verde','Giuro solennemente di non avere buone intenzioni');
+INSERT INTO Squadra VALUES(75220,'Compagnia dell''anello', 'Pallavolo','HobbitCoraggioso',20,12,'viola','il mio tesoro');
+INSERT INTO Squadra VALUES(01056,'Team Alexandria','Pallavolo','LaMiaLucille',20,12,'giallo','Ambarabaccicicoco');
+INSERT INTO Squadra VALUES(56571,'Virtus Piscatella', 'Pallavolo','CantaStorie',20,12,'blu','Crazy eyes');
+
+
 /* to be modified */
 /*
 INSERT INTO Forma  VALUES (12, 132);
