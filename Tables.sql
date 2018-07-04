@@ -89,13 +89,13 @@ check(tipo = 'singolo' or tipo = 'a squadre')
 
 
 
-CREATE TABLE Forma(
+CREATE TABLE EventoInTorneo(
 idT numeric(8) references Torneo (id) on delete  no action on update cascade,
 idEv numeric(8) references Evento (id) on delete  no action on update cascade,
 primary key(idT, idEv)
 );
 
-CREATE TABLE PartecipaEv(
+CREATE TABLE SquadraPartecipaEv(
 idSquadra numeric(8) references Squadra(id)  on delete  no action on update cascade,
 nomeC varchar(30) references Categoria(nome) on delete  no action on update cascade,
 idEv numeric(8) references Evento (id) on delete  no action on update cascade,
@@ -103,21 +103,21 @@ punti numeric(5) not null,
 primary key(idSquadra, nomeC, idEv)
 );
 
-CREATE TABLE UtenteGioca(
+CREATE TABLE UtenteSingoloGioca(
 username varchar(30) references Utente (username) on delete  no action on update cascade,
 idEv numeric(8) references Evento (id) on delete  no action on update cascade,
-setvinti numeric(3),
+setvinti numeric(3) not null,
 primary key(username, idEv)
 );
 
-CREATE TABLE Gare(
+CREATE TABLE MatchDisputati(
 username varchar(30) references Utente (username)on delete  no action on update cascade,
 nomeC varchar(30) references Categoria (nome) on delete  no action on update cascade,
 gareDisputate numeric(5),
 primary key(username, nomeC)
 );
 
-CREATE TABLE Valutazione(
+CREATE TABLE ValutazioneUtenti(
 usernameValutatore varchar(30) references Utente (username) on delete  no action on update cascade,
 usernameValutato varchar(30) references Utente (username) on delete  no action on update cascade,
 idEv numeric(8) references Evento (id) on delete  no action on update cascade,
