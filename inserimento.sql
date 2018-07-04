@@ -12,6 +12,14 @@ INSERT INTO Utente VALUES ('Pagina394', 'TiOdioPotter', 'Severus', 'Piton', '01/
 INSERT INTO Utente VALUES ('Polisucco61', 'Mad-eye11', 'Alastor', 'Moody', '21/09/1961', 'Somewhere in Scotland', false , '3359916523', 'S5491132', 'Stregoneria', 'standard' );
 INSERT INTO Utente VALUES ('HobbitCoraggioso', '748hdi8HF89', 'Bilbo', 'Baggins', '22/05/1930', 'Hobbiton', false , '339291755', 'S8229951', 'Stregoneria', 'standard' );
 
+/* Categories */
+
+INSERT INTO Categoria VALUES ('Calcio', 'vince la squadra che totalizza più goal',32,true);
+INSERT INTO Categoria VALUES ('Tennis', 'vince chi totalizza più punti', 2);
+INSERT INTO Categoria VALUES ('Pallavolo', 'vince chi fa più punti',24);
+INSERT INTO Categoria VALUES ('PingPong', 'vince chi fa più punti',2);
+INSERT INTO Categoria VALUES ('Quiddich','vince chi cattura il boccino fatto di oro', 12);
+INSERT INTO Categoria VALUES ('Scacchi','vince chi fa scacco matto',2 ,true);
 
 /* to be modified */
 /*
