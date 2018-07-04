@@ -41,7 +41,7 @@ foto boolean default false
 
 CREATE TABLE Squadra(
 id numeric(8) primary key,
-nome varchar(20) not null,
+nome varchar(30) not null,
 categoria varchar(20) not null,
 creatore varchar(20) default null,
 maxGiocatori numeric(2) not null,
@@ -50,7 +50,8 @@ coloreMaglia varchar(10) not null,
 note varchar(50) default null,
 foreign key(categoria) references Categoria(nome) on delete  no action on update cascade,
 foreign key(creatore) references Utente(username) on delete  no action on update cascade,
-check(minGiocatori <= maxGiocatori)
+check(minGiocatori <= maxGiocatori),
+check(minGiocatori > 0)
 );
 
 
