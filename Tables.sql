@@ -50,7 +50,7 @@ coloreMaglia varchar(10) not null,
 note varchar(50) default null,
 foreign key(categoria) references Categoria(nome) on delete  no action on update cascade,
 foreign key(creatore) references Utente(username) on delete  no action on update cascade,
-check(minGiocatori < maxGiocatori)
+check(minGiocatori <= maxGiocatori)
 );
 
 
