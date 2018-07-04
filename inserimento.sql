@@ -2,7 +2,7 @@
 INSERT INTO Utente VALUES ('YouKnowNothing', 'h7eRl97T', 'Jon', 'Snow', '02/10/1997', 'Winterfell', false , '3986665289', 'S4557890', 'Filosofia','premium' );
 INSERT INTO Utente VALUES ('LupoSolitario', 'h9fQl966', 'Arya', 'Stark', '25/01/1995', 'Winterfell', true , '3996876528', 'S4265782', 'Chimica','standard' );
 INSERT INTO Utente VALUES ('MortoCheCammina', 'd5eRo93W', 'Glenn', 'Rhee', '21/12/1983', 'Yeun Sang-yeop', false , '3419535289', 'S4297611', 'Informatica', 'premium');
-INSERT INTO Utente VALUES ('LaMiaLucille', 'h7eRl97T', 'Negan', 'Morgan', '22/04/1966', 'Seattle', false , '39866793347', 'S8364027', 'Informatica' , 'premium');
+INSERT INTO Utente VALUES ('LaMiaLucille', 'h7eRl97T', 'Negan', 'Morgan', '22/04/1966', 'Seattle', false , '398667937', 'S8364027', 'Informatica' , 'premium');
 INSERT INTO Utente VALUES ('BlueMeth22', 's3jPl912', 'Jesse', 'Pinkman', '08/03/1998', 'Albuquerque', true , '3996876528', 'S4265782', 'Chimica', 'standard');
 INSERT INTO Utente VALUES ('UsatoChePiace', 'k1jGlkd6', 'Piper', 'Chapman', '06/11/1980', 'Boston', true , '3996000221', 'S4261295', 'Economia' , 'premium');
 INSERT INTO Utente VALUES ('CantaStorie', 'l0jHlhd23', 'Suzanne', 'Warren', '10/09/1992', 'Boston', true , '346898181', 'S4325914', 'Economia', 'premium' );
