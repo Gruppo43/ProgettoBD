@@ -1,4 +1,4 @@
-set search_path to  'ProgettoBD';
+set search_path to 'ProgettoBD';
 
 
 CREATE TABLE Utente(
@@ -18,20 +18,6 @@ check (annoN < current_date),
 check(tel SIMILAR TO '([0-9]+)')
 );
 
-CREATE TABLE Torneo(
-id numeric(8) primary key,
-restrizioni varchar(50) default null,
-descrizione varchar(60) default null,
-modalità varchar(20) not null,
-sponsor varchar(20) default null,
-premi varchar(20) not null,
-tipo varchar(10) not null,
-creatore varchar(20) default null,
-foreign key(creatore) references Utente(username) on delete  no action on update cascade,
-check(tipo = 'singolo' or tipo = 'a squadre')
-);
-
-
 CREATE TABLE Categoria(
 nome varchar(20) primary key,
 regolamento varchar(50) not null,
@@ -39,8 +25,26 @@ numGiocatori numeric(2) not null,
 foto boolean default false
 );
 
-CREATE TABLE Squadra(
+CREATE TABLE Torneo(
 id numeric(8) primary key,
+restrizioni varchar(50) default null,
+descrizione varchar(60) default null,
+modalità varchar(35) not null,
+categoria varchar(20) not null,
+sponsor varchar(20) default null,
+premi varchar(20) not null,
+tipo varchar(10) not null,
+creatore varchar(20) default null,
+foreign key(creatore) references Utente(username) on delete  no action on update cascade,
+foreign key(categoria) references Categoria(nome) on delete no action on update cascade,
+check(tipo = 'singolo' or tipo = 'a squadre'),
+check(modalità = 'Eliminazione diretta' or modalità = 'Girone all''italiana' or modalità = 'Misto')
+);
+
+
+
+
+CREATE TABLE Squadra(
 nome varchar(30) not null,
 categoria varchar(20) not null,
 creatore varchar(20) default null,
@@ -50,6 +54,7 @@ coloreMaglia varchar(10) not null,
 note varchar(50) default null,
 foreign key(categoria) references Categoria(nome) on delete  no action on update cascade,
 foreign key(creatore) references Utente(username) on delete  no action on update cascade,
+primary key (nome,categoria),
 check(minGiocatori <= maxGiocatori),
 check(minGiocatori > 0)
 );
@@ -72,8 +77,6 @@ id numeric(8) primary key,
 data date not null,
 stato varchar(15) not null,
 durata numeric(3) not null,
-nomeSquadraCasa varchar(20) default null,
-nomeSquadraOspite varchar(20) default null,
 impianto varchar(20) not null,
 categoria varchar(20) not null,
 tipo varchar(15) not null,
@@ -83,8 +86,6 @@ check(data <= current_date),
 check(durata > 0),
 check(stato = 'aperto' or stato = 'chiuso'),
 check(tipo = 'singolo' or tipo = 'a squadre')
--- maybe, should i add player 1 and player 2?
--- remember to create the trigger!! cannot exist sq1 or sq2 field if type == singolo!
 );
 
 
@@ -96,11 +97,12 @@ primary key(idT, idEv)
 );
 
 CREATE TABLE SquadraPartecipaEv(
-idSquadra numeric(8) references Squadra(id)  on delete  no action on update cascade,
-nomeC varchar(30) references Categoria(nome) on delete  no action on update cascade,
+nomeSquadra varchar(30),
+nomeC varchar(30),
 idEv numeric(8) references Evento (id) on delete  no action on update cascade,
 punti numeric(5) not null,
-primary key(idSquadra, nomeC, idEv)
+foreign key(nomeSquadra,nomeC) references Squadra(nome,categoria),
+primary key(nomeSquadra, nomeC, idEv)
 );
 
 CREATE TABLE UtenteSingoloGioca(
