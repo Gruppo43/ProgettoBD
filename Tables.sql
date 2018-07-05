@@ -141,9 +141,9 @@ Testo VARCHAR(800) NOT NULL,
 Foto BOOLEAN DEFAULT NULL,
 Creatore VARCHAR(22) NOT NULL,
 CorsoDiStudi VARCHAR(20) NOT NULL,  
-Nome VARCHAR(20) NOT NULL references Categoria(Nome) on delete  no action on update cascade, 
+Categoria VARCHAR(20) NOT NULL, 
 FOREIGN KEY (Creatore)references Utente(Username) on delete  no action on update cascade,
-FOREIGN KEY (CorsoDiStudi) references Forum(CorsoDiStudi) on delete  no action on update cascade,
+FOREIGN KEY (CorsoDiStudi,Categoria) references Forum(CorsoDiStudi,Categoria) on delete  no action on update cascade,
 PRIMARY KEY(Data,Creatore)
 );
 
