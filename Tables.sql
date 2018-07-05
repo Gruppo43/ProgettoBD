@@ -147,10 +147,12 @@ PRIMARY KEY(Data,Creatore)
 
 CREATE TABLE Candidatura(
 Stato VARCHAR(9) NOT NULL,
+Supervisore VARCHAR(22) NOT NULL,
 Candidato VARCHAR(22) NOT NULL,
 Squadra NUMERIC(8) NOT NULL,
 FOREIGN KEY (Candidato)references Utente(Username) on delete  no action on update cascade,
 FOREIGN KEY (Squadra)references Squadra(Id) on delete  no action on update cascade,
+FOREIGN KEY (Supervisore)references Utente(Username),
 PRIMARY KEY (Candidato,Squadra),
 CHECK (Stato = 'Accettata' OR Stato = 'Rifiutata')
 );
