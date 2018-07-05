@@ -156,7 +156,8 @@ FOREIGN KEY (Candidato)references Utente(Username) on delete  no action on updat
 FOREIGN KEY (Squadra)references Squadra(Id) on delete  no action on update cascade,
 FOREIGN KEY (Supervisore)references Utente(Username),
 PRIMARY KEY (Candidato,Squadra),
-CHECK (Stato = 'Accettata' OR Stato = 'Rifiutata')
+CHECK (Stato = 'Accettata' OR Stato = 'Rifiutata'),
+CHECK (Supervisore != Candidato)
 );
 
 CREATE TABLE Iscrizione(
