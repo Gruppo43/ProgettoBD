@@ -173,9 +173,9 @@ CHECK (Stato = 'Confermato' OR Stato = 'Rifiutato')
 );
 
 CREATE TABLE PartecipaATorneo(
-Torneo NUMERIC(8),
+Torneo NUMERIC(8) NOT NULL,
 Squadra VARCHAR(30) NOT NULL, 
-Categoria VARCHAR(20),
+Categoria VARCHAR(20) NOT NULL,
 FOREIGN KEY (Torneo)references Torneo(Id)on delete  no action on update cascade,
 FOREIGN KEY (Squadra,Categoria)references Squadra(Nome,Categoria) on delete  no action on update cascade, 
 FOREIGN KEY (Categoria)references Categoria(Nome) on delete  no action on update cascade,
