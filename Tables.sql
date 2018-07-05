@@ -151,7 +151,7 @@ Candidato VARCHAR(22) NOT NULL,
 Squadra NUMERIC(8) NOT NULL,
 FOREIGN KEY (Candidato)references Utente(Username) on delete  no action on update cascade,
 FOREIGN KEY (Squadra)references Squadra(Id) on delete  no action on update cascade,
-PRIMARY KEY (Candidato,Squadra)
+PRIMARY KEY (Candidato,Squadra),
 CHECK (Stato = 'Accettata' OR Stato = 'Rifiutata')
 );
 
