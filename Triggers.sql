@@ -76,29 +76,7 @@ LANGUAGE plpgsql;
 /* Triggers */
 
 CREATE TRIGGER check_premium_for_teams
-BEFORE INSERT OR UPDATE OCREATE OR REPLACE FUNCTION check_state_event() RETURNS trigger AS
-$check_state_event$
-BEGIN
-	IF NEW.idEv IN (SELECT id as idEv FROM Evento WHERE stato = 'chiuso')
-		THEN return NEW;
-	ELSE RAISE EXCEPTION 'questo evento non è terminato, non e'' possibile inserire la valutazione';
-	END IF;
-END;
-$check_state_event$
-LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION check_rating_for_player() RETURNS trigger AS
-$check_rating_for_player$
-BEGIN
-	IF NEW.usernameValutatore IN (SELECT username as usernameValutatore FROM UtenteSingoloGioca 
-					WHERE idEv IN (SELECT idEv FROM UtenteSingoloGioca WHERE username = NEW.usernameValutato))
-		THEN return NEW;
-	ELSE RAISE EXCEPTION 'i dati di giocatore valutato o di chi valuta non sono corretti';
-	END IF;
-END;
-$check_rating_for_player$
-LANGUAGE plpgsql;
-N Squadra
+BEFORE INSERT OR UPDATE ON Squadra
 FOR EACH ROW
 EXECUTE PROCEDURE check_premium_for_teams();
 
