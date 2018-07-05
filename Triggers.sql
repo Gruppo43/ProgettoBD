@@ -25,6 +25,30 @@ $check_players_number$
 LANGUAGE plpgsql;
 
 
+CREATE OR REPLACE FUNCTION check_event_type_for_team() RETURNS trigger AS
+$check_event_type_for_team$
+BEGIN
+	IF NEW.idEv NOT IN (SELECT id  FROM Evento WHERE tipo = 'singolo')
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'una squadra non può partecipare ad un evento per singoli';
+	END IF;
+END;
+$check_event_type_for_team$
+LANGUAGE plpgsql;
+
+
+
+CREATE OR REPLACE FUNCTION check_event_type_for_player() RETURNS trigger AS
+$check_event_type_for_player$
+BEGIN
+	IF NEW.idEv NOT IN (SELECT id  FROM Evento WHERE tipo = 'a squadre')
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'un singolo non può giocare in un evento a squadre!';
+	END IF;
+END;
+$check_event_type_for_player$
+LANGUAGE plpgsql;
+
 
 /* Triggers */
 
@@ -33,10 +57,19 @@ BEFORE INSERT OR UPDATE ON Squadra
 FOR EACH ROW
 EXECUTE PROCEDURE check_premium_for_teams();
 
-
 CREATE TRIGGER check_players_number
 BEFORE INSERT OR UPDATE ON Squadra
 FOR EACH ROW
 EXECUTE PROCEDURE check_players_number();
+
+CREATE TRIGGER check_event_type_for_team
+BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
+FOR EACH ROW
+EXECUTE PROCEDURE check_event_type_for_team();
+
+CREATE TRIGGER check_event_type_for_player
+BEFORE INSERT OR UPDATE ON UtenteSingoloGioca
+FOR EACH ROW
+EXECUTE PROCEDURE check_event_type_for_player();
 
 
