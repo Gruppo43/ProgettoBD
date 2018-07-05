@@ -129,18 +129,19 @@ primary key(usernameValutatore, usernameValutato,idEv)
 CREATE TABLE Forum(
 CorsoDiStudi VARCHAR(50),
 Categoria VARCHAR(20),
-FOREIGN KEY (Categoria)references Categoria(Nome),
+FOREIGN KEY (Categoria)references Categoria(Nome) on delete  no action on update cascade,
 PRIMARY KEY(CorsoDiStudi,Categoria)
 );
 
 CREATE TABLE Post(
 Data CHAR(9),
-Testo VARCHAR(8000) NOT NULL,
+Testo VARCHAR(800) NOT NULL,
 Foto BOOLEAN DEFAULT NULL,
 Creatore VARCHAR(22) NOT NULL,
-CorsoDiStudi VARCHAR(20) NOT NULL references Forum(CorsoDiStudi),  
-Nome VARCHAR(20) NOT NULL references Categoria(Nome), 
-FOREIGN KEY (Creatore)references Utente(Username)
+CorsoDiStudi VARCHAR(20) NOT NULL,  
+Nome VARCHAR(20) NOT NULL references Categoria(Nome) on delete  no action on update cascade, 
+FOREIGN KEY (Creatore)references Utente(Username) on delete  no action on update cascade,
+FOREIGN KEY (CorsoDiStudi) references Forum(CorsoDiStudi) on delete  no action on update cascade,
 PRIMARY KEY(Data,Creatore)
 );
 
@@ -148,8 +149,8 @@ CREATE TABLE Candidatura(
 Stato VARCHAR(9) NOT NULL,
 Candidato VARCHAR(22) NOT NULL,
 Squadra NUMERIC(8) NOT NULL,
-FOREIGN KEY (Candidato)references Utente(Username),
-FOREIGN KEY (Squadra)references Squadra(Id),
+FOREIGN KEY (Candidato)references Utente(Username) on delete  no action on update cascade,
+FOREIGN KEY (Squadra)references Squadra(Id) on delete  no action on update cascade,
 PRIMARY KEY (Candidato,Squadra)
 CHECK (Stato = 'Accettata' OR Stato = 'Rifiutata')
 );
@@ -159,26 +160,26 @@ Data CHAR(9),
 Stato VARCHAR(9) NOT NULL,
 Studente VARCHAR(22) NOT NULL,
 Evento NUMERIC(8) NOT NULL,
-FOREIGN KEY (Studente)references Utente(Username),
-FOREIGN KEY (Evento)references Evento(Id),
+FOREIGN KEY (Studente)references Utente(Username) on delete  no action on update cascade,
+FOREIGN KEY (Evento)references Evento(Id) on delete  no action on update cascade,
 PRIMARY KEY (Data,Studente,Evento),
 CHECK (Stato = 'Confermato' OR Stato = 'Rifiutato')
 );
 
 CREATE TABLE PartecipaATorneo(
-Torneo NUMERIC(8) NOT NULL,
-Squadra NUMERIC(8) NOT NULL, 
-Categoria VARCHAR(20) NOT NULL,
-FOREIGN KEY (Torneo)references Torneo(Id),
-FOREIGN KEY (Squadra)references Squadra(Id), 
-FOREIGN KEY (Categoria)references Categoria(Nome),
+Torneo NUMERIC(8),
+Squadra NUMERIC(8), 
+Categoria VARCHAR(20),
+FOREIGN KEY (Torneo)references Torneo(Id)on delete  no action on update cascade,
+FOREIGN KEY (Squadra)references Squadra(Id) on delete  no action on update cascade, 
+FOREIGN KEY (Categoria)references Categoria(Nome) on delete  no action on update cascade,
 PRIMARY KEY (Torneo,Squadra,Categoria)
 );
 
 CREATE TABLE IscrittoATorneo(
-Torneo NUMERIC(8) NOT NULL,
-Studente VARCHAR(22) NOT NULL,
-FOREIGN KEY (Torneo)references Torneo(Id),
-FOREIGN KEY(Studente)references Utente(Username),
+Torneo NUMERIC(8),
+Studente VARCHAR(22),
+FOREIGN KEY (Torneo)references Torneo(Id) on delete  no action on update cascade,
+FOREIGN KEY(Studente)references Utente(Username) on delete  no action on update cascade,
 PRIMARY KEY (Torneo,Studente)
 );
