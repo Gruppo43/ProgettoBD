@@ -125,3 +125,60 @@ voto numeric(2) check (voto  between 0 and 10),
 check(usernameValutatore != usernameValutato),
 primary key(usernameValutatore, usernameValutato,idEv)
 );
+
+CREATE TABLE Forum(
+CorsoDiStudi VARCHAR(50),
+Categoria VARCHAR(20),
+FOREIGN KEY (Categoria)references Categoria(Nome),
+PRIMARY KEY(CorsoDiStudi,Categoria)
+);
+
+CREATE TABLE Post(
+Data CHAR(9),
+Testo VARCHAR(8000) NOT NULL,
+Foto BOOLEAN DEFAULT NULL,
+Creatore VARCHAR(22) NOT NULL,
+CorsoDiStudi VARCHAR(20) NOT NULL references Forum(CorsoDiStudi),  
+Nome VARCHAR(20) NOT NULL references Categoria(Nome), 
+FOREIGN KEY (Creatore)references Utente(Username)
+PRIMARY KEY(Data,Creatore)
+);
+
+CREATE TABLE Candidatura(
+Stato VARCHAR(9) NOT NULL,
+Candidato VARCHAR(22) NOT NULL,
+Squadra NUMERIC(8) NOT NULL,
+FOREIGN KEY (Candidato)references Utente(Username),
+FOREIGN KEY (Squadra)references Squadra(Id),
+PRIMARY KEY (Candidato,Squadra)
+CHECK (Stato = 'Accettata' OR Stato = 'Rifiutata')
+);
+
+CREATE TABLE Iscrizione(
+Data CHAR(9),
+Stato VARCHAR(9) NOT NULL,
+Studente VARCHAR(22) NOT NULL,
+Evento NUMERIC(8) NOT NULL,
+FOREIGN KEY (Studente)references Utente(Username),
+FOREIGN KEY (Evento)references Evento(Id),
+PRIMARY KEY (Data,Studente,Evento),
+CHECK (Stato = 'Confermato' OR Stato = 'Rifiutato')
+);
+
+CREATE TABLE PartecipaATorneo(
+Torneo NUMERIC(8) NOT NULL,
+Squadra NUMERIC(8) NOT NULL, 
+Categoria VARCHAR(20) NOT NULL,
+FOREIGN KEY (Torneo)references Torneo(Id),
+FOREIGN KEY (Squadra)references Squadra(Id), 
+FOREIGN KEY (Categoria)references Categoria(Nome),
+PRIMARY KEY (Torneo,Squadra,Categoria)
+);
+
+CREATE TABLE IscrittoATorneo(
+Torneo NUMERIC(8) NOT NULL,
+Studente VARCHAR(22) NOT NULL,
+FOREIGN KEY (Torneo)references Torneo(Id),
+FOREIGN KEY(Studente)references Utente(Username),
+PRIMARY KEY (Torneo,Studente)
+);
