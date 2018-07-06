@@ -49,7 +49,7 @@ INSERT INTO Utente VALUES ('LordThanos', 'GG6J9Khgj990', 'Thanos', 'Gillan', '27
 
 INSERT INTO Utente VALUES ('Pagina394', 'TiOdioPotter', 'Severus', 'Piton', '01/09/1960', 'Eileen Prince', false , '3771234568', 'S4356013', 'Stregoneria', 'premium' );
 INSERT INTO Utente VALUES ('Polisucco61', 'Mad-eye11', 'Alastor', 'Moody', '21/09/1961', 'Somewhere in Scotland', false , '3359916523', 'S5491132', 'Stregoneria', 'standard' );
-INSERT INTO Utente VALUES ('OhSieteNeiGuaiStaVolta', 'AlleScalePiaceCambiare', 'Argus', 'Gazza', '23/12/1954', 'Diagon Alley', true , '3771000561', 'S8885013', 'Economia', 'standard' );
+INSERT INTO Utente VALUES ('OhSieteNeiGuaiStaVolta', 'ScalePiaceCambiare', 'Argus', 'Gazza', '23/12/1954', 'Diagon Alley', true , '3771000561', 'S8885013', 'Economia', 'standard' );
 INSERT INTO Utente VALUES ('MiDispiaceNeville', 'HHdji84Jk', 'Luna', 'Lovegood', '23/07/1999', 'Devon', false , '3159910005', 'S5001132', 'Informatica', 'standard' );
 INSERT INTO Utente VALUES ('LordVoldemort', 'AvadaKedavra', 'Tom Marvolo', 'Riddle', '26/04/1971', 'London', false , '8879916123', 'S5091092', 'Filosofia', 'premium' );
 INSERT INTO Utente VALUES ('PerchèSeguiteIRagni?', 'paperella14', 'Ronald', 'Weasley', '03/05/1998', 'London', true , '8879522123', 'S8884230', 'Filosofia', 'standard' );
@@ -61,8 +61,8 @@ INSERT INTO Utente VALUES ('HobbitCoraggioso', '748hdi8HF89', 'Bilbo', 'Baggins'
 INSERT INTO Utente VALUES ('PiediPiatti', '748hjdii30H', 'Frodo', 'Baggins', '28/09/1980', 'Hobbiton', true , '849382999', 'S91123951', 'Chimica', 'standard' );
 INSERT INTO Utente VALUES ('StupidiNani', '84j8fj49jgGG', 'Legolas', 'Sindarin', '22/07/1969', 'Woodland Realm', false , '184180000', 'S0021951', 'Informatica', 'premium' );
 INSERT INTO Utente VALUES ('YouShallNotPass', '84849dFFgGG', 'Gandalf', 'Iosonomago', '12/03/1958', 'Everywhere', true , '184181230', 'S1121974', 'Filosofia', 'standard' );
-INSERT INTO Utente VALUES ('IlPortatoreDellnello', 'Ilmiotesoro', 'Gollum', 'Smeagol', '01/01/1900', 'Campo Gaggiolo', false, '012854954', 'S4000012', 'Stregoneria', 'standard');
-INSERT INTO Utente VALUES ('NonHoPiùFantasia:(', 'KSI7dh923', 'Sauron', 'TheRingHolder', '24/12/1952', 'Wano no kuni', false , '8402803343', 'S011092', 'Economia', 'standard' );
+INSERT INTO Utente VALUES ('MyTReasure', 'Ilmiotesoro', 'Gollum', 'Smeagol', '01/01/1900', 'Campo Gaggiolo', false, '012854954', 'S4000012', 'Stregoneria', 'standard');
+INSERT INTO Utente VALUES ('NonHoPiùFantasia', 'KSI7dh923', 'Sauron', 'TheRingHolder', '24/12/1952', 'Wano no kuni', false , '8402803343', 'S011092', 'Economia', 'standard' );
 
 
 
@@ -96,9 +96,9 @@ INSERT INTO Utente VALUES ('Sociopath', 'elementareWatson', 'Sherlock', 'Holmes'
 INSERT INTO Utente VALUES ('PrepareToDie', 'seemadecentfellow', 'Inigo', 'Motoya', '18/11/1981', 'Granada', true, '6589874114', 'S4444659', 'Storia', 'standard');
 INSERT INTO Utente VALUES ('Machete', 'kill', 'Danny', 'Trejo', '26/08/1990', 'Siviglia', false, '6598745633', 'S4698570', 'Ingegneria meccanica', 'premium');
 INSERT INTO Utente VALUES ('CavaliereCipolla', 'mioLegittimoRe', 'Davos', 'Seaworth', '29/01/1995', 'Continente libero', false, '3598777412', 'S4556654', 'Ingegneria navale', 'standard');
-INSERT INTO Utente VALUES ('ColuiCheHaAssaggiatoIlCiboDegliDei', 'lapiadeina', 'Pdor', 'Kmer', '02/06/1964', 'Pnigheran', false, '9876857454', 'S4635223', 'Giurisprudenza', 'premium');
-INSERT INTO Utente VALUES ('EriComeUnFratello', 'yolo', 'Obi-wan', 'Kenobi', '15/10/1989', 'Coruscant', false, '8795565326', 'S4856969', 'premium');
-INSERT INTO Utente VALUES ('DarkLord', 'Shhwwahshh', 'Anakin', 'Skywalker', '22/03/1969', 'Tatooine', false, '8796558599', 'S4758965', 'standard');
+INSERT INTO Utente VALUES ('GodFoodEater', 'lapiadeina', 'Pdor', 'Kmer', '02/06/1964', 'Pnigheran', false, '9876857454', 'S4635223', 'Giurisprudenza', 'premium');
+INSERT INTO Utente VALUES ('EriComeUnFratello', 'yolo', 'Obi-wan', 'Kenobi', '15/10/1989', 'Coruscant', false, '8795565326', 'S4856969','Economia', 'premium');
+INSERT INTO Utente VALUES ('DarkLord', 'Shhwwahshh', 'Anakin', 'Skywalker', '22/03/1969', 'Tatooine', false, '8796558599', 'S4758965','Informatica', 'standard');
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
