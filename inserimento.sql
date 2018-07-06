@@ -1,5 +1,6 @@
 /* USER INSERTIONS */
 
+
 /* GameOfTHrones */
 
 INSERT INTO Utente VALUES ('YouKnowNothing', 'h7eRl97T', 'Jon', 'Snow', '02/10/1997', 'Winterfell', false , '3986665289', 'S4557890', 'Filosofia','premium' );
@@ -27,6 +28,10 @@ INSERT INTO Utente VALUES ('BlueMeth22', 's3jPl912', 'Jesse', 'Pinkman', '08/03/
 
 INSERT INTO Utente VALUES ('UsatoChePiace', 'k1jGlkd6', 'Piper', 'Chapman', '06/11/1980', 'Boston', true , '3996000221', 'S4261295', 'Economia' , 'standard');
 INSERT INTO Utente VALUES ('CantaStorie', 'l0jHlhd23', 'Suzanne', 'Warren', '10/09/1992', 'Boston', true , '3468981810', 'S4325914', 'Economia', 'premium' );
+INSERT INTO Utente VALUES ('Red', 'Priviet123', 'Galina', 'Reznikov', '08/06/1961', 'Mosca', false , '1234567090', 'S2348901', 'Economia', 'standard' );
+INSERT INTO Utente VALUES ('Morello', 'GJ8H8Jhkkh53', 'Lorna', 'Muccio', '12/08/1986', 'Bari', false , '1232345231', 'S2324231', 'Stregoneria', 'standard' );
+INSERT INTO Utente VALUES ('Taystee', 'GAJhj848hs', 'Tasha', 'Jefferson', '17/11/1983', 'Chicago', true , '970707330', 'S2001901', 'Informatica', 'premium' );
+INSERT INTO Utente VALUES ('Pennsatucky', 'jskJK893As', 'Tiffany', 'Doggett', '19/03/1989', 'Alabama', false , '1231190749', 'S2348838', 'Chimica', 'standard' );
 
 
 /* GuardiansOfTheGalaxy */
@@ -50,16 +55,26 @@ INSERT INTO Utente VALUES ('LordVoldemort', 'AvadaKedavra', 'Tom Marvolo', 'Ridd
 INSERT INTO Utente VALUES ('PerchèSeguiteIRagni?', 'paperella14', 'Ronald', 'Weasley', '03/05/1998', 'London', true , '8879522123', 'S8884230', 'Filosofia', 'standard' );
 INSERT INTO Utente VALUES ('ElfoLibero', 'Calzino', 'Dobby', 'NoSurname', '09/06/2001', 'London', true , '8811266123', 'S88001120', 'Chimica', 'standard' );
 
---OhSieteNeiGuaiStaVolta
 /* LordOfRings */
 
 INSERT INTO Utente VALUES ('HobbitCoraggioso', '748hdi8HF89', 'Bilbo', 'Baggins', '22/05/1930', 'Hobbiton', false , '339291755', 'S8229951', 'Stregoneria', 'premium' );
+INSERT INTO Utente VALUES ('PiediPiatti', '748hjdii30H', 'Frodo', 'Baggins', '28/09/1980', 'Hobbiton', true , '849382999', 'S91123951', 'Chimica', 'standard' );
+INSERT INTO Utente VALUES ('StupidiNani', '84j8fj49jgGG', 'Legolas', 'Sindarin', '22/07/1969', 'Woodland Realm', false , '184180000', 'S0021951', 'Informatica', 'premium' );
+INSERT INTO Utente VALUES ('YouShallNotPass', '84849dFFgGG', 'Gandalf', 'Iosonomago', '12/03/1958', 'Everywhere', true , '184181230', 'S1121974', 'Filosofia', 'standard' );
+INSERT INTO Utente VALUES ('MyTreasure', '84039f400380', 'Gollum', 'TroppeInsert', '14/09/1974', 'Platone''s cave', false , '8504803903', 'S07585901', 'Stregoneria', 'standard' );
+INSERT INTO Utente VALUES ('NonHoPiùFantasia:(', 'KSI7dh923', 'Sauron', 'TheRingHolder', '24/12/1952', 'Wano no kuni', false , '8402803343', 'S011092', 'Economia', 'standard' );
+
+
 
 /* DarkSoul */
 
-INSERT INTO Utente VALUES ('SoEaslyForgotten', '7379dhu38', 'Furtive', 'Pygmy ', '19/02/1978', 'The Abyss', true , '3155316573', 'S5191137', 'Chimica', 'standard' );
+INSERT INTO Utente VALUES ('SoEaslyForgotten', '7119dhu38', 'Furtive', 'Pygmy ', '19/02/1978', 'The Abyss', true , '3155316573', 'S5191137', 'Chimica', 'standard' );
 INSERT INTO Utente VALUES ('PraiseTheSun', '737jfin438', 'Solaire', 'Of Astora', '15/04/1982', 'Astora', true , '3177416571', 'S6691130', 'Filosofia', 'premium' );
-INSERT INTO Utente VALUES ('BraveWarrior', '737fnj49jJ', 'Siegmeyer', 'Of Catarina', '15/04/1982', 'Catarina', false , '3117999467', 'S6953138', 'Economia', 'premium' );
+INSERT INTO Utente VALUES ('BraveWarrior', '735fnj49jJ', 'Siegmeyer', 'Of Catarina', '15/04/1982', 'Catarina', false , '3117999467', 'S6953138', 'Economia', 'premium' );
+INSERT INTO Utente VALUES ('TheDragonDuke', 'HJJ87HG8', 'Seath', 'Scaleless', '03/04/1977', 'Olacile', true , '7969696932', 'S6666110', 'Filosofia', 'standard' );
+INSERT INTO Utente VALUES ('TheChosenUndead', '709063gjj89pJ', 'Artorias', 'Abysswalker', '09/11/1993', 'Astora', false , '0089839467', 'S1231238', 'Stregoneria', 'standard' );
+INSERT INTO Utente VALUES ('NamelessKing', '930djo8979', 'Ornstein', 'DragonSlayer', '05/03/1994', 'Anor Londo', true , '9057474768', 'S1238805', 'Chimica', 'premium' );
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /* Categories */
