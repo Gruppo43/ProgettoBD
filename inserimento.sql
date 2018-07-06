@@ -78,7 +78,7 @@ INSERT INTO Utente VALUES ('NamelessKing', '930djo8979', 'Ornstein', 'DragonSlay
 /* looney tunes */
 INSERT INTO Utente VALUES ('EhmCheSuccedeAmico?', '84039f400380', 'Bugs', 'Bunny', '14/04/1994', 'on television', false , '9494949493', 'S9475612', 'Chimica', 'premium' );
 INSERT INTO Utente VALUES ('SuperDaffy', '749302he83', 'Daffy', 'Duck', '02/02/1986', 'on television', true , '8504803903', 'S07585901', 'Informatica', 'standard' );
-INSERT INTO Utente VALUES ('MiESemblatoDiVedeleGatto', '84039f400380', 'Titti', 'SonoMaschio', '21/05/1990', 'on televiosion', false , '8504897913', 'S06665901', 'Economia', 'standard' );
+INSERT INTO Utente VALUES ('MiESemblatoDiVedele', '84039f400380', 'Titti', 'SonoMaschio', '21/05/1990', 'on televiosion', false , '8504897913', 'S06665901', 'Economia', 'standard' );
 INSERT INTO Utente VALUES ('MirameArriba', '84039f400380', 'Speedy', 'Gonzales', '06/09/1979', 'on television' , true , '7940303030', 'S84403020', 'Chimica', 'premium' );
 INSERT INTO Utente VALUES ('AcmeFanBoy','iWillCatchYou' 'Wile', 'Coyote', '07/08/1981', 'on television', false , '112334793', 'S0750902', 'Filosofia', 'standard' );
 INSERT INTO Utente VALUES ('BipBip', '848fj84jd8HHs', 'Road', 'Runner', '11/10/1978', 'on television' , false , '234632453', 'S0490840', 'Stregoneria', 'premium' );
