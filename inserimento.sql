@@ -1,3 +1,6 @@
+
+
+
 /* USER INSERTIONS */
 
 
@@ -80,7 +83,7 @@ INSERT INTO Utente VALUES ('EhmCheSuccedeAmico?', '84039f400380', 'Bugs', 'Bunny
 INSERT INTO Utente VALUES ('SuperDaffy', '749302he83', 'Daffy', 'Duck', '02/02/1986', 'on television', true , '8504803903', 'S07585901', 'Informatica', 'standard' );
 INSERT INTO Utente VALUES ('MiESemblatoDiVedele', '84039f400380', 'Titti', 'SonoMaschio', '21/05/1990', 'on televiosion', false , '8504897913', 'S06665901', 'Economia', 'standard' );
 INSERT INTO Utente VALUES ('MirameArriba', '84039f400380', 'Speedy', 'Gonzales', '06/09/1979', 'on television' , true , '7940303030', 'S84403020', 'Chimica', 'premium' );
-INSERT INTO Utente VALUES ('AcmeFanBoy','iWillCatchYou' 'Wile', 'Coyote', '07/08/1981', 'on television', false , '112334793', 'S0750902', 'Filosofia', 'standard' );
+INSERT INTO Utente VALUES ('AcmeFanBoy','iWillCatchYou', 'Wile', 'Coyote', '07/08/1981', 'on television', false , '112334793', 'S0750902', 'Filosofia', 'standard' );
 INSERT INTO Utente VALUES ('BipBip', '848fj84jd8HHs', 'Road', 'Runner', '11/10/1978', 'on television' , false , '234632453', 'S0490840', 'Stregoneria', 'premium' );
 
 
@@ -105,56 +108,55 @@ INSERT INTO Utente VALUES ('DarkLord', 'Shhwwahshh', 'Anakin', 'Skywalker', '22/
 
 /* Categories */
 
+
+
 INSERT INTO Categoria VALUES ('Calcio', 'vince la squadra che totalizza più goal',32,true);
 INSERT INTO Categoria VALUES ('Tennis', 'vince chi totalizza più punti', 2);
 INSERT INTO Categoria VALUES ('Pallavolo', 'vince chi fa più punti',24);
 INSERT INTO Categoria VALUES ('PingPong', 'vince chi fa più punti',2);
-INSERT INTO Categoria VALUES ('Quiddich','vince chi cattura il boccino fatto di oro', 12);
+INSERT INTO Categoria VALUES ('Quiddich','vince chi cattura il boccino d''oro', 12);
 INSERT INTO Categoria VALUES ('Scacchi','vince chi fa scacco matto',2 ,true);
+
+
 
 
 /* Teams */
 
 /*Quiddich*/
 
-INSERT INTO Squadra VALUES('The North Remembers','Quiddich','YouKnowNothing',12,8,'bianco','The King of the north');
-INSERT INTO Squadra VALUES('Guardians of the Galaxy','Quiddich','StarLord',12,8,'rosso','Rocket mi ha rubato di nuovo il pc?');
-INSERT INTO Squadra VALUES('Ordine della Fenice','Quiddich','Pagina394',12,8,'verde','Giuro solennemente di non avere buone intenzioni');
-INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Quiddich','HobbitCoraggioso',12,8,'viola','il mio tesoro');
-INSERT INTO Squadra VALUES('Team Alexandria','Quiddich','LaMiaLucille',12,8,'giallo','Ambarabaccicicoco');
-INSERT INTO Squadra VALUES('Virtus Piscatella', 'Quiddich','CantaStorie',12,8,'blu','Crazy eyes');
-INSERT INTO Squadra VALUES('Il lato oscuro', 'Quiddich', 'DarkLord', 12,8,'nero','We have cookies');
-INSERT INTO Squadra VALUES('I messicani', 'Quiddich', 'Machete', 12,8, 'giallo', 'Los hermanos cansados');
-INSERT INTO Squadra VALUES('Tardis', 'Quiddich', 'IlDottore', 12,8,'blu', 'Mai una gioia');
-INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Quiddich', 'CavaliereCipolla', 12,8,'bianco', 'Quelli che non erano bravi a ginnastica');
+INSERT INTO Squadra VALUES('The North Remembers','Quiddich','YouKnowNothing',12,6,'bianco','The King of the north');
+INSERT INTO Squadra VALUES('Guardians of the Galaxy','Quiddich','StarLord',12,6,'rosso','Rocket mi ha rubato di nuovo il pc?');
+INSERT INTO Squadra VALUES('Ordine della Fenice','Quiddich','Pagina394',12,6,'verde','Giuro solennemente di non avere buone intenzioni');
+INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Quiddich','HobbitCoraggioso',12,6,'viola','il mio tesoro');
+INSERT INTO Squadra VALUES('Team Alexandria','Quiddich','LaMiaLucille',12,6,'giallo','Ambarabaccicicoco');
+INSERT INTO Squadra VALUES('Virtus Piscatella', 'Quiddich','CantaStorie',12,6,'blu','Crazy eyes');
+INSERT INTO Squadra VALUES('Space Jam', 'Quiddich','EhmCheSuccedeAmico?',12,6,'azzurro','i like carrots');
+INSERT INTO Squadra VALUES('Izalith Deamons', 'Quiddich','PraiseTheSun',12,6,'arancione','Let the flame guide your way');
+
 
 
 /*Calcio */
 
-INSERT INTO Squadra VALUES('The North Remembers','Calcio','YouKnowNothing',30,15,'bianco','The King of the north');
-INSERT INTO Squadra VALUES('Guardians of the Galaxy','Calcio','StarLord',30,15,'rosso','Rocket mi ha rubato di nuovo il pc?');
-INSERT INTO Squadra VALUES('Ordine della Fenice','Calcio','Pagina394',30,15,'verde','Giuro solennemente di non avere buone intenzioni');
-INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Calcio','HobbitCoraggioso',30,15,'viola','il mio tesoro');
-INSERT INTO Squadra VALUES('Team Alexandria','Calcio','LaMiaLucille',30,15,'giallo','Ambarabaccicicoco');
-INSERT INTO Squadra VALUES('Virtus Piscatella', 'Calcio','CantaStorie',30,15,'blu','Crazy eyes');
-INSERT INTO Squadra VALUES('Il lato oscuro', 'Calcio', 'DarkLord', 30,15,'nero','We have cookies');
-INSERT INTO Squadra VALUES('I messicani', 'Calcio', 'Machete', 30,15, 'giallo', 'Los hermanos cansados');
-INSERT INTO Squadra VALUES('Tardis', 'Calcio', 'IlDottore', 30,15,'blu', 'Mai una gioia');
-INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Calcio', 'CavaliereCipolla', 30,15,'bianco', 'Quelli che non erano bravi a ginnastica');
+INSERT INTO Squadra VALUES('The North Remembers','Calcio','YouKnowNothing',30,6,'bianco','The King of the north');
+INSERT INTO Squadra VALUES('Guardians of the Galaxy','Calcio','StarLord',30,6,'rosso','Rocket mi ha rubato di nuovo il pc?');
+INSERT INTO Squadra VALUES('Ordine della Fenice','Calcio','Pagina394',30,6,'verde','Giuro solennemente di non avere buone intenzioni');
+INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Calcio','HobbitCoraggioso',30,6,'viola','il mio tesoro');
+INSERT INTO Squadra VALUES('Team Alexandria','Calcio','LaMiaLucille',30,6,'giallo','Ambarabaccicicoco');
+INSERT INTO Squadra VALUES('Virtus Piscatella', 'Calcio','CantaStorie',30,6,'blu','Crazy eyes');
+INSERT INTO Squadra VALUES('Space Jam', 'Calcio','EhmCheSuccedeAmico?',30,6,'azzurro','i like carrots');
+INSERT INTO Squadra VALUES('Izalith Deamons', 'Calcio','PraiseTheSun',30,6,'arancione','Let the flame guide your way');
 
 
 /*pallavolo*/
 
-INSERT INTO Squadra VALUES('The North Remembers','Pallavolo','YouKnowNothing',20,12,'bianco','The King of the north');
-INSERT INTO Squadra VALUES('Guardians of the Galaxy','Pallavolo','StarLord',20,12,'rosso','Rocket mi ha rubato di nuovo il pc?');
-INSERT INTO Squadra VALUES('Ordine della Fenice','Pallavolo','Pagina394',20,12,'verde','Giuro solennemente di non avere buone intenzioni');
-INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Pallavolo','HobbitCoraggioso',20,12,'viola','il mio tesoro');
-INSERT INTO Squadra VALUES('Team Alexandria','Pallavolo','LaMiaLucille',20,12,'giallo','Ambarabaccicicoco');
-INSERT INTO Squadra VALUES('Virtus Piscatella', 'Pallavolo','CantaStorie',20,12,'blu','Crazy eyes');
-INSERT INTO Squadra VALUES('Il lato oscuro', 'Pallavolo', 'DarkLord', 20,12,'nero','We have cookies');
-INSERT INTO Squadra VALUES('I messicani', 'Pallavolo', 'Machete', 20,12, 'giallo', 'Los hermanos cansados');
-INSERT INTO Squadra VALUES('Tardis', 'Pallavolo', 'IlDottore', 20,12,'blu', 'Mai una gioia');
-INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Pallavolo', 'CavaliereCipolla',20,12,'bianco', 'Quelli che non erano bravi a ginnastica');
+INSERT INTO Squadra VALUES('The North Remembers','Pallavolo','YouKnowNothing',20,,'6bianco','The King of the north');
+INSERT INTO Squadra VALUES('Guardians of the Galaxy','Pallavolo','StarLord',20,6,'rosso','Rocket mi ha rubato di nuovo il pc?');
+INSERT INTO Squadra VALUES('Ordine della Fenice','Pallavolo','Pagina394',20,6,'verde','Giuro solennemente di non avere buone intenzioni');
+INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Pallavolo','HobbitCoraggioso',20,6,'viola','il mio tesoro');
+INSERT INTO Squadra VALUES('Team Alexandria','Pallavolo','LaMiaLucille',20,6,'giallo','Ambarabaccicicoco');
+INSERT INTO Squadra VALUES('Virtus Piscatella', 'Pallavolo','CantaStorie',20,6,'blu','Crazy eyes');
+INSERT INTO Squadra VALUES('Space Jam', 'Pallavolo','EhmCheSuccedeAmico?',20,6,'azzurro','i like carrots');
+INSERT INTO Squadra VALUES('Izalith Deamons', 'Pallavolo','PraiseTheSun',20,6,'arancione','Let the flame guide your way');
 
 
 
@@ -168,37 +170,21 @@ INSERT INTO Impianto VALUES ('Terminus','via segui le rotaie 11','949490015','Sa
 
 
 
-/* to be modified */
-/*
-INSERT INTO Forma  VALUES (12, 132);
-INSERT INTO Forma  VALUES (13, 132);
-INSERT INTO Forma  VALUES (12, 133);
-INSERT INTO Forma  VALUES (12, 12);
-INSERT INTO Forma  VALUES (12, 13);
-INSERT INTO Forma  VALUES (121, 132);
 
-INSERT INTO PartecipaEv VALUES ('I cani', 'Calcio', 12, 2);
-INSERT INTO PartecipaEv VALUES ('I gatti' 'Calcio', 13, 1);
-INSERT INTO PartecipaEv VALUES ('Vincitori', 'Pallavolo', 132, 0);
-INSERT INTO PartecipaEv VALUES ('Perdenti', 'Pallavolo', 132, 1);
-INSERT INTO PartecipaEv VALUES ('Buffi', 'Pallavolo', 133, 3);
-
-INSERT INTO UtenteGioca VALUES ('ciro', 132, 2);
-INSERT INTO UtenteGioca VALUES ('ciro2', 133, 1);
-INSERT INTO UtenteGioca VALUES ('anna', 11, 0);
-INSERT INTO UtenteGioca VALUES ('pippo', 122, 2);
-INSERT INTO UtenteGioca VALUES ('pluto', 14, 3);
-
-INSERT INTO Gare VALUES ('pippo', 'Calcio', 4);
-INSERT INTO Gare VALUES ('pluto', 'Calcio', 2);
-INSERT INTO Gare VALUES ('pluto', 'Pallavolo', 1);
-INSERT INTO Gare VALUES ('ciro', 'Calcio', 1);
-INSERT INTO Gare VALUES ('ciro2', 'Calcio', 2);
-INSERT INTO Gare VALUES ('ciro', 'Tennis', 2);
-
-INSERT INTO Valutazione VALUES ('pippo', 'pluto', 14, 5);
-INSERT INTO Valutazione VALUES ('pippo', 'ciro', 132, 7);
-INSERT INTO Valutazione VALUES ('pluto', 'pippo', 122, 9);
-INSERT INTO Valutazione VALUES ('ciro', 'pluto', 122, 8);
-INSERT INTO Valutazione VALUES ('anna', 'pluto', 14, 1);
+/*  
+                        error --> Premium Creator, correct it (test it before uploading)
+                        
+                        
+INSERT INTO Squadra VALUES('I messicani', 'Calcio', 'Machete', 30,15, 'giallo', 'Los hermanos cansados');
+INSERT INTO Squadra VALUES('Tardis', 'Calcio', 'IlDottore', 30,15,'blu', 'Mai una gioia');
+INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Calcio', 'CavaliereCipolla', 30,15,'bianco', 'Quelli che non erano bravi a ginnastica');
+INSERT INTO Squadra VALUES('I messicani', 'Pallavolo', 'Machete', 20,12, 'giallo', 'Los hermanos cansados');
+INSERT INTO Squadra VALUES('Tardis', 'Pallavolo', 'IlDottore', 20,12,'blu', 'Mai una gioia');
+INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Pallavolo', 'CavaliereCipolla',20,12,'bianco', 'Quelli che non erano bravi a ginnastica');
+INSERT INTO Squadra VALUES('Il lato oscuro', 'Pallavolo', 'DarkLord', 20,12,'nero','We have cookies');
+INSERT INTO Squadra VALUES('Il lato oscuro', 'Calcio', 'DarkLord', 30,15,'nero','We have cookies');
+INSERT INTO Squadra VALUES('Il lato oscuro', 'Quiddich', 'DarkLord', 12,8,'nero','We have cookies');
+INSERT INTO Squadra VALUES('I messicani', 'Quiddich', 'Machete', 12,8, 'giallo', 'Los hermanos cansados');
+INSERT INTO Squadra VALUES('Tardis', 'Quiddich', 'IlDottore', 12,8,'blu', 'Mai una gioia');
+INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Quiddich', 'CavaliereCipolla', 12,8,'bianco', 'Quelli che non erano bravi a ginnastica');
 */
