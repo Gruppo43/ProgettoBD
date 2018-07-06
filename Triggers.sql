@@ -1,4 +1,3 @@
-
 /* Functions */
 
 CREATE OR REPLACE FUNCTION check_premium_for_teams() RETURNS trigger AS
@@ -16,7 +15,7 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION check_players_number() RETURNS trigger AS
 $check_players_number$
 BEGIN
-	IF NEW.maxGiocatori <=  (SELECT numGiocatori FROM Categoria WHERE nome = NEW.categoria)
+	IF (NEW.maxGiocatori <=  (SELECT numGiocatori FROM Categoria WHERE nome = NEW.categoria))
 		THEN RETURN NEW;
 	ELSE  RAISE EXCEPTION 'questa categoria non prevede cosi tanti giocatori!';
 	END IF;
@@ -60,6 +59,7 @@ END;
 $check_state_event$
 LANGUAGE plpgsql;
 
+
 CREATE OR REPLACE FUNCTION check_rating_for_player() RETURNS trigger AS
 $check_rating_for_player$
 BEGIN
@@ -72,6 +72,55 @@ END;
 $check_rating_for_player$
 LANGUAGE plpgsql;
 
+
+-- un impianto non puo ospitare due eventi contemporaneamente --
+
+CREATE OR REPLACE FUNCTION check_stadium_for_evento() RETURNS trigger AS
+$check_stadium_for_evento$
+BEGIN
+	IF NEW.impianto NOT IN (SELECT impianto   FROM Evento WHERE impianto = NEW.impianto AND data = NEW.data)
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'L''impianto % in data % è occupato per un altro evento!',NEW.impianto,NEW.data;
+	END IF;
+END;
+$check_stadium_for_evento$
+LANGUAGE plpgsql;
+
+
+-- una squadra non può giocare due eventi contemporaneamente --
+
+CREATE OR REPLACE FUNCTION check_team_for_matches() RETURNS trigger AS
+$check_team_for_matches$
+BEGIN
+	IF NEW.nomeSquadra NOT IN (SELECT nomeSquadra   FROM SquadraPartecipaEv  
+							   WHERE nomeSquadra = NEW.nomeSquadra AND idEv <> NEW.idEv AND idEv 
+							   IN(SELECT id FROM Evento  WHERE data = 
+								  (SELECT data from Evento WHERE id = NEW.idEv )))
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'La squadra % in data % partecipa già ad un altro evento!',NEW.nomeSquadra,(SELECT data FROM Evento 
+																							   WHERE id = NEW.idEv);
+	END IF;
+END;
+$check_team_for_matches$
+LANGUAGE plpgsql;
+
+-- una giocatore non può giocare due eventi contemporaneamente --
+
+
+CREATE OR REPLACE FUNCTION check_player_for_matches() RETURNS trigger AS
+$check_player_for_matches$
+BEGIN
+	IF NEW.username NOT IN (SELECT username   FROM UtenteSingoloGioca  
+							   WHERE username = NEW.username AND idEv <> NEW.idEv AND idEv 
+							   IN(SELECT id FROM Evento  WHERE data = 
+								  (SELECT data from Evento WHERE id = NEW.idEv )))
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'Il giocatore % in data % partecipa già ad un altro evento!',NEW.username,(SELECT data FROM Evento 
+																							   WHERE id = NEW.idEv);
+	END IF;
+END;
+$check_player_for_matches$
+LANGUAGE plpgsql;
 
 /* Triggers */
 
@@ -104,3 +153,21 @@ CREATE TRIGGER check_rating_for_player
 BEFORE INSERT OR UPDATE ON ValutazioneUtenti
 FOR EACH ROW
 EXECUTE PROCEDURE check_rating_for_player();
+
+-- un impianto non puo ospitare due eventi contemporaneamente --
+CREATE TRIGGER check_stadium_for_event
+BEFORE INSERT OR UPDATE ON Evento
+FOR EACH ROW
+EXECUTE PROCEDURE check_stadium_for_evento();
+
+-- una squadra non può giocare due eventi contemporaneamente --
+CREATE TRIGGER check_team_for_matches
+BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
+FOR EACH ROW
+EXECUTE PROCEDURE check_team_for_matches();
+
+-- una giocatore non può giocare due eventi contemporaneamente --
+CREATE TRIGGER check_player_for_matches
+BEFORE INSERT OR UPDATE ON UtenteSingoloGioca
+FOR EACH ROW
+EXECUTE PROCEDURE check_player_for_matches();
