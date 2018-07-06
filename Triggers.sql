@@ -1,3 +1,4 @@
+
 /* Functions */
 
 CREATE OR REPLACE FUNCTION check_premium_for_teams() RETURNS trigger AS
@@ -87,6 +88,7 @@ $check_stadium_for_evento$
 LANGUAGE plpgsql;
 
 
+
 -- una squadra non può giocare due eventi contemporaneamente --
 
 CREATE OR REPLACE FUNCTION check_team_for_matches() RETURNS trigger AS
@@ -104,8 +106,8 @@ END;
 $check_team_for_matches$
 LANGUAGE plpgsql;
 
--- una giocatore non può giocare due eventi contemporaneamente --
 
+-- una giocatore non può giocare due eventi contemporaneamente --
 
 CREATE OR REPLACE FUNCTION check_player_for_matches() RETURNS trigger AS
 $check_player_for_matches$
@@ -120,6 +122,34 @@ BEGIN
 	END IF;
 END;
 $check_player_for_matches$
+LANGUAGE plpgsql;
+
+
+-- ad un evento singolo possono giocare solo due giocatori --
+
+CREATE OR REPLACE FUNCTION check_partecipants_number_for_player() RETURNS trigger AS
+$check_partecipants_number_for_player$
+BEGIN
+	IF (SELECT COUNT(*) FROM UtenteSingoloGioca WHERE idEv = NEW.idEv) <= 1
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'A questo evento: % possono partecipare solo due giocatori!',NEW.idEV;
+	END IF;
+END;
+$check_partecipants_number_for_player$
+LANGUAGE plpgsql;
+
+
+-- ad un evento a squadre possono giocare solo due squadre --
+
+CREATE OR REPLACE FUNCTION check_partecipants_number_for_team() RETURNS trigger AS
+$check_partecipants_number_for_team$
+BEGIN
+	IF (SELECT COUNT(*) FROM SquadraPartecipaEv WHERE idEv = NEW.idEv) <= 1
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'A questo evento: % possono partecipare solo due squadre!',NEW.idEV;
+	END IF;
+END;
+$check_partecipants_number_for_team$
 LANGUAGE plpgsql;
 
 /* Triggers */
@@ -171,3 +201,15 @@ CREATE TRIGGER check_player_for_matches
 BEFORE INSERT OR UPDATE ON UtenteSingoloGioca
 FOR EACH ROW
 EXECUTE PROCEDURE check_player_for_matches();
+
+-- ad un evento singolo possono giocare solo due giocatori --
+CREATE TRIGGER check_partecipants_number_for_player
+BEFORE INSERT OR UPDATE ON UtenteSingoloGioca
+FOR EACH ROW
+EXECUTE PROCEDURE check_partecipants_number_for_player();
+
+-- ad un evento a squadre possono giocare solo due squadre --
+CREATE TRIGGER check_partecipants_number_for_team
+BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
+FOR EACH ROW
+EXECUTE PROCEDURE check_partecipants_number_for_team();
