@@ -61,7 +61,7 @@ INSERT INTO Utente VALUES ('HobbitCoraggioso', '748hdi8HF89', 'Bilbo', 'Baggins'
 INSERT INTO Utente VALUES ('PiediPiatti', '748hjdii30H', 'Frodo', 'Baggins', '28/09/1980', 'Hobbiton', true , '849382999', 'S91123951', 'Chimica', 'standard' );
 INSERT INTO Utente VALUES ('StupidiNani', '84j8fj49jgGG', 'Legolas', 'Sindarin', '22/07/1969', 'Woodland Realm', false , '184180000', 'S0021951', 'Informatica', 'premium' );
 INSERT INTO Utente VALUES ('YouShallNotPass', '84849dFFgGG', 'Gandalf', 'Iosonomago', '12/03/1958', 'Everywhere', true , '184181230', 'S1121974', 'Filosofia', 'standard' );
-INSERT INTO Utente VALUES ('MyTreasure', '84039f400380', 'Gollum', 'TroppeInsert', '14/09/1974', 'Platone''s cave', false , '8504803903', 'S07585901', 'Stregoneria', 'standard' );
+INSERT INTO Utente VALUES ('IlPortatoreDellnello', 'Ilmiotesoro', 'Gollum', 'Smeagol', '01/01/1900', 'Campo Gaggiolo', false, '012854954', 'S4000012', 'Stregoneria', 'standard');
 INSERT INTO Utente VALUES ('NonHoPiùFantasia:(', 'KSI7dh923', 'Sauron', 'TheRingHolder', '24/12/1952', 'Wano no kuni', false , '8402803343', 'S011092', 'Economia', 'standard' );
 
 
@@ -75,14 +75,23 @@ INSERT INTO Utente VALUES ('TheDragonDuke', 'HJJ87HG8', 'Seath', 'Scaleless', '0
 INSERT INTO Utente VALUES ('TheChosenUndead', '709063gjj89pJ', 'Artorias', 'Abysswalker', '09/11/1993', 'Astora', false , '0089839467', 'S1231238', 'Stregoneria', 'standard' );
 INSERT INTO Utente VALUES ('NamelessKing', '930djo8979', 'Ornstein', 'DragonSlayer', '05/03/1994', 'Anor Londo', true , '9057474768', 'S1238805', 'Chimica', 'premium' );
 
+/* looney tunes */
+INSERT INTO Utente VALUES ('EhmCheSuccedeAmico?', '84039f400380', 'Bugs', 'Bunny', '14/04/1994', 'on television', false , '9494949493', 'S9475612', 'Chimica', 'premium' );
+INSERT INTO Utente VALUES ('SuperDaffy', '749302he83', 'Daffy', 'Duck', '02/02/1986', 'on television', true , '8504803903', 'S07585901', 'Informatica', 'standard' );
+INSERT INTO Utente VALUES ('MiESemblatoDiVedeleGatto', '84039f400380', 'Titti', 'SonoMaschio', '21/05/1990', 'on televiosion', false , '8504897913', 'S06665901', 'Economia', 'standard' );
+INSERT INTO Utente VALUES ('MirameArriba', '84039f400380', 'Speedy', 'Gonzales', '06/09/1979', 'on television' , true , '7940303030', 'S84403020', 'Chimica', 'premium' );
+INSERT INTO Utente VALUES ('AcmeFanBoy','iWillCatchYou' 'Wile', 'Coyote', '07/08/1981', 'on television', false , '112334793', 'S0750902', 'Filosofia', 'standard' );
+INSERT INTO Utente VALUES ('BipBip', '848fj84jd8HHs', 'Road', 'Runner', '11/10/1978', 'on television' , false , '234632453', 'S0490840', 'Stregoneria', 'premium' );
+
+
+
 /* Varie */
 
 INSERT INTO Utente VALUES ('CapitanJackSparrow', 'ilRum00', 'Jack', 'Sparrow', '12/12/1985', 'IslaDeMuerta', true, '366845742', 'S4875124', 'Ingegneria navale', 'premium');
 INSERT INTO Utente VALUES ('IlCornoBlu', 'lasciatoallaaltare', 'Ted', 'Mosby', '03/05/1980', 'New York', true, '624154896', 'S7845620', 'Architettura', 'standard');
-INSERT INTO Utente VALUES ('IlPortatoreDellAnello', 'Ilmiotesoro', 'Gollum', 'Smeagol', '01/01/1900', 'Campo Gaggiolo', false, '012854954', 'S4000012', 'Stregoneria', 'standard');
 INSERT INTO Utente VALUES ('IlDottore', 'IdontWantToGo', 'John', 'Smith', '11/03/1945', 'Gallifrey', false, '326978400', 'S1036487', 'Medicina', 'premium');
 INSERT INTO Utente VALUES ('BadWolf', 'iloveyou', 'Rose', 'Tyler', '26/03/1989', 'Londra', false, '3669514784', 'S4598742', 'Letteratura', 'standard');
-INSERT INTO Utente VALUES ('Sherlocked', 'imnotgay', 'John', 'Watson', '04/04/1975', 'Edimburgo', true, '4985252144', 'S4545986', 'Medicina', 'premium');
+INSERT INTO Utente VALUES ('Sherlocked', 'password', 'John', 'Watson', '04/04/1975', 'Edimburgo', true, '4985252144', 'S4545986', 'Medicina', 'premium');
 INSERT INTO Utente VALUES ('Sociopath', 'elementareWatson', 'Sherlock', 'Holmes', '17/08/1975', 'Londra', false, '4984578966', 'S4457899', 'Giurisprudenza', 'premium');
 INSERT INTO Utente VALUES ('PrepareToDie', 'seemadecentfellow', 'Inigo', 'Motoya', '18/11/1981', 'Granada', true, '6589874114', 'S4444659', 'Storia', 'standard');
 INSERT INTO Utente VALUES ('Machete', 'kill', 'Danny', 'Trejo', '26/08/1990', 'Siviglia', false, '6598745633', 'S4698570', 'Ingegneria meccanica', 'premium');
