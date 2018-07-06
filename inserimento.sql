@@ -75,6 +75,23 @@ INSERT INTO Utente VALUES ('TheDragonDuke', 'HJJ87HG8', 'Seath', 'Scaleless', '0
 INSERT INTO Utente VALUES ('TheChosenUndead', '709063gjj89pJ', 'Artorias', 'Abysswalker', '09/11/1993', 'Astora', false , '0089839467', 'S1231238', 'Stregoneria', 'standard' );
 INSERT INTO Utente VALUES ('NamelessKing', '930djo8979', 'Ornstein', 'DragonSlayer', '05/03/1994', 'Anor Londo', true , '9057474768', 'S1238805', 'Chimica', 'premium' );
 
+/* Varie */
+
+INSERT INTO Utente VALUES ('CapitanJackSparrow', 'ilRum00', 'Jack', 'Sparrow', '12/12/1985', 'IslaDeMuerta', true, '366845742', 'S4875124', 'Ingegneria navale', 'premium');
+INSERT INTO Utente VALUES ('IlCornoBlu', 'lasciatoallaaltare', 'Ted', 'Mosby', '03/05/1980', 'New York', true, '624154896', 'S7845620', 'Architettura', 'standard');
+INSERT INTO Utente VALUES ('IlPortatoreDellAnello', 'Ilmiotesoro', 'Gollum', 'Smeagol', '01/01/1900', 'Campo Gaggiolo', false, '012854954', 'S4000012', 'Stregoneria', 'standard');
+INSERT INTO Utente VALUES ('IlDottore', 'IdontWantToGo', 'John', 'Smith', '11/03/1945', 'Gallifrey', false, '326978400', 'S1036487', 'Medicina', 'premium');
+INSERT INTO Utente VALUES ('BadWolf', 'iloveyou', 'Rose', 'Tyler', '26/03/1989', 'Londra', false, '3669514784', 'S4598742', 'Letteratura', 'standard');
+INSERT INTO Utente VALUES ('Sherlocked', 'imnotgay', 'John', 'Watson', '04/04/1975', 'Edimburgo', true, '4985252144', 'S4545986', 'Medicina', 'premium');
+INSERT INTO Utente VALUES ('Sociopath', 'elementareWatson', 'Sherlock', 'Holmes', '17/08/1975', 'Londra', false, '4984578966', 'S4457899', 'Giurisprudenza', 'premium');
+INSERT INTO Utente VALUES ('PrepareToDie', 'seemadecentfellow', 'Inigo', 'Motoya', '18/11/1981', 'Granada', true, '6589874114', 'S4444659', 'Storia', 'standard');
+INSERT INTO Utente VALUES ('Machete', 'kill', 'Danny', 'Trejo', '26/08/1990', 'Siviglia', false, '6598745633', 'S4698570', 'Ingegneria meccanica', 'premium');
+INSERT INTO Utente VALUES ('CavaliereCipolla', 'mioLegittimoRe', 'Davos', 'Seaworth', '29/01/1995', 'Continente libero', false, '3598777412', 'S4556654', 'Ingegneria navale', 'standard');
+INSERT INTO Utente VALUES ('ColuiCheHaAssaggiatoIlCiboDegliDei', 'lapiadeina', 'Pdor', 'Kmer', '02/06/1964', 'Pnigheran', false, '9876857454', 'S4635223', 'Giurisprudenza', 'premium');
+INSERT INTO Utente VALUES ('EriComeUnFratello', 'yolo', 'Obi-wan', 'Kenobi', '15/10/1989', 'Coruscant', false, '8795565326', 'S4856969', 'premium');
+INSERT INTO Utente VALUES ('DarkLord', 'Shhwwahshh', 'Anakin', 'Skywalker', '22/03/1969', 'Tatooine', false, '8796558599', 'S4758965', 'standard');
+
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /* Categories */
@@ -97,6 +114,10 @@ INSERT INTO Squadra VALUES('Ordine della Fenice','Quiddich','Pagina394',12,8,'ve
 INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Quiddich','HobbitCoraggioso',12,8,'viola','il mio tesoro');
 INSERT INTO Squadra VALUES('Team Alexandria','Quiddich','LaMiaLucille',12,8,'giallo','Ambarabaccicicoco');
 INSERT INTO Squadra VALUES('Virtus Piscatella', 'Quiddich','CantaStorie',12,8,'blu','Crazy eyes');
+INSERT INTO Squadra VALUES('Il lato oscuro', 'Quiddich', 'DarkLord', 12,8,'nero','We have cookies');
+INSERT INTO Squadra VALUES('I messicani', 'Quiddich', 'Machete', 12,8, 'giallo', 'Los hermanos cansados');
+INSERT INTO Squadra VALUES('Tardis', 'Quiddich', 'IlDottore', 12,8,'blu', 'Mai una gioia');
+INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Quiddich', 'CavaliereCipolla', 12,8,'bianco', 'Quelli che non erano bravi a ginnastica');
 
 
 /*Calcio */
@@ -107,6 +128,10 @@ INSERT INTO Squadra VALUES('Ordine della Fenice','Calcio','Pagina394',30,15,'ver
 INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Calcio','HobbitCoraggioso',30,15,'viola','il mio tesoro');
 INSERT INTO Squadra VALUES('Team Alexandria','Calcio','LaMiaLucille',30,15,'giallo','Ambarabaccicicoco');
 INSERT INTO Squadra VALUES('Virtus Piscatella', 'Calcio','CantaStorie',30,15,'blu','Crazy eyes');
+INSERT INTO Squadra VALUES('Il lato oscuro', 'Calcio', 'DarkLord', 30,15,'nero','We have cookies');
+INSERT INTO Squadra VALUES('I messicani', 'Calcio', 'Machete', 30,15, 'giallo', 'Los hermanos cansados');
+INSERT INTO Squadra VALUES('Tardis', 'Calcio', 'IlDottore', 30,15,'blu', 'Mai una gioia');
+INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Calcio', 'CavaliereCipolla', 30,15,'bianco', 'Quelli che non erano bravi a ginnastica');
 
 
 /*pallavolo*/
@@ -117,6 +142,10 @@ INSERT INTO Squadra VALUES('Ordine della Fenice','Pallavolo','Pagina394',20,12,'
 INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Pallavolo','HobbitCoraggioso',20,12,'viola','il mio tesoro');
 INSERT INTO Squadra VALUES('Team Alexandria','Pallavolo','LaMiaLucille',20,12,'giallo','Ambarabaccicicoco');
 INSERT INTO Squadra VALUES('Virtus Piscatella', 'Pallavolo','CantaStorie',20,12,'blu','Crazy eyes');
+INSERT INTO Squadra VALUES('Il lato oscuro', 'Pallavolo', 'DarkLord', 20,12,'nero','We have cookies');
+INSERT INTO Squadra VALUES('I messicani', 'Pallavolo', 'Machete', 20,12, 'giallo', 'Los hermanos cansados');
+INSERT INTO Squadra VALUES('Tardis', 'Pallavolo', 'IlDottore', 20,12,'blu', 'Mai una gioia');
+INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Pallavolo', 'CavaliereCipolla',20,12,'bianco', 'Quelli che non erano bravi a ginnastica');
 
 
 
