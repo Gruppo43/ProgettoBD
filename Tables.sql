@@ -10,7 +10,7 @@ annoN date not null,
 luogoN varchar(35) not null,
 foto boolean not null,
 tel varchar(10) not null,
-matricola varchar(8) not null,
+matricola varchar(10) not null,
 CorsoDiStudio varchar(20) not null,
 tipo varchar(8) not null
 check (tipo = 'standard' or tipo = 'premium')
