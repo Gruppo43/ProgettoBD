@@ -167,7 +167,71 @@ INSERT INTO Impianto VALUES ('Accademia Beauxbaton','via dei babbani 14','333999
 INSERT INTO Impianto VALUES ('Castel Granito','fondo delle pulci 24','345673845','HoldTheDoor@gmail.it',4.1,22.13);
 INSERT INTO Impianto VALUES ('Terminus','via segui le rotaie 11','949490015','SafePlace@gmail.com',10,2.112);
 
+/*///////////////////////////////TORNEO DI CALCIO /////////////////////////////////////////////////////////////////////
 
+Partite :
+
+	quarti finale :
+
+	Guardiani vs North  4 - 1
+	Ordine vs Compagnia  2 - 3
+	Team Alexandria vs Virtus Piscatella 1 - 2
+	Space Jam vs Izalith 2 - 5
+
+	semifinali:
+
+	North vs Compagnia 2 - 0
+	Izalith vs Piscatella 3 - 4
+
+	finale:
+
+	North vs Piscatella 1 - 2
+	______________________________________________________
+	QUESTI DATI SONO UTILI PER IL TESTING POST PRODUZIONE
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+INSERT INTO Torneo VALUES (00001,'È vietato uccidere','un torneo divertente!','eliminazione diretta','Calcio','Olivander wand',
+						  'Coppa tre maghi','a squadre','YouKnowNothing');
+--quarti finale--
+INSERT INTO Evento VALUES(15689,'08/01/2018','chiuso',90,'Accademia Beauxbaton','Calcio','a squadre');--guard vs north
+INSERT INTO Evento VALUES(15690,'08/01/2018','chiuso',90,'Terminus','Calcio','a squadre'); --ordine vs compagnia
+INSERT INTO Evento VALUES(15691,'08/01/2018','chiuso',90,'Castel Granito','Calcio','a squadre'); -- alex vs piscatella
+INSERT INTO Evento VALUES(15692,'08/01/2018','chiuso',90,'La Terra di mezzo','Calcio','a squadre');-- space vs izalith
+--semifinale
+INSERT INTO Evento VALUES(15693,'09/01/2018','chiuso',90,'Accademia Beauxbaton','Calcio','a squadre'); --north vs compagnia
+INSERT INTO Evento VALUES(15694,'09/01/2018','chiuso',90,'Terminus','Calcio','a squadre');-- izalith vs piscatella
+
+--finale
+INSERT INTO Evento VALUES(15695,'15/01/2018','chiuso',90,'Castel Granito','Calcio','a squadre');--piscatella vs north
+
+INSERT INTO SquadraPartecipaEv VALUES('Guardians of the Galaxy','Calcio',15689,1);
+INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Calcio',15689,4);
+INSERT INTO SquadraPartecipaEv VALUES('Ordine della Fenice','Calcio',15690,2);
+INSERT INTO SquadraPartecipaEv VALUES('Compagnia dell''anello','Calcio',15690,3);
+INSERT INTO SquadraPartecipaEv VALUES('Team Alexandria','Calcio',15691,1);
+INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Calcio',15691,2);
+INSERT INTO SquadraPartecipaEv VALUES('Space Jam','Calcio',15692,2);
+INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Calcio',15692,5);
+
+INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Calcio',15693,2);
+INSERT INTO SquadraPartecipaEv VALUES('Compagnia dell''anello','Calcio',15693,0);
+INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Calcio',15694,3);
+INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Calcio',15694,4);
+
+INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Calcio',15695,1);
+INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Calcio',15695,2);
+
+INSERT INTO EventoInTorneo VALUES(00001,15689);
+INSERT INTO EventoInTorneo VALUES(00001,15690);
+INSERT INTO EventoInTorneo VALUES(00001,15691);
+INSERT INTO EventoInTorneo VALUES(00001,15692);
+INSERT INTO EventoInTorneo VALUES(00001,15693);
+INSERT INTO EventoInTorneo VALUES(00001,15694);
+INSERT INTO EventoInTorneo VALUES(00001,15695);
+
+/*////////////////////////////////////////// FINE TORNEO /////////////////////////////////////////////////////// */
 
 
 
