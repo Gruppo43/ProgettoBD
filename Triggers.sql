@@ -152,6 +152,29 @@ END;
 $check_partecipants_number_for_team$
 LANGUAGE plpgsql;
 
+
+
+-- un evento che deve ancora svolgersi non puo' avere lo stato chiuso. Un evento aperto non puo' essere già finito!
+CREATE OR REPLACE FUNCTION check_event_date() RETURNS trigger AS
+$check_event_date$
+BEGIN
+	IF (NEW.data <= current_date)
+		THEN IF (NEW.stato = 'chiuso')
+				THEN RETURN NEW;
+			ELSE RAISE EXCEPTION 'l''evento % è stato svolto in data % , ergo non può avere lo stato ''aperto''',NEW.id,NEW.data;
+			END IF;
+	ELSE 
+		IF(NEW.stato = 'aperto')
+			THEN RETURN NEW;
+		ELSE RAISE EXCEPTION 'l''evento % si svolgerà in data % , ergo non può avere lo stato ''chiuso''',NEW.id,NEW.data;
+		END IF;
+	END IF;
+END;
+$check_event_date$
+LANGUAGE plpgsql;
+
+
+
 /* Triggers */
 
 CREATE TRIGGER check_premium_for_teams
@@ -213,3 +236,9 @@ CREATE TRIGGER check_partecipants_number_for_team
 BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
 FOR EACH ROW
 EXECUTE PROCEDURE check_partecipants_number_for_team();
+
+-- un evento che deve ancora svolgersi non puo' avere lo stato chiuso. Un evento aperto non puo' essere già finito!
+CREATE TRIGGER check_event_date
+BEFORE INSERT OR UPDATE ON Evento
+FOR EACH ROW
+EXECUTE PROCEDURE check_event_date();
