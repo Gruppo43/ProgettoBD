@@ -149,7 +149,7 @@ INSERT INTO Squadra VALUES('Izalith Deamons', 'Calcio','PraiseTheSun',30,6,'aran
 
 /*pallavolo*/
 
-INSERT INTO Squadra VALUES('The North Remembers','Pallavolo','YouKnowNothing',20,,'6bianco','The King of the north');
+INSERT INTO Squadra VALUES('The North Remembers','Pallavolo','YouKnowNothing',20,6,'bianco','The King of the north');
 INSERT INTO Squadra VALUES('Guardians of the Galaxy','Pallavolo','StarLord',20,6,'rosso','Rocket mi ha rubato di nuovo il pc?');
 INSERT INTO Squadra VALUES('Ordine della Fenice','Pallavolo','Pagina394',20,6,'verde','Giuro solennemente di non avere buone intenzioni');
 INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Pallavolo','HobbitCoraggioso',20,6,'viola','il mio tesoro');
