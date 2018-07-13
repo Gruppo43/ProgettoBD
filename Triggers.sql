@@ -214,6 +214,23 @@ $check_premium_for_tournament$
 LANGUAGE plpgsql;
 
 
+-- non si puo aggiungere un esito fi un evento aperto
+CREATE OR REPLACE FUNCTION check_if_accessible_event() RETURNS trigger AS
+$check_if_accessible_event$
+BEGIN
+	IF ((SELECT stato FROM Evento WHERE id = NEW.idEV) = 'aperto')
+		THEN RAISE EXCEPTION 'L''evento % risulta essere aperto, non è possibile quindi aggiuungere un esito!
+		Se l''evento si è concluso preghiamo il gestore del database di modificare lo stato dell''evento da ''aperto''
+		a ''chiuso''',NEW.idEv;
+	
+	ELSE RETURN NEW;
+	END IF;
+END;
+$check_if_accessible_event$
+LANGUAGE plpgsql;
+
+
+
 /* Triggers */
 
 CREATE TRIGGER check_premium_for_teams
@@ -299,3 +316,15 @@ CREATE TRIGGER check_premium_for_tournament
 BEFORE INSERT OR UPDATE ON Torneo
 FOR EACH ROW
 EXECUTE PROCEDURE check_premium_for_tournament();
+
+-- non si puo aggiungere un esito di un evento aperto
+CREATE TRIGGER check_if_accessible_event_for_team
+BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
+FOR EACH ROW
+EXECUTE PROCEDURE check_if_accessible_event();*/
+
+-- non si puo aggiungere un esito di un evento aperto
+CREATE  TRIGGER check_if_accessible_event_for_player
+BEFORE INSERT OR UPDATE ON UtenteSingoloGioca
+FOR EACH ROW
+EXECUTE PROCEDURE check_if_accessible_event();
