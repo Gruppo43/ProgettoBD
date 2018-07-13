@@ -82,7 +82,6 @@ categoria varchar(20) not null,
 tipo varchar(10) not null,
 foreign key(impianto) references Impianto(nome) on delete  no action on update cascade,
 foreign key(categoria) references Categoria(nome) on delete  no action on update cascade,
-check(data <= current_date),
 check(durata > 0),
 check(stato = 'aperto' or stato = 'chiuso'),
 check(tipo = 'singolo' or tipo = 'a squadre')
