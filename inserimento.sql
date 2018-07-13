@@ -302,6 +302,76 @@ INSERT INTO EventoInTorneo VALUES(00002,16695);
 
 
 
+/* /////////////////////////////// TORNEO DI SCACCHI ///////////////////////////////////////////////////////////////////// 
+
+Partite :
+
+	quarti finale :
+
+	Reek vs Ohsieteneiguai  2 - 0 (ASSUMO CHE SIA UN TORNEO BEST OF 3 DI SCACCHI)
+	groot vs pennatucky 2 - 1
+	nonhopiufantasia vs youshallnotpass 2 - 0
+	MercyPrevailsWrath vs bluemeth 2 - 0
+
+	semifinali:
+
+	Reek vs groot 1 - 2
+	nonhopiufantasia vs MercyPrevailsWrath 0 - 2
+
+	finale:
+
+	MercyPrevailsWrath vs Groot 1- 2
+	______________________________________________________
+	QUESTI DATI SONO UTILI PER IL TESTING POST PRODUZIONE
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+INSERT INTO Torneo VALUES (00003,'Wizard''s chess,best of 3','Cavallo in E5','eliminazione diretta','Scacchi','Alchimisti di Stato',
+						  'Pietra Filosofale','singolo','PraiseTheSun');
+--quarti finale--
+INSERT INTO Evento VALUES(17689,'21/03/2018','chiuso',15,'Accademia Beauxbaton','Scacchi','singolo');
+INSERT INTO Evento VALUES(17690,'21/03/2018','chiuso',15,'Terminus','Scacchi','singolo'); 
+INSERT INTO Evento VALUES(17691,'21/03/2018','chiuso',15,'Castel Granito','Scacchi','singolo'); 
+INSERT INTO Evento VALUES(17692,'21/03/2018','chiuso',15,'La Terra di mezzo','Scacchi','singolo');
+--semifinale
+INSERT INTO Evento VALUES(17693,'25/3/2018','chiuso',15,'Accademia Beauxbaton','Scacchi','singolo'); 
+INSERT INTO Evento VALUES(17694,'25/03/2018','chiuso',15,'Terminus','Scacchi','singolo');
+
+--finale
+INSERT INTO Evento VALUES(17695,'29/03/2018','chiuso',15,'Castel Granito','Scacchi','singolo');
+
+INSERT INTO UtenteSingoloGioca VALUES ('IoSonoReek',17689,2);
+INSERT INTO UtenteSingoloGioca VALUES ('OhSieteNeiGuaiStaVolta',17689,0);
+INSERT INTO UtenteSingoloGioca VALUES ('IAmGroot',17690,2);
+INSERT INTO UtenteSingoloGioca VALUES ('Pennsatucky',17690,1);
+INSERT INTO UtenteSingoloGioca VALUES ('NonHoPiùFantasia',17691,2);
+INSERT INTO UtenteSingoloGioca VALUES ('YouShallNotPass',17691,0);
+INSERT INTO UtenteSingoloGioca VALUES ('BlueMeth22',17692,0);
+INSERT INTO UtenteSingoloGioca VALUES ('MercyPrevailsWrath',17692,2);
+
+INSERT INTO UtenteSingoloGioca VALUES ('IoSonoReek',17693,1);
+INSERT INTO UtenteSingoloGioca VALUES ('IAmGroot',17693,2);
+INSERT INTO UtenteSingoloGioca VALUES ('NonHoPiùFantasia',17694,0);
+INSERT INTO UtenteSingoloGioca VALUES ('MercyPrevailsWrath',17694,2);
+
+
+INSERT INTO UtenteSingoloGioca VALUES ('IAmGroot',17695,2);
+INSERT INTO UtenteSingoloGioca VALUES ('MercyPrevailsWrath',17695,1);
+
+
+INSERT INTO EventoInTorneo VALUES(00003,17689);
+INSERT INTO EventoInTorneo VALUES(00003,17690);
+INSERT INTO EventoInTorneo VALUES(00003,17691);
+INSERT INTO EventoInTorneo VALUES(00003,17692);
+INSERT INTO EventoInTorneo VALUES(00003,17693);
+INSERT INTO EventoInTorneo VALUES(00003,17694);
+INSERT INTO EventoInTorneo VALUES(00003,17695);
+
+/* ////////////////////////////////////////// FINE TORNEO /////////////////////////////////////////////////////// */
+
+
+
 
 
 /*  
