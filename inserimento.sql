@@ -234,7 +234,6 @@ INSERT INTO EventoInTorneo VALUES(00001,15695);
 /*////////////////////////////////////////// FINE TORNEO /////////////////////////////////////////////////////// */
 
 
-
 /* ///////////////////////////////TORNEO DI PALLAVOLO ///////////////////////////////////////////////////////////////////// 
 
 Partite :
@@ -263,16 +262,16 @@ Partite :
 INSERT INTO Torneo VALUES (00002,'non ci sono regole','Dinckleberg!','eliminazione diretta','Pallavolo','Gotta catch''em all',
 						  'Coppa di gelato','a squadre','LaMiaLucille');
 --quarti finale--
-INSERT INTO Evento VALUES(16689,'15/06/2018','chiuso',60,'Accademia Beauxbaton','Calcio','a squadre');
-INSERT INTO Evento VALUES(16690,'15/06/2018','chiuso',60,'Terminus','Calcio','a squadre'); 
-INSERT INTO Evento VALUES(16691,'15/06/2018','chiuso',60,'Castel Granito','Calcio','a squadre'); 
-INSERT INTO Evento VALUES(16692,'15/06/2018','chiuso',60,'La Terra di mezzo','Calcio','a squadre');
+INSERT INTO Evento VALUES(16689,'15/06/2018','chiuso',60,'Accademia Beauxbaton','Pallavolo','a squadre');
+INSERT INTO Evento VALUES(16690,'15/06/2018','chiuso',60,'Terminus','Pallavolo','a squadre'); 
+INSERT INTO Evento VALUES(16691,'15/06/2018','chiuso',60,'Castel Granito','Pallavolo','a squadre'); 
+INSERT INTO Evento VALUES(16692,'15/06/2018','chiuso',60,'La Terra di mezzo','Pallavolo','a squadre');
 --semifinale
-INSERT INTO Evento VALUES(16693,'17/06/2018','chiuso',60,'Accademia Beauxbaton','Calcio','a squadre'); 
-INSERT INTO Evento VALUES(16694,'17/06/2018','chiuso',60,'Terminus','Calcio','a squadre');
+INSERT INTO Evento VALUES(16693,'17/06/2018','chiuso',60,'Accademia Beauxbaton','Pallavolo','a squadre'); 
+INSERT INTO Evento VALUES(16694,'17/06/2018','chiuso',60,'Terminus','Pallavolo','a squadre');
 
 --finale
-INSERT INTO Evento VALUES(16695,'24/06/2018','chiuso',60,'Castel Granito','Calcio','a squadre');
+INSERT INTO Evento VALUES(16695,'24/06/2018','chiuso',60,'Castel Granito','Pallavolo','a squadre');
 
 INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Pallavolo',16689,3); -- si intende 3 set a 1
 INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Pallavolo',16689,1);
@@ -284,7 +283,7 @@ INSERT INTO SquadraPartecipaEv VALUES('Guardians of the Galaxy','Pallavolo',1669
 INSERT INTO SquadraPartecipaEv VALUES('Ordine della Fenice','Pallavolo',16692,1);
 
 INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Pallavolo',16693,3);
-INSERT INTO SquadraPartecipaEv VALUES('Team Alexandria','Calcio',16693,1);
+INSERT INTO SquadraPartecipaEv VALUES('Team Alexandria','Pallavolo',16693,1);
 INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Pallavolo',16694,4);
 INSERT INTO SquadraPartecipaEv VALUES('Guardians of the Galaxy','Pallavolo',16694,0);
 
