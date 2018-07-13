@@ -6,7 +6,7 @@ $check_premium_for_teams$
 BEGIN
 	IF NEW.creatore NOT IN (SELECT username as creatore FROM Utente WHERE tipo = 'standard')
 		THEN RETURN NEW;
-	ELSE  RAISE EXCEPTION 'solo un utente premium può creare una squadra!';
+	ELSE  RAISE EXCEPTION 'L''utente % non è premium, non può creare la squadra!',NEW.creatore;
 	END IF;
 END;
 $check_premium_for_teams$
@@ -48,6 +48,7 @@ BEGIN
 END;
 $check_event_type_for_player$
 LANGUAGE plpgsql;
+
 
 CREATE OR REPLACE FUNCTION check_state_event() RETURNS trigger AS
 $check_state_event$
@@ -174,6 +175,44 @@ $check_event_date$
 LANGUAGE plpgsql;
 
 
+-- un evento deve essere della stessa categoria del torneo di cui fa parte!
+CREATE OR REPLACE FUNCTION check_tournament_category() RETURNS trigger AS
+$check_tournament_category$
+BEGIN
+	IF ((SELECT categoria FROM Torneo where id = NEW.idT) <> (SELECT categoria FROM Evento WHERE id = NEW.idEV))
+		THEN RAISE EXCEPTION 'L''evento % fa parte di una categoria divergente da quella del torneo %',NEW.idEV,NEW.idT;
+	ELSE RETURN NEW;
+	END IF;
+END;
+$check_tournament_category$
+LANGUAGE plpgsql;
+
+
+-- un determinato evento non puo far parte di due o piu tornei
+CREATE OR REPLACE FUNCTION check_unique_event_in_tournament() RETURNS trigger AS
+$check_unique_event_in_tournament$
+BEGIN
+	IF (SELECT count(*) FROM EventoInTorneo WHERE idEV = NEW.idEV) = 1
+		THEN RAISE EXCEPTION 'L''evento % fa già parte di un altro torneo!',NEW.idEV;
+	ELSE RETURN NEW;
+	END IF;
+END;
+$check_unique_event_in_tournament$
+LANGUAGE plpgsql;
+
+
+-- solo un utente premium puo creare un torneo
+CREATE OR REPLACE FUNCTION check_premium_for_tournament() RETURNS trigger AS
+$check_premium_for_tournament$
+BEGIN
+	IF NEW.creatore NOT IN (SELECT username as creatore FROM Utente WHERE tipo = 'standard')
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'L''utente % non è premium, non può creare il torneo!',NEW.creatore;
+	END IF;
+END;
+$check_premium_for_tournament$
+LANGUAGE plpgsql;
+
 
 /* Triggers */
 
@@ -242,3 +281,21 @@ CREATE TRIGGER check_event_date
 BEFORE INSERT OR UPDATE ON Evento
 FOR EACH ROW
 EXECUTE PROCEDURE check_event_date();
+
+-- un evento deve essere della stessa categoria del torneo di cui fa parte!
+CREATE TRIGGER check_tournament_category
+BEFORE INSERT OR UPDATE ON EventoInTorneo
+FOR EACH ROW
+EXECUTE PROCEDURE check_tournament_category();
+
+-- un determinato evento non puo far parte di due o piu tornei
+CREATE TRIGGER check_unique_event_in_tournament
+BEFORE INSERT OR UPDATE ON EventoInTorneo
+FOR EACH ROW
+EXECUTE PROCEDURE check_unique_event_in_tournament();
+
+-- solo un utente premium puo creare un torneo
+CREATE TRIGGER check_premium_for_tournament
+BEFORE INSERT OR UPDATE ON Torneo
+FOR EACH ROW
+EXECUTE PROCEDURE check_premium_for_tournament();
