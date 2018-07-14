@@ -243,6 +243,18 @@ BEGIN
 END;
 $check_premium_accepts_applications$
 LANGUAGE plpgsql;
+				
+--un utente può iscriversi solo ad un evento aperto
+CREATE OR REPLACE FUNCTION sign_up_for_open_events_only() RETURNS trigger AS
+$sign_up_for_open_events_only$
+BEGIN
+	IF NEW.Evento NOT IN (SELECT Id AS Evento FROM Evento WHERE Stato = 'chiuso')
+	THEN RETURN NEW;
+	ELSE RAISE EXCEPTION 'Un utente può iscriversi solo ad un evento aperto!';
+	END IF;
+END;
+$sign_up_for_open_events_only$
+LANGUAGE plpgsql;
 
 /* Triggers */
 
@@ -347,3 +359,10 @@ CREATE TRIGGER check_premius_accepts_applications
 BEFORE INSERT OR UPDATE ON Candidatura
 FOR EACH ROW
 EXECUTE PROCEDURE check_premium_accepts_applications();
+				
+--un utente può iscriversi solo ad un evento aperto
+CREATE TRIGGER sign_up_for_open_events_only
+BEFORE INSERT OR UPDATE ON Iscrizione
+FOR EACH ROW
+EXECUTE PROCEDURE sign_up_for_open_events_only();
+
