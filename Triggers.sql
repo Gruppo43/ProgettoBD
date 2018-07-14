@@ -1,10 +1,11 @@
 
+
 /* Functions */
 
 CREATE OR REPLACE FUNCTION check_premium_for_teams() RETURNS trigger AS
 $check_premium_for_teams$
 BEGIN
-	IF NEW.creatore NOT IN (SELECT username as creatore FROM Utente WHERE tipo = 'standard')
+	IF NEW.creatore NOT IN (SELECT username  FROM Utente WHERE tipo = 'standard')
 		THEN RETURN NEW;
 	ELSE  RAISE EXCEPTION 'L''utente % non è premium, non può creare la squadra!',NEW.creatore;
 	END IF;
@@ -53,7 +54,7 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION check_state_event() RETURNS trigger AS
 $check_state_event$
 BEGIN
-	IF NEW.idEv IN (SELECT id as idEv FROM Evento WHERE stato = 'chiuso')
+	IF NEW.idEv IN (SELECT id  FROM Evento WHERE stato = 'chiuso')
 		THEN return NEW;
 	ELSE RAISE EXCEPTION 'questo evento non è terminato, non e'' possibile inserire la valutazione';
 	END IF;
@@ -65,7 +66,7 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION check_rating_for_player() RETURNS trigger AS
 $check_rating_for_player$
 BEGIN
-	IF NEW.usernameValutatore IN (SELECT username as usernameValutatore FROM UtenteSingoloGioca 
+	IF NEW.usernameValutatore IN (SELECT username  FROM UtenteSingoloGioca 
 					WHERE idEv IN (SELECT idEv FROM UtenteSingoloGioca WHERE username = NEW.usernameValutato))
 		THEN return NEW;
 	ELSE RAISE EXCEPTION 'i dati di giocatore valutato o di chi valuta non sono corretti';
@@ -205,7 +206,7 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION check_premium_for_tournament() RETURNS trigger AS
 $check_premium_for_tournament$
 BEGIN
-	IF NEW.creatore NOT IN (SELECT username as creatore FROM Utente WHERE tipo = 'standard')
+	IF NEW.creatore NOT IN (SELECT username  FROM Utente WHERE tipo = 'standard')
 		THEN RETURN NEW;
 	ELSE  RAISE EXCEPTION 'L''utente % non è premium, non può creare il torneo!',NEW.creatore;
 	END IF;
@@ -229,12 +230,13 @@ END;
 $check_if_accessible_event$
 LANGUAGE plpgsql;
 
+
 --solo un utente premium può accettare o rifiutare le candidature
 CREATE OR REPLACE FUNCTION check_premium_accepts_applications() RETURNS trigger AS 
 $check_premium_accepts_applications$
 BEGIN
 	IF 
-		NEW.Supervisore NOT IN (SELECT Username AS Supervisore FROM Utente WHERE Tipo = 'standard')
+		NEW.Supervisore NOT IN (SELECT Username  FROM Utente WHERE Tipo = 'standard')
 	THEN
 		RETURN NEW;
 	ELSE
@@ -248,12 +250,45 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION sign_up_for_open_events_only() RETURNS trigger AS
 $sign_up_for_open_events_only$
 BEGIN
-	IF NEW.Evento NOT IN (SELECT Id AS Evento FROM Evento WHERE Stato = 'chiuso')
+	IF NEW.Evento NOT IN (SELECT Id  FROM Evento WHERE Stato = 'chiuso')
 	THEN RETURN NEW;
 	ELSE RAISE EXCEPTION 'Un utente può iscriversi solo ad un evento aperto!';
 	END IF;
 END;
 $sign_up_for_open_events_only$
+LANGUAGE plpgsql
+
+
+-- una squadra non puo partecipare ad un evento se non ha raggiunto il numero minimo di candidature
+CREATE OR REPLACE FUNCTION check_min_players_for_team() RETURNS trigger AS
+$check_min_players_for_team$
+BEGIN
+	IF ((SELECT count(*) FROM Candidatura WHERE Squadra = NEW.nomeSquadra AND categoria = NEW.nomeC AND stato = 'accettata') 
+		>= (SELECT minGiocatori FROM Squadra WHERE nome = NEW.nomeSquadra AND categoria = NEW.nomeC))
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'la squadra % della categoria % non ha raggiunto il numero minimo di candidature per disputare questo
+	evento',NEW.nomeSquadra,NEW.nomeC;
+	END IF;
+END;
+$check_min_players_for_team$
+LANGUAGE plpgsql;
+
+
+-- una squadra non puo' superare il numero massimo di giocatori previsto
+CREATE OR REPLACE FUNCTION check_max_players_for_team() RETURNS trigger AS
+$check_max_players_for_team$
+BEGIN
+	IF (NEW.stato = 'accettata')
+		THEN IF ((SELECT count(*) FROM Candidatura WHERE squadra = NEW.squadra AND categoria = NEW.categoria) = 
+				(SELECT maxGiocatori FROM Squadra WHERE nome = NEW.squadra AND categoria = NEW.categoria))
+		 		THEN RAISE EXCEPTION 'Non si possono accettare ulteriori candidature per l squadra %
+			 	della categoria %',NEW.Squadra,NEW.categoria;
+			 ELSE RETURN NEW;
+			END IF;
+	ELSE  RETURN NEW;
+	END IF;
+END;
+$check_max_players_for_team$
 LANGUAGE plpgsql;
 
 /* Triggers */
@@ -346,13 +381,7 @@ EXECUTE PROCEDURE check_premium_for_tournament();
 CREATE TRIGGER check_if_accessible_event_for_team
 BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
 FOR EACH ROW
-EXECUTE PROCEDURE check_if_accessible_event();
-
--- non si puo aggiungere un esito di un evento aperto
-CREATE  TRIGGER check_if_accessible_event_for_player
-BEFORE INSERT OR UPDATE ON UtenteSingoloGioca
-FOR EACH ROW
-EXECUTE PROCEDURE check_if_accessible_event();
+EXECUTE PROCEDURE check_if_accessible_event();*/
 
 --solo un utente premium può accettare o rifiutare le candidature
 CREATE TRIGGER check_premius_accepts_applications
@@ -365,4 +394,16 @@ CREATE TRIGGER sign_up_for_open_events_only
 BEFORE INSERT OR UPDATE ON Iscrizione
 FOR EACH ROW
 EXECUTE PROCEDURE sign_up_for_open_events_only();
+
+-- non si puo aggiungere un esito di un evento aperto
+CREATE  TRIGGER check_if_accessible_event_for_player
+BEFORE INSERT OR UPDATE ON UtenteSingoloGioca
+FOR EACH ROW
+EXECUTE PROCEDURE check_if_accessible_event();
+
+-- una squadra non puo partecipare ad un evento se non ha raggiunto il numero minimo di candidature
+CREATE  TRIGGER check_min_players_for_team
+BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
+FOR EACH ROW
+EXECUTE PROCEDURE check_min_players_for_team();
 
