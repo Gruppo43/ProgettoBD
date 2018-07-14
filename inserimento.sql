@@ -391,3 +391,5 @@ INSERT INTO Squadra VALUES('I messicani', 'Quiddich', 'Machete', 12,8, 'giallo',
 INSERT INTO Squadra VALUES('Tardis', 'Quiddich', 'IlDottore', 12,8,'blu', 'Mai una gioia');
 INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Quiddich', 'CavaliereCipolla', 12,8,'bianco', 'Quelli che non erano bravi a ginnastica');
 */
+
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','BlueMeth22','Ordine della Fenice','Quiddich');
