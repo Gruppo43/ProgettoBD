@@ -334,7 +334,7 @@ EXECUTE PROCEDURE check_premium_for_tournament();
 CREATE TRIGGER check_if_accessible_event_for_team
 BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
 FOR EACH ROW
-EXECUTE PROCEDURE check_if_accessible_event();*/
+EXECUTE PROCEDURE check_if_accessible_event();
 
 -- non si puo aggiungere un esito di un evento aperto
 CREATE  TRIGGER check_if_accessible_event_for_player
