@@ -229,7 +229,20 @@ END;
 $check_if_accessible_event$
 LANGUAGE plpgsql;
 
-
+--solo un utente premium può accettare o rifiutare le candidature
+CREATE OR REPLACE FUNCTION check_premium_accepts_applications() RETURNS trigger AS 
+$check_premium_accepts_applications$
+BEGIN
+	IF 
+		NEW.Supervisore NOT IN (SELECT Username AS Supervisore FROM Utente WHERE Tipo = 'standard')
+	THEN
+		RETURN NEW;
+	ELSE
+		RAISE EXCEPTION 'Solo un utente premium può accettare o rifiutare le candidature!';
+	END IF;
+END;
+$check_premium_accepts_applications$
+LANGUAGE plpgsql;
 
 /* Triggers */
 
@@ -328,3 +341,9 @@ CREATE  TRIGGER check_if_accessible_event_for_player
 BEFORE INSERT OR UPDATE ON UtenteSingoloGioca
 FOR EACH ROW
 EXECUTE PROCEDURE check_if_accessible_event();
+
+--solo un utente premium può accettare o rifiutare le candidature
+CREATE TRIGGER check_premius_accepts_applications
+BEFORE INSERT OR UPDATE ON Candidatura
+FOR EACH ROW
+EXECUTE PROCEDURE check_premium_accepts_applications();
