@@ -169,7 +169,127 @@ INSERT INTO Impianto VALUES ('Terminus','via segui le rotaie 11','949490015','Sa
 
 
 
+/* CANDIDATURE ACCETTATE CALCIO */
 
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','LupoSolitario','The North Remembers','Calcio');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','YouKnowNothing','The North Remembers','Calcio');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','IoSonoReek','The North Remembers','Calcio');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','Hodor','The North Remembers','Calcio');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','PortamiDelVino','The North Remembers','Calcio');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','Inginocchiati','The North Remembers','Calcio');
+
+
+INSERT INTO Candidatura VALUES('accettata','StarLord','LordThanos','Guardians of the Galaxy','Calcio');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','StarLord','Guardians of the Galaxy','Calcio');
+INSERT INTO Candidatura VALUES('accettata','StarLord','DontKnowWhereSoulGemIs','Guardians of the Galaxy','Calcio');
+INSERT INTO Candidatura VALUES('accettata','StarLord','Nebula','Guardians of the Galaxy','Calcio');
+INSERT INTO Candidatura VALUES('accettata','StarLord','Boomer','Guardians of the Galaxy','Calcio');
+INSERT INTO Candidatura VALUES('accettata','StarLord','IAmGroot','Guardians of the Galaxy','Calcio');
+
+INSERT INTO Candidatura VALUES('accettata','Pagina394','Polisucco61','Ordine della Fenice','Calcio');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','Pagina394','Ordine della Fenice','Calcio');
+INSERT INTO Candidatura VALUES('accettata','Pagina394','OhSieteNeiGuaiStaVolta','Ordine della Fenice','Calcio');
+INSERT INTO Candidatura VALUES('accettata','Pagina394','MiDispiaceNeville','Ordine della Fenice','Calcio');
+INSERT INTO Candidatura VALUES('accettata','Pagina394','PerchèSeguiteIRagni?','Ordine della Fenice','Calcio');
+INSERT INTO Candidatura VALUES('accettata','Pagina394','ElfoLibero','Ordine della Fenice','Calcio');
+
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','LupoSolitario','Compagnia dell''anello','Calcio');
+INSERT INTO Candidatura VALUES('accettata','StupidiNani','HobbitCoraggioso','Compagnia dell''anello','Calcio');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','StupidiNani','Compagnia dell''anello','Calcio');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','YouShallNotPass','Compagnia dell''anello','Calcio');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','MyTReasure','Compagnia dell''anello','Calcio');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','NonHoPiùFantasia','Compagnia dell''anello','Calcio');
+
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','MortoCheCammina','Team Alexandria','Calcio');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','LaMiaLucille','Team Alexandria','Calcio');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','MercyPrevailsWrath','Team Alexandria','Calcio');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','RealLeader','Team Alexandria','Calcio');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','BulletMaker','Team Alexandria','Calcio');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','InfiniteArrows','Team Alexandria','Calcio');
+
+INSERT INTO Candidatura VALUES('accettata','Taystee','Pennsatucky','Virtus Piscatella','Calcio');
+INSERT INTO Candidatura VALUES('accettata','CantaStorie','Taystee','Virtus Piscatella','Calcio');
+INSERT INTO Candidatura VALUES('accettata','Taystee','CantaStorie','Virtus Piscatella','Calcio');
+INSERT INTO Candidatura VALUES('accettata','Taystee','Red','Virtus Piscatella','Calcio');
+INSERT INTO Candidatura VALUES('accettata','Taystee','Morello','Virtus Piscatella','Calcio');
+INSERT INTO Candidatura VALUES('accettata','Taystee','UsatoChePiace','Virtus Piscatella','Calcio');
+
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','MirameArriba','Space Jam','Calcio');
+INSERT INTO Candidatura VALUES('accettata','MirameArriba','EhmCheSuccedeAmico?','Space Jam','Calcio');
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','MiESemblatoDiVedele','Space Jam','Calcio');
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','SuperDaffy','Space Jam','Calcio');
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','AcmeFanBoy','Space Jam','Calcio');
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','BipBip','Space Jam','Calcio');
+
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','PraiseTheSun','Izalith Deamons','Calcio');
+INSERT INTO Candidatura VALUES('accettata','PraiseTheSun','NamelessKing','Izalith Deamons','Calcio');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','SoEaslyForgotten','Izalith Deamons','Calcio');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','BraveWarrior','Izalith Deamons','Calcio');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheDragonDuke','Izalith Deamons','Calcio');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheChosenUndead','Izalith Deamons','Calcio');
+
+
+
+
+
+/* CANDIDATURE ACCETTATE PALLAVOLO */
+
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','LupoSolitario','The North Remembers','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','YouKnowNothing','The North Remembers','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','IoSonoReek','The North Remembers','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','Hodor','The North Remembers','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','PortamiDelVino','The North Remembers','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','Inginocchiati','The North Remembers','Pallavolo');
+
+
+INSERT INTO Candidatura VALUES('accettata','StarLord','LordThanos','Guardians of the Galaxy','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','StarLord','Guardians of the Galaxy','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','StarLord','DontKnowWhereSoulGemIs','Guardians of the Galaxy','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','StarLord','Nebula','Guardians of the Galaxy','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','StarLord','Boomer','Guardians of the Galaxy','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','StarLord','IAmGroot','Guardians of the Galaxy','Pallavolo');
+
+INSERT INTO Candidatura VALUES('accettata','Pagina394','Polisucco61','Ordine della Fenice','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','Pagina394','Ordine della Fenice','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','Pagina394','OhSieteNeiGuaiStaVolta','Ordine della Fenice','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','Pagina394','MiDispiaceNeville','Ordine della Fenice','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','Pagina394','PerchèSeguiteIRagni?','Ordine della Fenice','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','Pagina394','ElfoLibero','Ordine della Fenice','Pallavolo');
+
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','LupoSolitario','Compagnia dell''anello','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','StupidiNani','HobbitCoraggioso','Compagnia dell''anello','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','StupidiNani','Compagnia dell''anello','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','YouShallNotPass','Compagnia dell''anello','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','MyTReasure','Compagnia dell''anello','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','NonHoPiùFantasia','Compagnia dell''anello','Pallavolo');
+
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','MortoCheCammina','Team Alexandria','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','LaMiaLucille','Team Alexandria','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','MercyPrevailsWrath','Team Alexandria','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','RealLeader','Team Alexandria','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','BulletMaker','Team Alexandria','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','InfiniteArrows','Team Alexandria','Pallavolo');
+
+INSERT INTO Candidatura VALUES('accettata','Taystee','Pennsatucky','Virtus Piscatella','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','CantaStorie','Taystee','Virtus Piscatella','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','Taystee','CantaStorie','Virtus Piscatella','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','Taystee','Red','Virtus Piscatella','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','Taystee','Morello','Virtus Piscatella','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','Taystee','UsatoChePiace','Virtus Piscatella','Pallavolo');
+
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','MirameArriba','Space Jam','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','MirameArriba','EhmCheSuccedeAmico?','Space Jam','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','MiESemblatoDiVedele','Space Jam','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','SuperDaffy','Space Jam','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','AcmeFanBoy','Space Jam','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','BipBip','Space Jam','Pallavolo');
+
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','PraiseTheSun','Izalith Deamons','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','PraiseTheSun','NamelessKing','Izalith Deamons','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','SoEaslyForgotten','Izalith Deamons','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','BraveWarrior','Izalith Deamons','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheDragonDuke','Izalith Deamons','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheChosenUndead','Izalith Deamons','Pallavolo');
 
 
 
