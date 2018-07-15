@@ -395,15 +395,5 @@ BEFORE INSERT OR UPDATE ON Iscrizione
 FOR EACH ROW
 EXECUTE PROCEDURE sign_up_for_open_events_only();
 
--- non si puo aggiungere un esito di un evento aperto
-CREATE  TRIGGER check_if_accessible_event_for_player
-BEFORE INSERT OR UPDATE ON UtenteSingoloGioca
-FOR EACH ROW
-EXECUTE PROCEDURE check_if_accessible_event();
 
--- una squadra non puo partecipare ad un evento se non ha raggiunto il numero minimo di candidature
-CREATE  TRIGGER check_min_players_for_team
-BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
-FOR EACH ROW
-EXECUTE PROCEDURE check_min_players_for_team();
 
