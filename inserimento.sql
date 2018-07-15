@@ -293,6 +293,69 @@ INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheChosenUndead','Iza
 
 
 
+/* CANDIDATURE ACCETTATE -- RIFIUTATE  QUIDDICH */
+
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','LupoSolitario','The North Remembers','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','LaMiaLucille','YouKnowNothing','The North Remembers','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','IoSonoReek','The North Remembers','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','Hodor','The North Remembers','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','YouKnowNothing','PortamiDelVino','The North Remembers','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','Inginocchiati','The North Remembers','Quiddich');
+
+
+INSERT INTO Candidatura VALUES('rifiutata','StarLord','LordThanos','Guardians of the Galaxy','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','StarLord','Guardians of the Galaxy','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','StarLord','DontKnowWhereSoulGemIs','Guardians of the Galaxy','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','StarLord','Nebula','Guardians of the Galaxy','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','StarLord','Boomer','Guardians of the Galaxy','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','StarLord','IAmGroot','Guardians of the Galaxy','Quiddich');
+
+INSERT INTO Candidatura VALUES('accettata','Pagina394','Polisucco61','Ordine della Fenice','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','Pagina394','Ordine della Fenice','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','Pagina394','OhSieteNeiGuaiStaVolta','Ordine della Fenice','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','Pagina394','MiDispiaceNeville','Ordine della Fenice','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','Pagina394','PerchèSeguiteIRagni?','Ordine della Fenice','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','Pagina394','ElfoLibero','Ordine della Fenice','Quiddich');
+
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','LupoSolitario','Compagnia dell''anello','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','StupidiNani','HobbitCoraggioso','Compagnia dell''anello','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','StupidiNani','Compagnia dell''anello','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','YouShallNotPass','Compagnia dell''anello','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','MyTReasure','Compagnia dell''anello','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','NonHoPiùFantasia','Compagnia dell''anello','Quiddich');
+
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','MortoCheCammina','Team Alexandria','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','LaMiaLucille','Team Alexandria','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','MercyPrevailsWrath','Team Alexandria','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','RealLeader','Team Alexandria','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','BulletMaker','Team Alexandria','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','LaMiaLucille','InfiniteArrows','Team Alexandria','Quiddich');
+
+INSERT INTO Candidatura VALUES('rifiutata','Taystee','Pennsatucky','Virtus Piscatella','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','CantaStorie','Taystee','Virtus Piscatella','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','Taystee','CantaStorie','Virtus Piscatella','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','Taystee','Red','Virtus Piscatella','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','Taystee','Morello','Virtus Piscatella','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','Taystee','UsatoChePiace','Virtus Piscatella','Quiddich');
+
+INSERT INTO Candidatura VALUES('rifiutata','EhmCheSuccedeAmico?','MirameArriba','Space Jam','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','MirameArriba','EhmCheSuccedeAmico?','Space Jam','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','EhmCheSuccedeAmico?','MiESemblatoDiVedele','Space Jam','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','SuperDaffy','Space Jam','Quiddich');
+INSERT INTO Candidatura VALUES('rifiutata','EhmCheSuccedeAmico?','AcmeFanBoy','Space Jam','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','EhmCheSuccedeAmico?','BipBip','Space Jam','Quiddich');
+
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','PraiseTheSun','Izalith Deamons','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','PraiseTheSun','NamelessKing','Izalith Deamons','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','SoEaslyForgotten','Izalith Deamons','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','BraveWarrior','Izalith Deamons','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheDragonDuke','Izalith Deamons','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheChosenUndead','Izalith Deamons','Quiddich');
+
+
+
+
+
 /*///////////////////////////////TORNEO DI CALCIO /////////////////////////////////////////////////////////////////////
 
 Partite :
