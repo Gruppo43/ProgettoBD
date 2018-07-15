@@ -256,7 +256,7 @@ BEGIN
 	END IF;
 END;
 $sign_up_for_open_events_only$
-LANGUAGE plpgsql
+LANGUAGE plpgsql;
 
 -- una squadra non puo partecipare ad un evento se non ha raggiunto il numero minimo di candidature
 CREATE OR REPLACE FUNCTION check_min_players_for_team() RETURNS trigger AS
@@ -381,7 +381,7 @@ EXECUTE PROCEDURE check_premium_for_tournament();
 CREATE TRIGGER check_if_accessible_event_for_team
 BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
 FOR EACH ROW
-EXECUTE PROCEDURE check_if_accessible_event();*/
+EXECUTE PROCEDURE check_if_accessible_event();
 
 --solo un utente premium può accettare o rifiutare le candidature
 CREATE TRIGGER check_premius_accepts_applications
