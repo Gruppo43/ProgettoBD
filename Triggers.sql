@@ -258,7 +258,37 @@ END;
 $sign_up_for_open_events_only$
 LANGUAGE plpgsql
 
+-- una squadra non puo partecipare ad un evento se non ha raggiunto il numero minimo di candidature
+CREATE OR REPLACE FUNCTION check_min_players_for_team() RETURNS trigger AS
+$check_min_players_for_team$
+BEGIN
+	IF ((SELECT count(*) FROM Candidatura WHERE Squadra = NEW.nomeSquadra AND categoria = NEW.nomeC AND stato = 'accettata') 
+		>= (SELECT minGiocatori FROM Squadra WHERE nome = NEW.nomeSquadra AND categoria = NEW.nomeC))
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'la squadra % della categoria % non ha raggiunto il numero minimo di candidature per disputare questo
+	evento',NEW.nomeSquadra,NEW.nomeC;
+	END IF;
+END;
+$check_min_players_for_team$
+LANGUAGE plpgsql;
 
+
+-- una squadra non puo' superare il numero massimo di giocatori previsto
+CREATE OR REPLACE FUNCTION check_max_players_for_team() RETURNS trigger AS
+$check_max_players_for_team$
+BEGIN
+	IF (NEW.stato = 'accettata')
+		THEN IF ((SELECT count(*) FROM Candidatura WHERE squadra = NEW.squadra AND categoria = NEW.categoria) = 
+				(SELECT maxGiocatori FROM Squadra WHERE nome = NEW.squadra AND categoria = NEW.categoria))
+		 		THEN RAISE EXCEPTION 'Non si possono accettare ulteriori candidature per l squadra %
+			 	della categoria %',NEW.Squadra,NEW.categoria;
+			 ELSE RETURN NEW;
+			END IF;
+	ELSE  RETURN NEW;
+	END IF;
+END;
+$check_max_players_for_team$
+LANGUAGE plpgsql;
 
 
 /* Triggers */
