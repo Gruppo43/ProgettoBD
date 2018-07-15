@@ -158,7 +158,7 @@ categoria varchar(20) not null,
 foreign key (candidato)references Utente(username) on delete  no action on update cascade,
 foreign key (squadra,categoria)references Squadra(nome,categoria) on delete  no action on update cascade,
 foreign key (supervisore)references Utente(username),
-primary key (Candidato,Squadra),
+primary key (Candidato,Squadra,categoria),
 check (stato = 'accettata' or stato = 'rifiutata'),
 check (supervisore != candidato)
 );
