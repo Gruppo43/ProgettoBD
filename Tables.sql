@@ -165,7 +165,7 @@ check (supervisore != candidato)
 
 CREATE TABLE Iscrizione(
 data date,
-stato varchar(9) not null,
+stato varchar(20) not null,
 studente varchar(25) not null,
 evento numeric(8) not null,
 foreign key (studente)references Utente(username) on delete  no action on update cascade,
