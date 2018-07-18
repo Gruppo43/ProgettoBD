@@ -384,33 +384,28 @@ Partite :
 INSERT INTO Torneo VALUES (00001,'È vietato uccidere','un torneo divertente!','eliminazione diretta','Calcio','Olivander wand',
 						  'Coppa tre maghi','a squadre','YouKnowNothing');
 --quarti finale--
-INSERT INTO Evento VALUES(15689,'08/01/2018','chiuso',90,'Accademia Beauxbaton','Calcio','a squadre');--guard vs north
-INSERT INTO Evento VALUES(15690,'08/01/2018','chiuso',90,'Terminus','Calcio','a squadre'); --ordine vs compagnia
-INSERT INTO Evento VALUES(15691,'08/01/2018','chiuso',90,'Castel Granito','Calcio','a squadre'); -- alex vs piscatella
-INSERT INTO Evento VALUES(15692,'08/01/2018','chiuso',90,'La Terra di mezzo','Calcio','a squadre');-- space vs izalith
+INSERT INTO Evento VALUES(15689,'08/01/2018','chiuso',90,'Accademia Beauxbaton','Calcio','a squadre','EriComeUnFratello');--guard vs north
+INSERT INTO Evento VALUES(15690,'08/01/2018','chiuso',90,'Terminus','Calcio','a squadre','Sociopath'); --ordine vs compagnia
+INSERT INTO Evento VALUES(15691,'08/01/2018','chiuso',90,'Castel Granito','Calcio','a squadre','IlDottore'); -- alex vs piscatella
+INSERT INTO Evento VALUES(15692,'08/01/2018','chiuso',90,'La Terra di mezzo','Calcio','a squadre','IlDottore');-- space vs izalith
 --semifinale
-INSERT INTO Evento VALUES(15693,'09/01/2018','chiuso',90,'Accademia Beauxbaton','Calcio','a squadre'); --north vs compagnia
-INSERT INTO Evento VALUES(15694,'09/01/2018','chiuso',90,'Terminus','Calcio','a squadre');-- izalith vs piscatella
+INSERT INTO Evento VALUES(15693,'09/01/2018','chiuso',90,'Accademia Beauxbaton','Calcio','a squadre','EriComeUnFratello'); --north vs compagnia
+INSERT INTO Evento VALUES(15694,'09/01/2018','chiuso',90,'Terminus','Calcio','a squadre','Sociopath');-- izalith vs piscatella
 
 --finale
-INSERT INTO Evento VALUES(15695,'15/01/2018','chiuso',90,'Castel Granito','Calcio','a squadre');--piscatella vs north
+INSERT INTO Evento VALUES(15695,'15/01/2018','chiuso',90,'Castel Granito','Calcio','a squadre','EriComeUnFratello');--piscatella vs north
 
-INSERT INTO SquadraPartecipaEv VALUES('Guardians of the Galaxy','Calcio',15689,1);
-INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Calcio',15689,4);
-INSERT INTO SquadraPartecipaEv VALUES('Ordine della Fenice','Calcio',15690,2);
-INSERT INTO SquadraPartecipaEv VALUES('Compagnia dell''anello','Calcio',15690,3);
-INSERT INTO SquadraPartecipaEv VALUES('Team Alexandria','Calcio',15691,1);
-INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Calcio',15691,2);
-INSERT INTO SquadraPartecipaEv VALUES('Space Jam','Calcio',15692,2);
-INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Calcio',15692,5);
 
-INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Calcio',15693,2);
-INSERT INTO SquadraPartecipaEv VALUES('Compagnia dell''anello','Calcio',15693,0);
-INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Calcio',15694,3);
-INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Calcio',15694,4);
+INSERT INTO EsitoSquadre Values(15689,'Guardians of the Galaxy','The North Remembers','Calcio','Calcio',1,4);
+INSERT INTO EsitoSquadre Values(15690,'Ordine della Fenice','Compagnia dell''anello','Calcio','Calcio',2,3);
+INSERT INTO EsitoSquadre Values(15691,'Team Alexandria','Virtus Piscatella','Calcio','Calcio',1,2);
+INSERT INTO EsitoSquadre Values(15692,'Space Jam','Izalith Deamons','Calcio','Calcio',2,5);
 
-INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Calcio',15695,1);
-INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Calcio',15695,2);
+INSERT INTO EsitoSquadre Values(15693,'The North Remembers','Compagnia dell''anello','Calcio','Calcio',2,0);
+INSERT INTO EsitoSquadre Values(15694,'Izalith Deamons','Virtus Piscatella','Calcio','Calcio',3,4);
+
+INSERT INTO EsitoSquadre Values(15695,'The North Remembers','Virtus Piscatella','Calcio','Calcio',1,2);
+
 
 INSERT INTO EventoInTorneo VALUES(00001,15689);
 INSERT INTO EventoInTorneo VALUES(00001,15690);
@@ -451,16 +446,16 @@ Partite :
 INSERT INTO Torneo VALUES (00002,'non ci sono regole','Dinckleberg!','eliminazione diretta','Pallavolo','Gotta catch''em all',
 						  'Coppa di gelato','a squadre','LaMiaLucille');
 --quarti finale--
-INSERT INTO Evento VALUES(16689,'15/06/2018','chiuso',60,'Accademia Beauxbaton','Pallavolo','a squadre');
-INSERT INTO Evento VALUES(16690,'15/06/2018','chiuso',60,'Terminus','Pallavolo','a squadre'); 
-INSERT INTO Evento VALUES(16691,'15/06/2018','chiuso',60,'Castel Granito','Pallavolo','a squadre'); 
-INSERT INTO Evento VALUES(16692,'15/06/2018','chiuso',60,'La Terra di mezzo','Pallavolo','a squadre');
---semifinale
-INSERT INTO Evento VALUES(16693,'17/06/2018','chiuso',60,'Accademia Beauxbaton','Pallavolo','a squadre'); 
-INSERT INTO Evento VALUES(16694,'17/06/2018','chiuso',60,'Terminus','Pallavolo','a squadre');
+INSERT INTO Evento VALUES(16689,'15/06/2018','chiuso',60,'Accademia Beauxbaton','Pallavolo','a squadre','IlDottore');
+INSERT INTO Evento VALUES(16690,'15/06/2018','chiuso',60,'Terminus','Pallavolo','a squadre','Sociopath'); 
+INSERT INTO Evento VALUES(16691,'15/06/2018','chiuso',60,'Castel Granito','Pallavolo','a squadre','LaMiaLucille'); 
+INSERT INTO Evento VALUES(16692,'15/06/2018','chiuso',60,'La Terra di mezzo','Pallavolo','a squadre','IlDottore');
+--semifinale'
+INSERT INTO Evento VALUES(16693,'17/06/2018','chiuso',60,'Accademia Beauxbaton','Pallavolo','a squadre','LaMiaLucille'); 
+INSERT INTO Evento VALUES(16694,'17/06/2018','chiuso',60,'Terminus','Pallavolo','a squadre','Sociopath');
 
 --finale
-INSERT INTO Evento VALUES(16695,'24/06/2018','chiuso',60,'Castel Granito','Pallavolo','a squadre');
+INSERT INTO Evento VALUES(16695,'24/06/2018','chiuso',60,'Castel Granito','Pallavolo','a squadre','IlDottore');
 
 INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Pallavolo',16689,3); -- si intende 3 set a 1
 INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Pallavolo',16689,1);
@@ -519,16 +514,16 @@ Partite :
 INSERT INTO Torneo VALUES (00003,'Wizard''s chess,best of 3','Cavallo in E5','eliminazione diretta','Scacchi','Alchimisti di Stato',
 						  'Pietra Filosofale','singolo','PraiseTheSun');
 --quarti finale--
-INSERT INTO Evento VALUES(17689,'21/03/2018','chiuso',15,'Accademia Beauxbaton','Scacchi','singolo');
-INSERT INTO Evento VALUES(17690,'21/03/2018','chiuso',15,'Terminus','Scacchi','singolo'); 
-INSERT INTO Evento VALUES(17691,'21/03/2018','chiuso',15,'Castel Granito','Scacchi','singolo'); 
-INSERT INTO Evento VALUES(17692,'21/03/2018','chiuso',15,'La Terra di mezzo','Scacchi','singolo');
+INSERT INTO Evento VALUES(17689,'21/03/2018','chiuso',15,'Accademia Beauxbaton','Scacchi','singolo','PraiseTheSun');
+INSERT INTO Evento VALUES(17690,'21/03/2018','chiuso',15,'Terminus','Scacchi','singolo','Taystee'); 
+INSERT INTO Evento VALUES(17691,'21/03/2018','chiuso',15,'Castel Granito','Scacchi','singolo','Taystee'); 
+INSERT INTO Evento VALUES(17692,'21/03/2018','chiuso',15,'La Terra di mezzo','Scacchi','singolo','Taystee');
 --semifinale
-INSERT INTO Evento VALUES(17693,'25/3/2018','chiuso',15,'Accademia Beauxbaton','Scacchi','singolo'); 
-INSERT INTO Evento VALUES(17694,'25/03/2018','chiuso',15,'Terminus','Scacchi','singolo');
+INSERT INTO Evento VALUES(17693,'25/3/2018','chiuso',15,'Accademia Beauxbaton','Scacchi','singolo','PraiseTheSun'); 
+INSERT INTO Evento VALUES(17694,'25/03/2018','chiuso',15,'Terminus','Scacchi','singolo','Taystee');
 
 --finale
-INSERT INTO Evento VALUES(17695,'29/03/2018','chiuso',15,'Castel Granito','Scacchi','singolo');
+INSERT INTO Evento VALUES(17695,'29/03/2018','chiuso',15,'Castel Granito','Scacchi','singolo','PraiseTheSun');
 
 INSERT INTO UtenteSingoloGioca VALUES ('IoSonoReek',17689,2);
 INSERT INTO UtenteSingoloGioca VALUES ('OhSieteNeiGuaiStaVolta',17689,0);
