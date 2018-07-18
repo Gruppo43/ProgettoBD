@@ -196,3 +196,11 @@ foreign key (torneo)references Torneo(id) on delete  no action on update cascade
 foreign key(studente)references Utente(username) on delete  no action on update cascade,
 primary key (torneo,studente)
 );
+
+CREATE TABLE UtenteFaPunti(
+Username varchar(25) references Utente(Username) on delete no action on update cascade,
+IdEvento numeric(8) references Evento(Id) on delete no action on update cascade,
+Punti numeric(3),
+primary key(Username,IdEvento),
+check(Punti>=0)
+);
