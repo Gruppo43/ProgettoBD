@@ -97,6 +97,17 @@ idEv numeric(8) references Evento (id) on delete  no action on update cascade,
 primary key(idT, idEv)
 );
 
+CREATE TABLE EsitoSingolo(
+idEv numeric(8) references Evento(id) on delete no action on update cascade,
+giocatore1 varchar(25) references Utente(username) on delete no action on update cascade,
+punteggioGiocatore1 numeric(2), 
+giocatore2 varchar(25) references Utente(username) on delete no action on update cascade,
+punteggioGiocatore2 numeric(2),
+durata numeric(4), 
+primary key(idEv),
+check(punteggioGiocatore1 >= 0 and punteggioGiocatore2 >=0)
+);
+
 CREATE TABLE EsitoSquadre(
 idEv numeric(8) references Evento (id) on delete  no action on update cascade,
 nomeSquadra1 varchar(30) not null,
