@@ -353,7 +353,7 @@ INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheDragonDuke','Izali
 INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheChosenUndead','Izalith Deamons','Quiddich');
 
 
-
+INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','BlueMeth22','Ordine della Fenice','Quiddich');
 
 
 /*///////////////////////////////TORNEO DI CALCIO /////////////////////////////////////////////////////////////////////
@@ -458,14 +458,14 @@ INSERT INTO Evento VALUES(16694,'17/06/2018','chiuso',60,'Terminus','Pallavolo',
 INSERT INTO Evento VALUES(16695,'24/06/2018','chiuso',60,'Castel Granito','Pallavolo','a squadre','IlDottore');
 
 INSERT INTO EsitoSquadre VALUES(16689,'Virtus Piscatella','The North Remembers','Pallavolo','Pallavolo',3,1); -- si intende 3 set a 1
-INSERT INTO EsitoSquadre VALUES(16690,'Team Alexandria','Pallavolo','Space Jam','Pallavolo',3,2);
-INSERT INTO EsitoSquadre VALUES(16691,'Izalith Deamons','Pallavolo','Compagnia dell''anello','Pallavolo',4,0);
-INSERT INTO EsitoSquadre VALUES(16692,'Guardians of the Galaxy','Pallavolo','Ordine della Fenice','Pallavolo',3,1);
+INSERT INTO EsitoSquadre VALUES(16690,'Team Alexandria','Space Jam','Pallavolo','Pallavolo',3,2);
+INSERT INTO EsitoSquadre VALUES(16691,'Izalith Deamons','Compagnia dell''anello','Pallavolo','Pallavolo',4,0);
+INSERT INTO EsitoSquadre VALUES(16692,'Guardians of the Galaxy','Ordine della Fenice','Pallavolo','Pallavolo',3,1);
 
-INSERT INTO EsitoSquadre VALUES(16693,'Virtus Piscatella','Pallavolo','Team Alexandria','Pallavolo',3,1);
-INSERT INTO EsitoSquadre VALUES(16694,'Izalith Deamons','Pallavolo','Guardians of the Galaxy','Pallavolo',4,0);
+INSERT INTO EsitoSquadre VALUES(16693,'Virtus Piscatella','Team Alexandria','Pallavolo','Pallavolo',3,1);
+INSERT INTO EsitoSquadre VALUES(16694,'Izalith Deamons','Guardians of the Galaxy','Pallavolo','Pallavolo',4,0);
 
-INSERT INTO EsitoSquadre VALUES(16695,'Izalith Deamons','Pallavolo','Virtus Piscatella','Pallavolo',3,1);
+INSERT INTO EsitoSquadre VALUES(16695,'Izalith Deamons','Virtus Piscatella','Pallavolo','Pallavolo',3,1);
 
 INSERT INTO EventoInTorneo VALUES(00002,16689);
 INSERT INTO EventoInTorneo VALUES(00002,16690);
@@ -562,4 +562,3 @@ INSERT INTO Squadra VALUES('Tardis', 'Quiddich', 'IlDottore', 12,8,'blu', 'Mai u
 INSERT INTO Squadra VALUES('Gli ultimi ad essere scelti', 'Quiddich', 'CavaliereCipolla', 12,8,'bianco', 'Quelli che non erano bravi a ginnastica');
 */
 
-INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','BlueMeth22','Ordine della Fenice','Quiddich');
