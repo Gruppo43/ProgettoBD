@@ -80,8 +80,10 @@ durata numeric(3) not null,
 impianto varchar(25) not null,
 categoria varchar(20) not null,
 tipo varchar(10) not null,
+creatore varchar(25) not null,
 foreign key(impianto) references Impianto(nome) on delete  no action on update cascade,
 foreign key(categoria) references Categoria(nome) on delete  no action on update cascade,
+foreign key(creatore) references Utente(username) on delete  no action on update cascade,
 check(durata > 0),
 check(stato = 'aperto' or stato = 'chiuso'),
 check(tipo = 'singolo' or tipo = 'a squadre')
@@ -95,30 +97,22 @@ idEv numeric(8) references Evento (id) on delete  no action on update cascade,
 primary key(idT, idEv)
 );
 
-CREATE TABLE SquadraPartecipaEv(
-nomeSquadra varchar(30),
-nomeC varchar(30),
+CREATE TABLE EsitoSquadre(
 idEv numeric(8) references Evento (id) on delete  no action on update cascade,
-punti numeric(5) not null,
-foreign key(nomeSquadra,nomeC) references Squadra(nome,categoria),
-primary key(nomeSquadra, nomeC, idEv),
-check(punti >= 0)
+nomeSquadra1 varchar(30) not null,
+nomeSquadra2 varchar(30) not null,
+categoriasq1 varchar(30) not null,
+categoriasq2 varchar(30) not null,
+puntisq1 numeric(2) not null,
+puntisq2 numeric(2) not null,
+foreign key(nomeSquadra1,categoriasq1) references Squadra(nome) on delete  no action on update cascade,
+foreign key(nomeSquadra2,categoriasq2) references Squadra(nome) on delete  no action on update cascade,
+primary key(idEv),
+check(categoriasq1 = categoriasq2),
+check(puntisq1 >= 0),
+check(puntisq2 >= 0)
 );
 
-CREATE TABLE UtenteSingoloGioca(
-username varchar(25) references Utente (username) on delete  no action on update cascade,
-idEv numeric(8) references Evento (id) on delete  no action on update cascade,
-setvinti numeric(3) not null,
-primary key(username, idEv),
-check(setvinti >= 0)
-);
-
-CREATE TABLE MatchDisputati(
-username varchar(25) references Utente (username)on delete  no action on update cascade,
-nomeC varchar(30) references Categoria (nome) on delete  no action on update cascade,
-gareDisputate numeric(5),
-primary key(username, nomeC)
-);
 
 CREATE TABLE ValutazioneUtenti(
 usernameValutatore varchar(30) references Utente (username) on delete  no action on update cascade,
