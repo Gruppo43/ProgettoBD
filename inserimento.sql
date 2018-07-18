@@ -457,22 +457,15 @@ INSERT INTO Evento VALUES(16694,'17/06/2018','chiuso',60,'Terminus','Pallavolo',
 --finale
 INSERT INTO Evento VALUES(16695,'24/06/2018','chiuso',60,'Castel Granito','Pallavolo','a squadre','IlDottore');
 
-INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Pallavolo',16689,3); -- si intende 3 set a 1
-INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Pallavolo',16689,1);
-INSERT INTO SquadraPartecipaEv VALUES('Team Alexandria','Pallavolo',16690,3);
-INSERT INTO SquadraPartecipaEv VALUES('Space Jam','Pallavolo',16690,2);
-INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Pallavolo',16691,4);
-INSERT INTO SquadraPartecipaEv VALUES('Compagnia dell''anello','Pallavolo',16691,0);
-INSERT INTO SquadraPartecipaEv VALUES('Guardians of the Galaxy','Pallavolo',16692,3);
-INSERT INTO SquadraPartecipaEv VALUES('Ordine della Fenice','Pallavolo',16692,1);
+INSERT INTO EsitoSquadre VALUES(16689,'Virtus Piscatella','The North Remembers','Pallavolo','Pallavolo',3,1); -- si intende 3 set a 1
+INSERT INTO EsitoSquadre VALUES(16690,'Team Alexandria','Pallavolo','Space Jam','Pallavolo',3,2);
+INSERT INTO EsitoSquadre VALUES(16691,'Izalith Deamons','Pallavolo','Compagnia dell''anello','Pallavolo',4,0);
+INSERT INTO EsitoSquadre VALUES(16692,'Guardians of the Galaxy','Pallavolo','Ordine della Fenice','Pallavolo',3,1);
 
-INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Pallavolo',16693,3);
-INSERT INTO SquadraPartecipaEv VALUES('Team Alexandria','Pallavolo',16693,1);
-INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Pallavolo',16694,4);
-INSERT INTO SquadraPartecipaEv VALUES('Guardians of the Galaxy','Pallavolo',16694,0);
+INSERT INTO EsitoSquadre VALUES(16693,'Virtus Piscatella','Pallavolo','Team Alexandria','Pallavolo',3,1);
+INSERT INTO EsitoSquadre VALUES(16694,'Izalith Deamons','Pallavolo','Guardians of the Galaxy','Pallavolo',4,0);
 
-INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Pallavolo',16695,3);
-INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Pallavolo',16695,1);
+INSERT INTO EsitoSquadre VALUES(16695,'Izalith Deamons','Pallavolo','Virtus Piscatella','Pallavolo',3,1);
 
 INSERT INTO EventoInTorneo VALUES(00002,16689);
 INSERT INTO EventoInTorneo VALUES(00002,16690);
@@ -525,23 +518,16 @@ INSERT INTO Evento VALUES(17694,'25/03/2018','chiuso',15,'Terminus','Scacchi','s
 --finale
 INSERT INTO Evento VALUES(17695,'29/03/2018','chiuso',15,'Castel Granito','Scacchi','singolo','PraiseTheSun');
 
-INSERT INTO UtenteSingoloGioca VALUES ('IoSonoReek',17689,2);
-INSERT INTO UtenteSingoloGioca VALUES ('OhSieteNeiGuaiStaVolta',17689,0);
-INSERT INTO UtenteSingoloGioca VALUES ('IAmGroot',17690,2);
-INSERT INTO UtenteSingoloGioca VALUES ('Pennsatucky',17690,1);
-INSERT INTO UtenteSingoloGioca VALUES ('NonHoPiùFantasia',17691,2);
-INSERT INTO UtenteSingoloGioca VALUES ('YouShallNotPass',17691,0);
-INSERT INTO UtenteSingoloGioca VALUES ('BlueMeth22',17692,0);
-INSERT INTO UtenteSingoloGioca VALUES ('MercyPrevailsWrath',17692,2);
+INSERT INTO EsitoSingolo VALUES (17689,'IoSonoReek',2,'OhSieteNeiGuaiStaVolta',0);
+INSERT INTO EsitoSingolo VALUES (17690,'IAmGroot',2,'Pennsatucky',1);
+INSERT INTO EsitoSingolo VALUES (17691,'NonHoPiùFantasia',2,'YouShallNotPass',0);
+INSERT INTO EsitoSingolo VALUES (17692,'BlueMeth22',0,'MercyPrevailsWrath',2);
 
-INSERT INTO UtenteSingoloGioca VALUES ('IoSonoReek',17693,1);
-INSERT INTO UtenteSingoloGioca VALUES ('IAmGroot',17693,2);
-INSERT INTO UtenteSingoloGioca VALUES ('NonHoPiùFantasia',17694,0);
-INSERT INTO UtenteSingoloGioca VALUES ('MercyPrevailsWrath',17694,2);
+INSERT INTO EsitoSingolo VALUES (17693,'IoSonoReek',1,'IAmGroot',2);
+INSERT INTO EsitoSingolo VALUES (17694,'NonHoPiùFantasia',0,'MercyPrevailsWrath',2);
 
 
-INSERT INTO UtenteSingoloGioca VALUES ('IAmGroot',17695,2);
-INSERT INTO UtenteSingoloGioca VALUES ('MercyPrevailsWrath',17695,1);
+INSERT INTO EsitoSingolo VALUES (17695,'IAmGroot',2,'MercyPrevailsWrath',1);
 
 
 INSERT INTO EventoInTorneo VALUES(00003,17689);
