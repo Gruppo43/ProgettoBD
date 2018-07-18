@@ -91,40 +91,73 @@ LANGUAGE plpgsql;
 
 
 
--- una squadra non può giocare due eventi contemporaneamente --
+-- una squadra non può giocare due eventi contemporaneamente per prima squadra --
+CREATE OR REPLACE FUNCTION check_team1_for_matches() RETURNS trigger AS
+$check_team1_for_matches$
+BEGIN 
+	IF NEW.nomeSquadra1 NOT IN (SELECT nomeSquadra1 FROM EsitoSquadre WHERE nomeSquadra1 = NEW.nomeSquadra1 AND
+		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
+	   AND NEW.nomeSquadra1 NOT IN (SELECT nomeSquadra2 FROM EsitoSquadre WHERE nomeSquadra2 = NEW.nomeSquadra1 AND
+		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
+   THEN RETURN NEW;
+   ELSE  RAISE EXCEPTION 'La squadra % in data % partecipa già ad un altro evento!',NEW.nomeSquadra1,(SELECT data FROM Evento 
+   																								WHERE id = NEW.idEv);
+   END IF;
+END;																						  
+$check_team1_for_matches$
+LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION check_team_for_matches() RETURNS trigger AS
-$check_team_for_matches$
-BEGIN
-	IF NEW.nomeSquadra NOT IN (SELECT nomeSquadra   FROM SquadraPartecipaEv  
-							   WHERE nomeSquadra = NEW.nomeSquadra AND idEv <> NEW.idEv AND idEv 
-							   IN(SELECT id FROM Evento  WHERE data = 
-								  (SELECT data from Evento WHERE id = NEW.idEv )))
-		THEN RETURN NEW;
-	ELSE  RAISE EXCEPTION 'La squadra % in data % partecipa già ad un altro evento!',NEW.nomeSquadra,(SELECT data FROM Evento 
-																							   WHERE id = NEW.idEv);
-	END IF;
-END;
-$check_team_for_matches$
+-- una squadra non può giocare due eventi contemporaneamente per seconda squadra --
+CREATE OR REPLACE FUNCTION check_team2_for_matches() RETURNS trigger AS
+$check_team2_for_matches$
+BEGIN 
+	IF NEW.nomeSquadra2 NOT IN (SELECT nomeSquadra1 FROM EsitoSquadre WHERE nomeSquadra1 = NEW.nomeSquadra2 AND
+		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
+	   AND NEW.nomeSquadra2 NOT IN (SELECT nomeSquadra2 FROM EsitoSquadre WHERE nomeSquadra2 = NEW.nomeSquadra2 AND
+		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
+   THEN RETURN NEW;
+   ELSE  RAISE EXCEPTION 'La squadra % in data % partecipa già ad un altro evento!',NEW.nomeSquadra2,(SELECT data FROM Evento 
+   																								WHERE id = NEW.idEv); 
+   END IF;
+END;																						   
+$check_team2_for_matches$
+LANGUAGE plpgsql;							  
+
+										  
+ -- una giocatore non può giocare due eventi contemporaneamente per primo giocatore --			 
+CREATE OR REPLACE FUNCTION check_player1_for_matches() RETURNS trigger AS
+$check_player1_for_matches$
+BEGIN 
+	IF NEW.giocatore1 NOT IN (SELECT giocatore1 FROM EsitoSingolo WHERE giocatore1 = NEW.giocatore1 AND
+		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
+	   AND NEW.giocatore1 NOT IN (SELECT giocatore2 FROM EsitoSingolo WHERE giocatore2 = NEW.giocatore1 AND
+		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
+   THEN RETURN NEW;
+   ELSE  RAISE EXCEPTION 'il giocatore % in data % partecipa già ad un altro evento!',NEW.giocatore1,(SELECT data FROM Evento 
+   																								WHERE id = NEW.idEv);
+   END IF;
+END;																						  
+$check_player1_for_matches$
 LANGUAGE plpgsql;
 
 
--- una giocatore non può giocare due eventi contemporaneamente --
-
-CREATE OR REPLACE FUNCTION check_player_for_matches() RETURNS trigger AS
-$check_player_for_matches$
-BEGIN
-	IF NEW.username NOT IN (SELECT username   FROM UtenteSingoloGioca  
-							   WHERE username = NEW.username AND idEv <> NEW.idEv AND idEv 
-							   IN(SELECT id FROM Evento  WHERE data = 
-								  (SELECT data from Evento WHERE id = NEW.idEv )))
-		THEN RETURN NEW;
-	ELSE  RAISE EXCEPTION 'Il giocatore % in data % partecipa già ad un altro evento!',NEW.username,(SELECT data FROM Evento 
-																							   WHERE id = NEW.idEv);
-	END IF;
-END;
-$check_player_for_matches$
+ -- una giocatore non può giocare due eventi contemporaneamente per secondo giocatore --			 
+CREATE OR REPLACE FUNCTION check_player2_for_matches() RETURNS trigger AS
+$check_player2_for_matches$
+BEGIN 
+	IF NEW.giocatore2 NOT IN (SELECT giocatore1 FROM EsitoSingolo WHERE giocatore1 = NEW.giocatore2 AND
+		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
+	   AND NEW.giocatore2 NOT IN (SELECT giocatore2 FROM EsitoSingolo WHERE giocatore2 = NEW.giocatore2 AND
+		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
+   THEN RETURN NEW;
+   ELSE  RAISE EXCEPTION 'il giocatore % in data % partecipa già ad un altro evento!',NEW.giocatore2,(SELECT data FROM Evento 
+   																								WHERE id = NEW.idEv); 
+   END IF;
+END;																						   
+$check_player2_for_matches$
 LANGUAGE plpgsql;
+
+
 
 
 -- ad un evento singolo possono giocare solo due giocatori --
@@ -329,11 +362,29 @@ BEFORE INSERT OR UPDATE ON Evento
 FOR EACH ROW
 EXECUTE PROCEDURE check_stadium_for_evento();
 
--- una squadra non può giocare due eventi contemporaneamente --
-CREATE TRIGGER check_team_for_matches
-BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
+-- una squadra non può giocare due eventi contemporaneamente per prima squadra --
+CREATE TRIGGER check_team2_for_matches
+BEFORE INSERT OR UPDATE ON EsitoSquadre
 FOR EACH ROW
-EXECUTE PROCEDURE check_team_for_matches();
+EXECUTE PROCEDURE check_team2_for_matches();
+				 
+ -- una squadra non può giocare due eventi contemporaneamente per seconda squadra --
+CREATE TRIGGER check_team1_for_matches
+BEFORE INSERT OR UPDATE ON EsitoSquadre
+FOR EACH ROW
+EXECUTE PROCEDURE check_team1_for_matches();
+				 
+ -- una giocatore non può giocare due eventi contemporaneamente per primo giocatore --			 
+CREATE TRIGGER check_player2_for_matches
+BEFORE INSERT OR UPDATE ON EsitoSingolo
+FOR EACH ROW
+EXECUTE PROCEDURE check_player2_for_matches();
+				 
+ -- una giocatore non può giocare due eventi contemporaneamente per secondo giocatore --			 
+CREATE TRIGGER check_player1_for_matches
+BEFORE INSERT OR UPDATE ON EsitoSingolo
+FOR EACH ROW
+EXECUTE PROCEDURE check_player1_for_matches();				 
 
 -- una giocatore non può giocare due eventi contemporaneamente --
 CREATE TRIGGER check_player_for_matches
