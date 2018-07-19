@@ -1,3 +1,4 @@
+
 /* USER INSERTIONS */
 
 
@@ -448,7 +449,7 @@ Partite :
 	Virtus vs Alex 60 - 57
 	Izalith vs Guardiani 67 - 53
 	finale:
-	Izalith vs Piscatella 114 - 102 
+	Izalith vs Piscatella 99 - 98
 	______________________________________________________
 	QUESTI DATI SONO UTILI PER IL TESTING POST PRODUZIONE
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -475,7 +476,7 @@ INSERT INTO EsitoSquadre VALUES(16692,'Guardians of the Galaxy','Ordine della Fe
 INSERT INTO EsitoSquadre VALUES(16693,'Virtus Piscatella','Team Alexandria','Pallavolo','Pallavolo',60,57);
 INSERT INTO EsitoSquadre VALUES(16694,'Izalith Deamons','Guardians of the Galaxy','Pallavolo','Pallavolo',67,53);
 
-INSERT INTO EsitoSquadre VALUES(16695,'Izalith Deamons','Virtus Piscatella','Pallavolo','Pallavolo',114,102);
+INSERT INTO EsitoSquadre VALUES(16695,'Izalith Deamons','Virtus Piscatella','Pallavolo','Pallavolo',99,98);
 
 INSERT INTO EventoInTorneo VALUES(00002,16689);
 INSERT INTO EventoInTorneo VALUES(00002,16690);
@@ -496,7 +497,7 @@ INSERT INTO UtenteFaPunti VALUES('Morello',16689, 40);
 
 INSERT INTO UtenteFaPunti VALUES('LaMiaLucille',16690, 45);
 INSERT INTO UtenteFaPunti VALUES('MercyPrevailsWrath',16690, 25);
-INSERT INTO UtenteFaPunti VALUES('EhmCheSuccedeAmico',16690, 30);
+INSERT INTO UtenteFaPunti VALUES('EhmCheSuccedeAmico?',16690, 30);
 INSERT INTO UtenteFaPunti VALUES('SuperDaffy',16690, 38);
 
 INSERT INTO UtenteFaPunti VALUES('TheChosenUndead',16691, 48);
@@ -505,7 +506,7 @@ INSERT INTO UtenteFaPunti VALUES('HobbitCoraggioso',16691, 5);
 INSERT INTO UtenteFaPunti VALUES('YouShallNotPass',16691, 15);
 
 INSERT INTO UtenteFaPunti VALUES('StarLord',16692, 15);
-INSERT INTO UtenteFaPunti VALUES('IAmGroot',16692, 30); 45 30
+INSERT INTO UtenteFaPunti VALUES('IAmGroot',16692, 30);
 INSERT INTO UtenteFaPunti VALUES('OhSieteNeiGuaiStaVolta',16692, 15);
 INSERT INTO UtenteFaPunti VALUES('Polisucco61',16692, 15);
 
@@ -520,12 +521,11 @@ INSERT INTO UtenteFaPunti VALUES('IAmGroot',16694, 40);
 INSERT INTO UtenteFaPunti VALUES('Boomer',16694, 13);
 
 
-INSERT INTO UtenteFaPunti VALUES('SoEaslyForgotten',16695, 50);
-INSERT INTO UtenteFaPunti VALUES('TheChosenUndead',16695, 55); 
-INSERT INTO UtenteFaPunti VALUES('TheDragonDuke',16695, 9);
+INSERT INTO UtenteFaPunti VALUES('SoEaslyForgotten',16695, 49);
+INSERT INTO UtenteFaPunti VALUES('TheChosenUndead',16695, 50); 
 INSERT INTO UtenteFaPunti VALUES('Red',16695, 25);
 INSERT INTO UtenteFaPunti VALUES('Morello',16695, 25);
-INSERT INTO UtenteFaPunti VALUES('Taystee',16695, 52);
+INSERT INTO UtenteFaPunti VALUES('Taystee',16695, 48);
 
 
 
