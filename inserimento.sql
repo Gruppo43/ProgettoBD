@@ -1,6 +1,3 @@
-
-
-
 /* USER INSERTIONS */
 
 
@@ -351,34 +348,25 @@ INSERT INTO Candidatura VALUES('accettata','NamelessKing','SoEaslyForgotten','Iz
 INSERT INTO Candidatura VALUES('accettata','NamelessKing','BraveWarrior','Izalith Deamons','Quiddich');
 INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheDragonDuke','Izalith Deamons','Quiddich');
 INSERT INTO Candidatura VALUES('accettata','NamelessKing','TheChosenUndead','Izalith Deamons','Quiddich');
-
-
 INSERT INTO Candidatura VALUES('accettata','YouKnowNothing','BlueMeth22','Ordine della Fenice','Quiddich');
 
 
+
+
 /*///////////////////////////////TORNEO DI CALCIO /////////////////////////////////////////////////////////////////////
-
 Partite :
-
 	quarti finale :
-
-	Guardiani vs North  4 - 1
+	Guardiani vs North  1- 4
 	Ordine vs Compagnia  2 - 3
 	Team Alexandria vs Virtus Piscatella 1 - 2
 	Space Jam vs Izalith 2 - 5
-
 	semifinali:
-
 	North vs Compagnia 2 - 0
 	Izalith vs Piscatella 3 - 4
-
 	finale:
-
 	North vs Piscatella 1 - 2
 	______________________________________________________
 	QUESTI DATI SONO UTILI PER IL TESTING POST PRODUZIONE
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 INSERT INTO Torneo VALUES (00001,'È vietato uccidere','un torneo divertente!','eliminazione diretta','Calcio','Olivander wand',
@@ -415,32 +403,54 @@ INSERT INTO EventoInTorneo VALUES(00001,15693);
 INSERT INTO EventoInTorneo VALUES(00001,15694);
 INSERT INTO EventoInTorneo VALUES(00001,15695);
 
+
+INSERT INTO UtenteFaPunti VALUES('IAmGroot',15689, 1);
+INSERT INTO UtenteFaPunti VALUES('PortamiDelVino',15689, 2);
+INSERT INTO UtenteFaPunti VALUES('Inginocchiati',15689, 2);
+
+INSERT INTO UtenteFaPunti VALUES('MyTReasure',15690, 3);
+INSERT INTO UtenteFaPunti VALUES('OhSieteNeiGuaiStaVolta',15690, 1);
+INSERT INTO UtenteFaPunti VALUES('ElfoLibero',15690, 1);
+
+INSERT INTO UtenteFaPunti VALUES('MercyPrevailsWrath',15691, 1);
+INSERT INTO UtenteFaPunti VALUES('Pennsatucky',15691, 2);
+
+INSERT INTO UtenteFaPunti VALUES('SoEaslyForgotten',15692, 3);
+INSERT INTO UtenteFaPunti VALUES('BraveWarrior',15692, 2);
+INSERT INTO UtenteFaPunti VALUES('SuperDaffy',15692, 2);
+
+INSERT INTO UtenteFaPunti VALUES('PortamiDelVino',15693, 1);
+INSERT INTO UtenteFaPunti VALUES('YouKnowNothing',15693, 1);
+
+INSERT INTO UtenteFaPunti VALUES('SoEaslyForgotten',15694, 2);
+INSERT INTO UtenteFaPunti VALUES('TheChosenUndead',15694, 1);
+INSERT INTO UtenteFaPunti VALUES('CantaStorie',15694, 2);
+INSERT INTO UtenteFaPunti VALUES('Morello',15694, 2);
+
+INSERT INTO UtenteFaPunti VALUES('LupoSolitario',15695, 1);
+INSERT INTO UtenteFaPunti VALUES('Taystee',15695, 2);
+
+
+
+
+
 /*////////////////////////////////////////// FINE TORNEO /////////////////////////////////////////////////////// */
 
 
 /* ///////////////////////////////TORNEO DI PALLAVOLO ///////////////////////////////////////////////////////////////////// 
-
 Partite :
-
 	quarti finale :
-
-	Virtus vs North  3 - 1 (set)
-	Alex vs Space  3 - 2 (2-2 set di spareggio)
-	Izalith vs Compagnia 4 - 0
-	Guardiani vs Ordine 3 - 1
-
+	Virtus vs North  80 - 55 
+	Alex vs Space  70 - 68
+	Izalith vs Compagnia 88- 20
+	Guardiani vs Ordine 45 - 30
 	semifinali:
-
-	Virtus vs Alex 3 - 1
-	Izalith vs Guardiani 4 - 0
-
+	Virtus vs Alex 60 - 57
+	Izalith vs Guardiani 67 - 53
 	finale:
-
-	Izalith vs Piscatella 3 - 1
+	Izalith vs Piscatella 114 - 102 
 	______________________________________________________
 	QUESTI DATI SONO UTILI PER IL TESTING POST PRODUZIONE
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 INSERT INTO Torneo VALUES (00002,'non ci sono regole','Dinckleberg!','eliminazione diretta','Pallavolo','Gotta catch''em all',
@@ -457,15 +467,15 @@ INSERT INTO Evento VALUES(16694,'17/06/2018','chiuso',60,'Terminus','Pallavolo',
 --finale
 INSERT INTO Evento VALUES(16695,'24/06/2018','chiuso',60,'Castel Granito','Pallavolo','a squadre','IlDottore');
 
-INSERT INTO EsitoSquadre VALUES(16689,'Virtus Piscatella','The North Remembers','Pallavolo','Pallavolo',3,1); -- si intende 3 set a 1
-INSERT INTO EsitoSquadre VALUES(16690,'Team Alexandria','Space Jam','Pallavolo','Pallavolo',3,2);
-INSERT INTO EsitoSquadre VALUES(16691,'Izalith Deamons','Compagnia dell''anello','Pallavolo','Pallavolo',4,0);
-INSERT INTO EsitoSquadre VALUES(16692,'Guardians of the Galaxy','Ordine della Fenice','Pallavolo','Pallavolo',3,1);
+INSERT INTO EsitoSquadre VALUES(16689,'Virtus Piscatella','The North Remembers','Pallavolo','Pallavolo',80,55); -- si intende 3 set a 1
+INSERT INTO EsitoSquadre VALUES(16690,'Team Alexandria','Space Jam','Pallavolo','Pallavolo',70,68);
+INSERT INTO EsitoSquadre VALUES(16691,'Izalith Deamons','Compagnia dell''anello','Pallavolo','Pallavolo',88,20);
+INSERT INTO EsitoSquadre VALUES(16692,'Guardians of the Galaxy','Ordine della Fenice','Pallavolo','Pallavolo',45,30);
 
-INSERT INTO EsitoSquadre VALUES(16693,'Virtus Piscatella','Team Alexandria','Pallavolo','Pallavolo',3,1);
-INSERT INTO EsitoSquadre VALUES(16694,'Izalith Deamons','Guardians of the Galaxy','Pallavolo','Pallavolo',4,0);
+INSERT INTO EsitoSquadre VALUES(16693,'Virtus Piscatella','Team Alexandria','Pallavolo','Pallavolo',60,57);
+INSERT INTO EsitoSquadre VALUES(16694,'Izalith Deamons','Guardians of the Galaxy','Pallavolo','Pallavolo',67,53);
 
-INSERT INTO EsitoSquadre VALUES(16695,'Izalith Deamons','Virtus Piscatella','Pallavolo','Pallavolo',3,1);
+INSERT INTO EsitoSquadre VALUES(16695,'Izalith Deamons','Virtus Piscatella','Pallavolo','Pallavolo',114,102);
 
 INSERT INTO EventoInTorneo VALUES(00002,16689);
 INSERT INTO EventoInTorneo VALUES(00002,16690);
@@ -475,33 +485,73 @@ INSERT INTO EventoInTorneo VALUES(00002,16693);
 INSERT INTO EventoInTorneo VALUES(00002,16694);
 INSERT INTO EventoInTorneo VALUES(00002,16695);
 
+
+
+INSERT INTO UtenteFaPunti VALUES('LupoSolitario',16689, 40);
+INSERT INTO UtenteFaPunti VALUES('IoSonoReek',16689, 10);
+INSERT INTO UtenteFaPunti VALUES('YouKnowNothing',16689, 5);
+INSERT INTO UtenteFaPunti VALUES('Red',16689, 22);
+INSERT INTO UtenteFaPunti VALUES('CantaStorie',16689, 18);
+INSERT INTO UtenteFaPunti VALUES('Morello',16689, 40);
+
+INSERT INTO UtenteFaPunti VALUES('LaMiaLucille',16690, 45);
+INSERT INTO UtenteFaPunti VALUES('MercyPrevailsWrath',16690, 25);
+INSERT INTO UtenteFaPunti VALUES('EhmCheSuccedeAmico',16690, 30);
+INSERT INTO UtenteFaPunti VALUES('SuperDaffy',16690, 38);
+
+INSERT INTO UtenteFaPunti VALUES('TheChosenUndead',16691, 48);
+INSERT INTO UtenteFaPunti VALUES('SoEaslyForgotten',16691, 40);
+INSERT INTO UtenteFaPunti VALUES('HobbitCoraggioso',16691, 5);
+INSERT INTO UtenteFaPunti VALUES('YouShallNotPass',16691, 15);
+
+INSERT INTO UtenteFaPunti VALUES('StarLord',16692, 15);
+INSERT INTO UtenteFaPunti VALUES('IAmGroot',16692, 30); 45 30
+INSERT INTO UtenteFaPunti VALUES('OhSieteNeiGuaiStaVolta',16692, 15);
+INSERT INTO UtenteFaPunti VALUES('Polisucco61',16692, 15);
+
+INSERT INTO UtenteFaPunti VALUES('MercyPrevailsWrath',16693, 40);
+INSERT INTO UtenteFaPunti VALUES('BulletMaker',16693, 17); 
+INSERT INTO UtenteFaPunti VALUES('Morello',16693, 30);
+INSERT INTO UtenteFaPunti VALUES('Pennsatucky',16693, 30);
+
+INSERT INTO UtenteFaPunti VALUES('SoEaslyForgotten',16694, 29);
+INSERT INTO UtenteFaPunti VALUES('TheDragonDuke',16694, 38);
+INSERT INTO UtenteFaPunti VALUES('IAmGroot',16694, 40); 
+INSERT INTO UtenteFaPunti VALUES('Boomer',16694, 13);
+
+
+INSERT INTO UtenteFaPunti VALUES('SoEaslyForgotten',16695, 50);
+INSERT INTO UtenteFaPunti VALUES('TheChosenUndead',16695, 55); 
+INSERT INTO UtenteFaPunti VALUES('TheDragonDuke',16695, 9);
+INSERT INTO UtenteFaPunti VALUES('Red',16695, 25);
+INSERT INTO UtenteFaPunti VALUES('Morello',16695, 25);
+INSERT INTO UtenteFaPunti VALUES('Taystee',16695, 52);
+
+
+
+
+
+
+
+
 /* ////////////////////////////////////////// FINE TORNEO /////////////////////////////////////////////////////// */
 
 
 
 /* /////////////////////////////// TORNEO DI SCACCHI ///////////////////////////////////////////////////////////////////// 
-
 Partite :
-
 	quarti finale :
-
 	Reek vs Ohsieteneiguai  2 - 0 (ASSUMO CHE SIA UN TORNEO BEST OF 3 DI SCACCHI)
 	groot vs pennatucky 2 - 1
 	nonhopiufantasia vs youshallnotpass 2 - 0
 	MercyPrevailsWrath vs bluemeth 2 - 0
-
 	semifinali:
-
 	Reek vs groot 1 - 2
 	nonhopiufantasia vs MercyPrevailsWrath 0 - 2
-
 	finale:
-
 	MercyPrevailsWrath vs Groot 1- 2
 	______________________________________________________
 	QUESTI DATI SONO UTILI PER IL TESTING POST PRODUZIONE
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 INSERT INTO Torneo VALUES (00003,'Wizard''s chess,best of 3','Cavallo in E5','eliminazione diretta','Scacchi','Alchimisti di Stato',
@@ -539,10 +589,6 @@ INSERT INTO EventoInTorneo VALUES(00003,17694);
 INSERT INTO EventoInTorneo VALUES(00003,17695);
 
 /* ////////////////////////////////////////// FINE TORNEO /////////////////////////////////////////////////////// */
-
-
-
-
 
 /*  
                         error --> Premium Creator, correct it (test it before uploading)
