@@ -1,6 +1,3 @@
-
-
-
 --solo un utente premium può creare una squadra
 CREATE OR REPLACE FUNCTION check_premium_for_teams() RETURNS trigger AS
 $check_premium_for_teams$
@@ -145,7 +142,7 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION sign_up_for_open_events_only() RETURNS trigger AS
 $sign_up_for_open_events_only$
 BEGIN
-	IF NEW.Evento NOT IN (SELECT Id  FROM Evento WHERE Stato = 'chiuso')
+	IF NEW.data  <=   (SELECT data FROM Evento WHERE id = NEW.IdEv)
 	THEN RETURN NEW;
 	ELSE RAISE EXCEPTION 'Un utente può iscriversi solo ad un evento aperto!';
 	END IF;
@@ -236,7 +233,6 @@ END;
 $check_player2_for_matches$
 LANGUAGE plpgsql;
 
-
 --la somma dei punti dei giocatori di una squadra non deve superare i punti fatti dalla stessa								  
 CREATE OR REPLACE FUNCTION check_sum_of_points() RETURNS trigger AS
 $check_sum_of_points$
@@ -264,15 +260,14 @@ BEGIN
 		stato = 'accettata' AND categoria IN(SELECT categoriasq1 FROM EsitoSquadre WHERE idEv = NEW.idEvento) AND 
 													squadra = Team))+ NEW.punti > TeamPoints
 													
-	THEN RAISE EXCEPTION 'La somma dei punti dei giocatori supera i punti fatti dalla squadra % all''evento % somma = %  puntisquadra = % ',New.idEvento,Team;
+	THEN RAISE EXCEPTION 'La somma dei punti dei giocatori supera i punti fatti dalla squadra % all''evento %',New.idEvento,Team;
 	ELSE RETURN NEW;
 	
 	END IF;
 END 
 $check_sum_of_points$
-LANGUAGE plpgsql;										  
-										  
-										  
+LANGUAGE plpgsql;											  
+
 --non si possono iscrivere più giocatori all'evento se il numero max di gioc per quell'evento è stato raggiunto
 CREATE OR REPLACE FUNCTION check_subscription_max_players() RETURNS trigger AS
 $check_subscription_max_players$
@@ -285,8 +280,29 @@ BEGIN
 END;
 $check_subscription_max_players$
 LANGUAGE plpgsql;							    
+								    
+										  
+--trigger che riempe in automatico le iscrizioni ad un evento con i membri di una squadra che partecipa!
+CREATE OR REPLACE FUNCTION player_subscription_autofiller() RETURNS trigger AS
+$player_subscription_autofiller$
+DECLARE 
+ dataIscrizione date;
+ temp varchar(25);
+BEGIN
+	dataIscrizione = (SELECT data from  Evento WHERE id = NEW.idEv);
 	
-		 
+	for temp in SELECT candidato FROM Candidatura WHERE Squadra = NEW.nomeSquadra AND categoria = NEW.nomeC AND stato = 'accettata'
+	loop
+		INSERT INTO Iscrizione VALUES (dataIscrizione,'confermato',temp ,NEW.idEv);
+	END LOOP;
+
+  RETURN NEW;
+END;
+$player_subscription_autofiller$
+LANGUAGE plpgsql;
+
+
+
 --non si può inserire l'esito di un evento a cui i giocatori non sono iscritti
 CREATE OR REPLACE FUNCTION check_subscription_for_match_result() RETURNS trigger AS
 $check_subscription_for_match_result$
@@ -302,6 +318,7 @@ END;
 $check_subscription_for_match_result$
 LANGUAGE plpgsql;
 
+
 --non ci si può iscrivere a un evento che fa parte di un torneo se non si è iscritti al torneo in cui è disputato l'evento
 CREATE OR REPLACE FUNCTION check_subscription_for_match_in_tournament() RETURNS trigger AS
 $check_subscription_for_match_in_tournament$
@@ -315,9 +332,8 @@ BEGIN
 	END IF;
 END;
 $check_subscription_for_match_in_tournament$
-LANGUAGE plpgsql;									  
-	
-	----------------------------TRIGGER---------------------------------
+LANGUAGE plpgsql; 
+
 
 --solo un utente premium può creare una squadra
 CREATE TRIGGER check_premium_for_teams
@@ -432,15 +448,26 @@ CREATE TRIGGER check_subscription_max_players
 BEFORE INSERT OR UPDATE ON Iscrizione
 FOR EACH ROW
 EXECUTE PROCEDURE check_subscription_max_players();
-				       
+
+
+-- non si possono isrivere più giocatori a un evento dei giocatori possibili per quell'evento --			 
+CREATE TRIGGER  player_subscription_autofiller
+BEFORE INSERT ON SquadraPartecipaEv
+FOR EACH ROW
+EXECUTE PROCEDURE  player_subscription_autofiller();
+
 --non si può inserire l'esito di un evento a cui i giocatori non sono iscritti
 CREATE TRIGGER check_subscription_for_match_result
 BEFORE INSERT OR UPDATE ON EsitoSingolo
 FOR EACH ROW
 EXECUTE PROCEDURE check_subscription_for_match_result();
 
+
 --non ci si può iscrivere a un evento che fa parte di un torneo se non si è iscritti al torneo in cui è disputato l'evento
 CREATE TRIGGER check_subscription_for_match_in_tournament
 BEFORE INSERT OR UPDATE ON Iscrizione
 FOR EACH ROW
 EXECUTE PROCEDURE check_subscription_for_match_in_tournament();
+
+
+
