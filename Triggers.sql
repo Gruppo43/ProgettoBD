@@ -142,7 +142,7 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION sign_up_for_open_events_only() RETURNS trigger AS
 $sign_up_for_open_events_only$
 BEGIN
-	IF NEW.data  <=   (SELECT data FROM Evento WHERE id = NEW.IdEv)
+	IF NEW.data  <=   (SELECT data FROM Evento WHERE id = NEW.evento)
 	THEN RETURN NEW;
 	ELSE RAISE EXCEPTION 'Un utente può iscriversi solo ad un evento aperto!';
 	END IF;
@@ -167,7 +167,7 @@ $check_if_accessible_event$
 LANGUAGE plpgsql;
 
 
--- una squadra non può giocare due eventi contemporaneamente per prima squadra --
+ -- non si puo mettere l'esito di un evento se esiste già un esito di qual giocatore per la stessa data			 
 CREATE OR REPLACE FUNCTION check_team1_for_matches() RETURNS trigger AS
 $check_team1_for_matches$
 BEGIN 
@@ -176,14 +176,15 @@ BEGIN
 	   AND NEW.nomeSquadra1 NOT IN (SELECT nomeSquadra2 FROM EsitoSquadre WHERE nomeSquadra2 = NEW.nomeSquadra1 AND
 		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
    THEN RETURN NEW;
-   ELSE  RAISE EXCEPTION 'La squadra % in data % partecipa già ad un altro evento!',NEW.nomeSquadra1,(SELECT data FROM Evento 
+   ELSE  RAISE EXCEPTION 'La squadra % in data % ha partecipato ad un altro evento!',NEW.nomeSquadra1,(SELECT data FROM Evento 
    																								WHERE id = NEW.idEv);
    END IF;
 END;																						  
 $check_team1_for_matches$
 LANGUAGE plpgsql;
 
--- una squadra non può giocare due eventi contemporaneamente per seconda squadra --
+
+ -- non si puo mettere l'esito di un evento se esiste già un esito di qual giocatore per la stessa data			 
 CREATE OR REPLACE FUNCTION check_team2_for_matches() RETURNS trigger AS
 $check_team2_for_matches$
 BEGIN 
@@ -192,15 +193,15 @@ BEGIN
 	   AND NEW.nomeSquadra2 NOT IN (SELECT nomeSquadra2 FROM EsitoSquadre WHERE nomeSquadra2 = NEW.nomeSquadra2 AND
 		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
    THEN RETURN NEW;
-   ELSE  RAISE EXCEPTION 'La squadra % in data % partecipa già ad un altro evento!',NEW.nomeSquadra2,(SELECT data FROM Evento 
+   ELSE  RAISE EXCEPTION 'La squadra % in data % ha partecipato ad un altro evento!',NEW.nomeSquadra2,(SELECT data FROM Evento 
    																								WHERE id = NEW.idEv); 
    END IF;
 END;																						   
 $check_team2_for_matches$
 LANGUAGE plpgsql;							  
 
-										  
- -- una giocatore non può giocare due eventi contemporaneamente per primo giocatore --			 
+								
+ -- non si puo mettere l'esito di un evento se esiste già un esito di qual giocatore per la stessa data			 		  
 CREATE OR REPLACE FUNCTION check_player1_for_matches() RETURNS trigger AS
 $check_player1_for_matches$
 BEGIN 
@@ -209,7 +210,7 @@ BEGIN
 	   AND NEW.giocatore1 NOT IN (SELECT giocatore2 FROM EsitoSingolo WHERE giocatore2 = NEW.giocatore1 AND
 		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
    THEN RETURN NEW;
-   ELSE  RAISE EXCEPTION 'il giocatore % in data % partecipa già ad un altro evento!',NEW.giocatore1,(SELECT data FROM Evento 
+   ELSE  RAISE EXCEPTION 'il giocatore % in data % ha partecipato ad un altro evento!',NEW.giocatore1,(SELECT data FROM Evento 
    																								WHERE id = NEW.idEv);
    END IF;
 END;																						  
@@ -217,7 +218,7 @@ $check_player1_for_matches$
 LANGUAGE plpgsql;
 
 
- -- una giocatore non può giocare due eventi contemporaneamente per secondo giocatore --			 
+ -- non si puo mettere l'esito di un evento se esiste già un esito di qual giocatore per la stessa data			 
 CREATE OR REPLACE FUNCTION check_player2_for_matches() RETURNS trigger AS
 $check_player2_for_matches$
 BEGIN 
@@ -226,7 +227,7 @@ BEGIN
 	   AND NEW.giocatore2 NOT IN (SELECT giocatore2 FROM EsitoSingolo WHERE giocatore2 = NEW.giocatore2 AND
 		idEv <> NEW.idEv AND idEv IN (SELECT id FROM Evento WHERE data = (SELECT data FROM Evento WHERE id = NEW.idEv)))
    THEN RETURN NEW;
-   ELSE  RAISE EXCEPTION 'il giocatore % in data % partecipa già ad un altro evento!',NEW.giocatore2,(SELECT data FROM Evento 
+   ELSE  RAISE EXCEPTION 'il giocatore % in data % ha partecipato  ad un altro evento!',NEW.giocatore2,(SELECT data FROM Evento 
    																								WHERE id = NEW.idEv); 
    END IF;
 END;																						   
@@ -289,11 +290,11 @@ DECLARE
  dataIscrizione date;
  temp varchar(25);
 BEGIN
-	dataIscrizione = (SELECT data from  Evento WHERE id = NEW.idEv);
+	dataIscrizione = (SELECT data from  Evento WHERE id = NEW.evento);
 	
 	for temp in SELECT candidato FROM Candidatura WHERE Squadra = NEW.nomeSquadra AND categoria = NEW.nomeC AND stato = 'accettata'
 	loop
-		INSERT INTO Iscrizione VALUES (dataIscrizione,'confermato',temp ,NEW.idEv);
+		INSERT INTO Iscrizione VALUES (dataIscrizione,'confermato',temp ,NEW.evento);
 	END LOOP;
 
   RETURN NEW;
@@ -323,10 +324,8 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION check_subscription_for_match_in_tournament() RETURNS trigger AS
 $check_subscription_for_match_in_tournament$
 BEGIN
-	IF (NEW.evento IN (SELECT idEv FROM EventoInTorneo evt 
-			JOIN IscrittoATorneo ist ON evt.idT = ist.torneo
-			WHERE evt.idEv = NEW.evento
-			AND ist.studente = NEW.studente))		
+	IF NEW.studente IN (SELECT studente FROM IscrittoATorneo WHERE Toreno IN(SELECT torneo FROM EventoInTorneo WHERE
+		IdEv = NEW.evento) AND studente = NEW.studente)		
 	THEN RETURN NEW;
 	ELSE  RAISE EXCEPTION 'Non è possibile iscrivere % all''evento % se % non è iscritto al torneo in cui è svolto l''evento',NEW.studente, NEW.evento,NEW.studente;
 	END IF;
@@ -334,6 +333,89 @@ END;
 $check_subscription_for_match_in_tournament$
 LANGUAGE plpgsql; 
 
+
+--un utente non può fare punti in un evento a squadre se non fa parte di nessuna delle due squadre partecipanti
+CREATE OR REPLACE FUNCTION check_if_player_belongs_team() RETURNS trigger AS
+$check_if_player_belongs_team$
+BEGIN
+	IF NEW.username  NOT IN (SELECT candidato FROM Candidatura WHERE  candidato = NEW.username AND  stato = 'accettata' AND squadra IN 
+		(SELECT squadra FROM SquadraPartecipaEv WHERE idEv = NEW.idEvento))
+	THEN RAISE EXCEPTION '% non può aver fatto in quanto non fa parte di nessuna dell due squadre dell''evento %',NEW.username,NEW.idEvento;
+	ELSE RETURN NEW;
+	END IF;
+END;
+$check_if_player_belongs_team$
+LANGUAGE plpgsql; 
+
+
+-- ad un evento a squadre possono giocare solo due squadre --
+CREATE OR REPLACE FUNCTION check_partecipants_number_for_team() RETURNS trigger AS
+$check_partecipants_number_for_team$
+BEGIN
+	IF (SELECT COUNT(*) FROM SquadraPartecipaEv WHERE idEv = NEW.idEv) <= 1
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'A questo evento: % possono partecipare solo due squadre!',NEW.idEV;
+	END IF;
+END;
+$check_partecipants_number_for_team$
+LANGUAGE plpgsql;
+
+-- solo un utente premium può creare un evento 
+CREATE OR REPLACE FUNCTION check_premium_for_events() RETURNS trigger AS
+$check_premium_for_events$
+BEGIN
+	IF NEW.creatore NOT IN (SELECT username  FROM Utente WHERE tipo = 'standard')
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'L''utente % non è premium, non può creare l''evento!',NEW.creatore;
+	END IF;
+END;
+$check_premium_for_events$
+LANGUAGE plpgsql;
+
+-- un utente può far parte di una sola squadra per categoria
+CREATE OR REPLACE FUNCTION check_player_belongs_one_team_only() RETURNS trigger AS
+$check_player_belongs_one_team_only$
+BEGIN
+	IF NEW.candidato IN (SELECT candidato FROM Candidatura WHERE categoria = NEW.categoria AND stato = 'accettata')
+	THEN RAISE EXCEPTION '% fa già parte di una squadra per questa categoria: %',new.candidato,NEW.categoria;
+	ELSE RETURN NEW;
+	END IF;
+END;
+$check_player_belongs_one_team_only$
+LANGUAGE plpgsql;
+
+--un utente la cui candidatura per una certa squadra di una categoria è stata rifiutata non puo presentarne un'altra per la stessa squadra
+CREATE OR REPLACE FUNCTION check_player_not_spam_nominations() RETURNS trigger AS
+$check_player_not_spam_nominations$
+BEGIN
+	IF NEW.candidato IN (SELECT candidato FROM Candidatura WHERE categoria = NEW.categoria AND squadra = NEW.squadra AND stato = 'rifiutata')
+	THEN RAISE EXCEPTION '% ha già presentato una candidatura per % della categoria % ma è stata rifiutata',NEW.candidato,NEW.squadra,NEW.categoria;
+	ELSE RETURN NEW;
+	END IF;
+END;
+$check_player_not_spam_nominations$
+LANGUAGE plpgsql;
+
+
+--una squadra non può partecipare a due eventi contemporaneamente
+CREATE OR REPLACE FUNCTION check_team_for_match_partecipations() RETURNS trigger AS
+$check_team_for_match_partecipations$
+BEGIN
+	IF NEW.nomeSquadra NOT IN (SELECT nomeSquadra  FROM SquadraPartecipaEv  
+							   WHERE nomeSquadra = NEW.nomeSquadra AND idEv <> NEW.idEv AND idEv 
+							   IN(SELECT id FROM Evento  WHERE data = 
+								  (SELECT data from Evento WHERE id = NEW.idEv )))
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'la squadra % in data % partecipa già ad un altro evento!',NEW.nomeSquadra,(SELECT data FROM Evento 
+																							   WHERE id = NEW.idEv);
+	END IF;
+END;
+$check_team_for_match_partecipations$
+LANGUAGE plpgsql;
+
+
+
+---------------------------------TRIGGER----------------------------------------------------------------
 
 --solo un utente premium può creare una squadra
 CREATE TRIGGER check_premium_for_teams
@@ -468,6 +550,45 @@ CREATE TRIGGER check_subscription_for_match_in_tournament
 BEFORE INSERT OR UPDATE ON Iscrizione
 FOR EACH ROW
 EXECUTE PROCEDURE check_subscription_for_match_in_tournament();
+
+--un utente non può fare punti in un evento a squadre se non fa parte di nessuna delle due squadre partecipanti
+CREATE TRIGGER check_if_player_belongs_team
+BEFORE INSERT OR UPDATE ON UtenteFaPunti
+FOR EACH ROW
+EXECUTE PROCEDURE check_if_player_belongs_team();
+
+-- ad un evento a squadre possono giocare solo due squadre 
+CREATE TRIGGER check_partecipants_number_for_team
+BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
+FOR EACH ROW
+EXECUTE PROCEDURE check_partecipants_number_for_team(); 
+
+-- solo un utente premium può creare un evento 
+CREATE TRIGGER check_premium_for_events
+BEFORE INSERT OR UPDATE ON Evento
+FOR EACH ROW
+EXECUTE PROCEDURE check_premium_for_events(); 
+
+-- un utente può far parte di una sola squadra per categoria
+CREATE TRIGGER check_player_belongs_one_team_only
+BEFORE INSERT OR UPDATE ON Candidatura
+FOR EACH ROW
+EXECUTE PROCEDURE check_player_belongs_one_team_only(); 
+
+--un utente la cui candidatura per una certa squadra di una categoria è stata rifiutata non puo presentarne un'altra per la stessa squadra
+CREATE TRIGGER check_player_not_spam_nominations
+BEFORE INSERT OR UPDATE ON Candidatura
+FOR EACH ROW
+EXECUTE PROCEDURE check_player_not_spam_nominations(); 
+
+--una squadra non può partecipare a due eventi contemporaneamente
+CREATE TRIGGER check_team_for_match_partecipations
+BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
+FOR EACH ROW
+EXECUTE PROCEDURE check_team_for_match_partecipations(); 
+
+
+
 
 
 
