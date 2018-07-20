@@ -285,7 +285,23 @@ BEGIN
 END;
 $check_subscription_max_players$
 LANGUAGE plpgsql;							    
-								    
+	
+		 
+--non si può inserire l'esito di un evento a cui i giocatori non sono iscritti
+CREATE OR REPLACE FUNCTION check_subscription_for_match_result() RETURNS trigger AS
+$check_subscription_for_match_result$
+BEGIN
+	IF (NEW.giocatore1 IN (SELECT studente FROM Iscrizione
+			WHERE studente = NEW.giocatore1 AND evento = NEW.idEV)
+		AND NEW.giocatore2 IN (SELECT studente FROM Iscrizione 
+			WHERE studente = NEW.giocatore2 AND evento = NEW.idEv))
+	THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'Non è possibile inserire l''esito dell''evento % a cui i giocatori % e % non sono iscritti',NEW.idEv, NEW.giocatore1,NEW.giocatore2;
+	END IF;
+END;
+$check_subscription_for_match_result$
+LANGUAGE plpgsql;
+
 										  
 										  
 
@@ -402,3 +418,9 @@ CREATE TRIGGER check_subscription_max_players
 BEFORE INSERT OR UPDATE ON Iscrizione
 FOR EACH ROW
 EXECUTE PROCEDURE check_subscription_max_players();
+				       
+--non si può inserire l'esito di un evento a cui i giocatori non sono iscritti
+CREATE TRIGGER check_subscription_for_match_result
+BEFORE INSERT OR UPDATE ON EsitoSingolo
+FOR EACH ROW
+EXECUTE PROCEDURE check_subscription_for_match_result();
