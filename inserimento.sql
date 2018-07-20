@@ -406,6 +406,25 @@ INSERT INTO EventoInTorneo VALUES(00001,15694);
 INSERT INTO EventoInTorneo VALUES(00001,15695);
 
 
+INSERT INTO SquadraPartecipaEv VALUES('Guardians of the Galaxy','Calcio',15689);
+INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Calcio',15689);
+INSERT INTO SquadraPartecipaEv VALUES('Ordine della Fenice','Calcio',15690);
+INSERT INTO SquadraPartecipaEv VALUES('Compagnia dell''anello','Calcio',15690);
+INSERT INTO SquadraPartecipaEv VALUES('Team Alexandria','Calcio',15691);
+INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Calcio',15691);
+INSERT INTO SquadraPartecipaEv VALUES('Space Jam','Calcio',15692);
+INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Calcio',15692);
+
+INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Calcio',15693);
+INSERT INTO SquadraPartecipaEv VALUES('Compagnia dell''anello','Calcio',15693);
+INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Calcio',15694);
+INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Calcio',15694);
+
+INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Calcio',15695);
+INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Calcio',15695);
+
+
+
 INSERT INTO UtenteFaPunti VALUES('IAmGroot',15689, 1);
 INSERT INTO UtenteFaPunti VALUES('PortamiDelVino',15689, 2);
 INSERT INTO UtenteFaPunti VALUES('Inginocchiati',15689, 2);
@@ -479,6 +498,9 @@ INSERT INTO EsitoSquadre VALUES(16694,'Izalith Deamons','Guardians of the Galaxy
 
 INSERT INTO EsitoSquadre VALUES(16695,'Izalith Deamons','Virtus Piscatella','Pallavolo','Pallavolo',99,98);
 
+
+
+
 INSERT INTO EventoInTorneo VALUES(00002,16689);
 INSERT INTO EventoInTorneo VALUES(00002,16690);
 INSERT INTO EventoInTorneo VALUES(00002,16691);
@@ -486,6 +508,26 @@ INSERT INTO EventoInTorneo VALUES(00002,16692);
 INSERT INTO EventoInTorneo VALUES(00002,16693);
 INSERT INTO EventoInTorneo VALUES(00002,16694);
 INSERT INTO EventoInTorneo VALUES(00002,16695);
+
+
+
+INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Pallavolo',16689); 
+INSERT INTO SquadraPartecipaEv VALUES('The North Remembers','Pallavolo',16689);
+INSERT INTO SquadraPartecipaEv VALUES('Team Alexandria','Pallavolo',16690);
+INSERT INTO SquadraPartecipaEv VALUES('Space Jam','Pallavolo',16690);
+INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Pallavolo',16691);
+INSERT INTO SquadraPartecipaEv VALUES('Compagnia dell''anello','Pallavolo',16691);
+INSERT INTO SquadraPartecipaEv VALUES('Guardians of the Galaxy','Pallavolo',16692);
+INSERT INTO SquadraPartecipaEv VALUES('Ordine della Fenice','Pallavolo',16692);
+
+INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Pallavolo',16693);
+INSERT INTO SquadraPartecipaEv VALUES('Team Alexandria','Pallavolo',16693);
+INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Pallavolo',16694);
+INSERT INTO SquadraPartecipaEv VALUES('Guardians of the Galaxy','Pallavolo',16694);
+
+INSERT INTO SquadraPartecipaEv VALUES('Izalith Deamons','Pallavolo',16695);
+INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Pallavolo',16695);
+
 
 
 
@@ -581,6 +623,8 @@ INSERT INTO EsitoSingolo VALUES (17694,'NonHoPiùFantasia',0,'MercyPrevailsWrath
 INSERT INTO EsitoSingolo VALUES (17695,'IAmGroot',2,'MercyPrevailsWrath',1);
 
 
+
+
 INSERT INTO EventoInTorneo VALUES(00003,17689);
 INSERT INTO EventoInTorneo VALUES(00003,17690);
 INSERT INTO EventoInTorneo VALUES(00003,17691);
@@ -590,7 +634,6 @@ INSERT INTO EventoInTorneo VALUES(00003,17694);
 INSERT INTO EventoInTorneo VALUES(00003,17695);
 
 /* ////////////////////////////////////////// FINE TORNEO /////////////////////////////////////////////////////// */
-
 
 /*  
                         error --> Premium Creator, correct it (test it before uploading)
