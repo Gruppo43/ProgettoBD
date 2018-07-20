@@ -270,7 +270,20 @@ BEGIN
 END 
 $check_sum_of_points$
 LANGUAGE plpgsql;											  
-										  
+
+--non si possono iscrivere più giocatori all'evento se il numero max di gioc per quell'evento è stato raggiunto
+CREATE OR REPLACE FUNCTION check_subscription_max_players() RETURNS trigger AS
+$check_subscription_max_players$
+BEGIN
+	IF ((SELECT COUNT(studente) FROM Iscrizione WHERE evento = NEW.evento) <
+		(SELECT DISTINCT (numGiocatori) FROM Categoria C JOIN Evento E ON C.nome = E.categoria	WHERE E.id = NEW.evento))
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'Numero massimo di giocatori iscritti all''evento % raggiunto, impossibile inserirne altri',NEW.evento;
+	END IF;
+END;
+$check_subscription_max_players$
+LANGUAGE plpgsql;							    
+								    
 										  
 										  
 
@@ -381,4 +394,9 @@ CREATE TRIGGER check_sum_of_points
 BEFORE INSERT OR UPDATE ON UtenteFaPunti
 FOR EACH ROW
 EXECUTE PROCEDURE check_sum_of_points(); 
-								    
+					
+-- non si possono isrivere più giocatori a un evento dei giocatori possibili per quell'evento --			 
+CREATE TRIGGER check_subscription_max_players
+BEFORE INSERT OR UPDATE ON Iscrizione
+FOR EACH ROW
+EXECUTE PROCEDURE check_subscription_max_players();
