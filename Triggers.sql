@@ -236,6 +236,7 @@ END;
 $check_player2_for_matches$
 LANGUAGE plpgsql;
 
+
 --la somma dei punti dei giocatori di una squadra non deve superare i punti fatti dalla stessa								  
 CREATE OR REPLACE FUNCTION check_sum_of_points() RETURNS trigger AS
 $check_sum_of_points$
@@ -259,18 +260,19 @@ BEGIN
 	END IF;
 	
 	
-	IF (SELECT SUM(punti) FROM UtenteFaPunti WHERE username IN (SELECT candidato FROM Candidatura WHERE 
+	IF (SELECT SUM(punti) FROM UtenteFaPunti WHERE idEvento = NEW.idEvento AND username IN (SELECT candidato FROM Candidatura WHERE 
 		stato = 'accettata' AND categoria IN(SELECT categoriasq1 FROM EsitoSquadre WHERE idEv = NEW.idEvento) AND 
-													squadra = Team))+ TeamPoints > TeamPoints
+													squadra = Team))+ NEW.punti > TeamPoints
 													
-	THEN RAISE EXCEPTION 'La somma dei punti dei giocatori supera i punti fatti dalla squadra % all''evento %',New.idEvento,Team;
+	THEN RAISE EXCEPTION 'La somma dei punti dei giocatori supera i punti fatti dalla squadra % all''evento % somma = %  puntisquadra = % ',New.idEvento,Team;
 	ELSE RETURN NEW;
-		
+	
 	END IF;
 END 
 $check_sum_of_points$
-LANGUAGE plpgsql;											  
-
+LANGUAGE plpgsql;										  
+										  
+										  
 --non si possono iscrivere più giocatori all'evento se il numero max di gioc per quell'evento è stato raggiunto
 CREATE OR REPLACE FUNCTION check_subscription_max_players() RETURNS trigger AS
 $check_subscription_max_players$
