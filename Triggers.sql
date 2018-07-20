@@ -236,6 +236,43 @@ END;
 $check_player2_for_matches$
 LANGUAGE plpgsql;
 
+--la somma dei punti dei giocatori di una squadra non deve superare i punti fatti dalla stessa								  
+CREATE OR REPLACE FUNCTION check_sum_of_points() RETURNS trigger AS
+$check_sum_of_points$
+
+DECLARE 
+	TeamPoints NUMERIC(2);
+	Team VARCHAR(25);
+BEGIN 
+	IF(SELECT COUNT(nomeSquadra1) FROM EsitoSquadre WHERE  idEv = NEW.idEvento AND 
+					nomeSquadra1 IN (SELECT squadra FROM Candidatura  WHERE candidato = NEW.username AND stato = 'accettata' AND 
+						categoria = categoriasq1)) <> 0
+	 THEN TeamPoints = (SELECT puntisq1 FROM EsitoSquadre WHERE idEv = NEW.idEvento);
+	 ELSE TeamPoints = (SELECT puntisq2 FROM EsitoSquadre WHERE idEv = NEW.idEvento);
+	 END IF;
+	
+	if(select count(nome) FROM squadra WHERE nome IN(SELECT nomeSquadra1 FROM EsitoSquadre WHERE idEv = NEW.idEvento
+		AND nome  IN (SELECT squadra FROM Candidatura  WHERE candidato = NEW.username AND stato = 'accettata' AND 
+		categoria = categoriasq1))) > 0
+	then Team = (SELECT nomeSquadra1 FROM EsitoSquadre WHERE idEv = NEW.idEvento);
+	ELSE  Team = (SELECT nomeSquadra2 FROM EsitoSquadre WHERE idEv = NEW.idEvento);
+	END IF;
+	
+	
+	IF (SELECT SUM(punti) FROM UtenteFaPunti WHERE username IN (SELECT candidato FROM Candidatura WHERE 
+		stato = 'accettata' AND categoria IN(SELECT categoriasq1 FROM EsitoSquadre WHERE idEv = NEW.idEvento) AND 
+													squadra = Team))+ TeamPoints > TeamPoints
+													
+	THEN RAISE EXCEPTION 'La somma dei punti dei giocatori supera i punti fatti dalla squadra all''evento %',New.idEvento;
+	ELSE RETURN NEW;
+		
+	END IF;
+END 
+$check_sum_of_points$
+LANGUAGE plpgsql;											  
+										  
+										  
+										  
 
 --solo un utente premium può creare una squadra
 CREATE TRIGGER check_premium_for_teams
@@ -337,4 +374,11 @@ EXECUTE PROCEDURE check_player2_for_matches();
 CREATE TRIGGER check_player1_for_matches
 BEFORE INSERT OR UPDATE ON EsitoSingolo
 FOR EACH ROW
-EXECUTE PROCEDURE check_player1_for_matches(); 
+EXECUTE PROCEDURE check_player1_for_matches();
+								    
+--la somma dei punti dei giocatori di una squadra non deve superare i punti fatti dalla stessa								  						    
+CREATE TRIGGER check_sum_of_points
+BEFORE INSERT OR UPDATE ON UtenteFaPunti
+FOR EACH ROW
+EXECUTE PROCEDURE check_sum_of_points(); 
+								    
