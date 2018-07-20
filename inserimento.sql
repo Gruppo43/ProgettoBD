@@ -1,4 +1,5 @@
 
+
 /* USER INSERTIONS */
 
 
@@ -191,7 +192,7 @@ INSERT INTO Candidatura VALUES('accettata','Pagina394','MiDispiaceNeville','Ordi
 INSERT INTO Candidatura VALUES('accettata','Pagina394','PerchèSeguiteIRagni?','Ordine della Fenice','Calcio');
 INSERT INTO Candidatura VALUES('accettata','Pagina394','ElfoLibero','Ordine della Fenice','Calcio');
 
-INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','LupoSolitario','Compagnia dell''anello','Calcio');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','PiediPiatti','Compagnia dell''anello','Calcio');
 INSERT INTO Candidatura VALUES('accettata','StupidiNani','HobbitCoraggioso','Compagnia dell''anello','Calcio');
 INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','StupidiNani','Compagnia dell''anello','Calcio');
 INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','YouShallNotPass','Compagnia dell''anello','Calcio');
@@ -254,7 +255,7 @@ INSERT INTO Candidatura VALUES('accettata','Pagina394','MiDispiaceNeville','Ordi
 INSERT INTO Candidatura VALUES('accettata','Pagina394','PerchèSeguiteIRagni?','Ordine della Fenice','Pallavolo');
 INSERT INTO Candidatura VALUES('accettata','Pagina394','ElfoLibero','Ordine della Fenice','Pallavolo');
 
-INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','LupoSolitario','Compagnia dell''anello','Pallavolo');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','PiediPiatti','Compagnia dell''anello','Pallavolo');
 INSERT INTO Candidatura VALUES('accettata','StupidiNani','HobbitCoraggioso','Compagnia dell''anello','Pallavolo');
 INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','StupidiNani','Compagnia dell''anello','Pallavolo');
 INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','YouShallNotPass','Compagnia dell''anello','Pallavolo');
@@ -315,7 +316,7 @@ INSERT INTO Candidatura VALUES('accettata','Pagina394','MiDispiaceNeville','Ordi
 INSERT INTO Candidatura VALUES('rifiutata','Pagina394','PerchèSeguiteIRagni?','Ordine della Fenice','Quiddich');
 INSERT INTO Candidatura VALUES('rifiutata','Pagina394','ElfoLibero','Ordine della Fenice','Quiddich');
 
-INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','LupoSolitario','Compagnia dell''anello','Quiddich');
+INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','PiediPiatti','Compagnia dell''anello','Quiddich');
 INSERT INTO Candidatura VALUES('rifiutata','StupidiNani','HobbitCoraggioso','Compagnia dell''anello','Quiddich');
 INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','StupidiNani','Compagnia dell''anello','Quiddich');
 INSERT INTO Candidatura VALUES('accettata','HobbitCoraggioso','YouShallNotPass','Compagnia dell''anello','Quiddich');
@@ -589,6 +590,7 @@ INSERT INTO EventoInTorneo VALUES(00003,17694);
 INSERT INTO EventoInTorneo VALUES(00003,17695);
 
 /* ////////////////////////////////////////// FINE TORNEO /////////////////////////////////////////////////////// */
+
 
 /*  
                         error --> Premium Creator, correct it (test it before uploading)
