@@ -90,6 +90,15 @@ check(tipo = 'singolo' or tipo = 'a squadre')
 );
 
 
+CREATE TABLE SquadraPartecipaEv(
+nomeSquadra varchar(30),
+nomeC varchar(30),
+idEv numeric(8) references Evento (id) on delete  no action on update cascade,
+foreign key(nomeSquadra,nomeC) references Squadra(nome,categoria),
+primary key(nomeSquadra, nomeC, idEv)
+);
+
+
 
 CREATE TABLE EventoInTorneo(
 idT numeric(8) references Torneo (id) on delete  no action on update cascade,
