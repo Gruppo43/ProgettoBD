@@ -263,7 +263,7 @@ BEGIN
 		stato = 'accettata' AND categoria IN(SELECT categoriasq1 FROM EsitoSquadre WHERE idEv = NEW.idEvento) AND 
 													squadra = Team))+ TeamPoints > TeamPoints
 													
-	THEN RAISE EXCEPTION 'La somma dei punti dei giocatori supera i punti fatti dalla squadra all''evento %',New.idEvento;
+	THEN RAISE EXCEPTION 'La somma dei punti dei giocatori supera i punti fatti dalla squadra % all''evento %',New.idEvento,Team;
 	ELSE RETURN NEW;
 		
 	END IF;
