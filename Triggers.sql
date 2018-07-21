@@ -506,7 +506,7 @@ FOR EACH ROW
 EXECUTE PROCEDURE check_premium_for_tournament();
 
 --solo un utente premium può accettare o rifiutare le candidature
-CREATE TRIGGER check_premius_accepts_applications
+CREATE TRIGGER check_premium_accepts_applications
 BEFORE INSERT OR UPDATE ON Candidatura
 FOR EACH ROW
 EXECUTE PROCEDURE check_premium_accepts_applications();
