@@ -415,8 +415,30 @@ BEGIN
 END;
 $check_team_for_match_partecipations$
 LANGUAGE plpgsql;
+								   
 
+ 			 /* da controllare, dà errore con autofiller 
 
+--non si può inserire l'esito di un evento a squadre a cui le squadre non sono iscritte
+CREATE OR REPLACE FUNCTION check_subscription_teams_for_match_result() RETURNS trigger AS
+$check_subscription_teams_for_match_result$
+BEGIN
+	IF (NEW.nomeSquadra1 IN (SELECT nomeSquadra FROM SquadraPartecipaEv 
+				WHERE nomeSquadra = NEW.nomeSquadra1 
+				AND nomeC = NEW.categoriasq1
+				AND idEv = NEW.idEv)
+		AND NEW.nomeSquadra2 IN (SELECT nomeSquadra FROM SquadraPartecipaEv 
+				WHERE nomeSquadra = NEW.nomeSquadra2 
+				AND nomeC = NEW.categoriasq2
+				AND idEv = NEW.idEv))
+		THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'Non è possibile inserire l''esito dell''evento a squadre % se le squadre % e % non vi sono iscritte',NEW.idEv, NEW.nomeSquadra1,NEW.nomeSquadra2;
+	END IF;
+END;
+$check_subscription_teams_for_match_result$
+LANGUAGE plpgsql;
+
+						*/
 
 ---------------------------------TRIGGER----------------------------------------------------------------
 
@@ -589,6 +611,16 @@ CREATE TRIGGER check_team_for_match_partecipations
 BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
 FOR EACH ROW
 EXECUTE PROCEDURE check_team_for_match_partecipations(); 
+
+			 /* da controllare, dà errore con autofiller 
+					 
+--non si può inserire l'esito di un evento a squadre a cui le squadre non sono iscritte
+CREATE TRIGGER check_subscription_teams_for_match_result
+BEFORE INSERT OR UPDATE ON EsitoSquadre
+FOR EACH ROW
+EXECUTE PROCEDURE check_subscription_teams_for_match_result(); 
+
+					 */
 
 
 
