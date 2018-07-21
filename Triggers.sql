@@ -43,14 +43,19 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION check_rating_for_player() RETURNS trigger AS
 $check_rating_for_player$
 BEGIN
-	IF NEW.usernameValutatore IN (SELECT username  FROM UtenteSingoloGioca 
-					WHERE idEv IN (SELECT idEv FROM UtenteSingoloGioca WHERE username = NEW.usernameValutato))
-		THEN return NEW;
-	ELSE RAISE EXCEPTION 'i dati di giocatore valutato o di chi valuta non sono corretti';
+	IF (NEW.usernameValutatore IN (SELECT studente FROM Iscrizione
+					WHERE evento = NEW.idEv
+					AND stato = 'confermato')
+		AND NEW.usernameValutato IN (SELECT studente FROM Iscrizione
+					WHERE evento = NEW.idEv
+					AND stato = 'confermato'))
+	THEN return NEW;
+	ELSE RAISE EXCEPTION 'il giocatore % e il giocatore % devono aver partecipato all''evento % per valutare o essere valutati', NEW.usernameValutatore, NEW.usernameValutato, NEW.idEv;
 	END IF;
 END;
 $check_rating_for_player$
 LANGUAGE plpgsql;
+
 
 
 -- un impianto non puo ospitare due eventi contemporaneamente --
