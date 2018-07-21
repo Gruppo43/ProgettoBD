@@ -448,6 +448,18 @@ $check_subscription_teams_for_match_result$
 LANGUAGE plpgsql;
 
 						*/
+--una squadra può partecipare ad un evento solo se ha un minimo di giocatori								   
+CREATE OR REPLACE FUNCTION check_min_players() RETURNS trigger AS
+$check_min_players$
+BEGIN
+	IF (SELECT COUNT(Candidato) FROM Candidatura WHERE Stato = 'accettata' AND Squadra = NEW.nomesquadra AND Categoria = NEW.nomec) >= 
+	((SELECT numgiocatori FROM Categoria WHERE Nome = NEW.nomec)/2)
+	THEN RETURN NEW;
+	ELSE RAISE EXCEPTION 'Una squadra può partecipare ad un evento solo se ha un numero minimo di giocatori';
+	END IF;
+END;
+$check_min_players$
+language plpgsql;							   
 
 ---------------------------------TRIGGER----------------------------------------------------------------
 
@@ -633,6 +645,10 @@ EXECUTE PROCEDURE check_subscription_teams_for_match_result();
 
 
 
-
+--una squadra può partecipare ad un evento solo se ha un minimo di giocatori
+CREATE TRIGGER check_min_players
+BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
+FOR EACH ROW
+EXECUTE PROCEDURE check_min_players();
 
 
