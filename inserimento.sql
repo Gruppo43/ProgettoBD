@@ -1,5 +1,6 @@
 
 
+
 /* USER INSERTIONS */
 
 
@@ -109,9 +110,9 @@ INSERT INTO Utente VALUES ('DarkLord', 'Shhwwahshh', 'Anakin', 'Skywalker', '22/
 
 
 
-INSERT INTO Categoria VALUES ('Calcio', 'vince la squadra che totalizza più goal',32,true);
+INSERT INTO Categoria VALUES ('Calcio', 'vince la squadra che totalizza più goal',12,true);
 INSERT INTO Categoria VALUES ('Tennis', 'vince chi totalizza più punti', 2);
-INSERT INTO Categoria VALUES ('Pallavolo', 'vince chi fa più punti',24);
+INSERT INTO Categoria VALUES ('Pallavolo', 'vince chi fa più punti',12);
 INSERT INTO Categoria VALUES ('PingPong', 'vince chi fa più punti',2);
 INSERT INTO Categoria VALUES ('Quiddich','vince chi cattura il boccino d''oro', 12);
 INSERT INTO Categoria VALUES ('Scacchi','vince chi fa scacco matto',2 ,true);
@@ -136,26 +137,26 @@ INSERT INTO Squadra VALUES('Izalith Deamons', 'Quiddich','PraiseTheSun',12,6,'ar
 
 /*Calcio */
 
-INSERT INTO Squadra VALUES('The North Remembers','Calcio','YouKnowNothing',30,6,'bianco','The King of the north');
-INSERT INTO Squadra VALUES('Guardians of the Galaxy','Calcio','StarLord',30,6,'rosso','Rocket mi ha rubato di nuovo il pc?');
-INSERT INTO Squadra VALUES('Ordine della Fenice','Calcio','Pagina394',30,6,'verde','Giuro solennemente di non avere buone intenzioni');
-INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Calcio','HobbitCoraggioso',30,6,'viola','il mio tesoro');
-INSERT INTO Squadra VALUES('Team Alexandria','Calcio','LaMiaLucille',30,6,'giallo','Ambarabaccicicoco');
-INSERT INTO Squadra VALUES('Virtus Piscatella', 'Calcio','CantaStorie',30,6,'blu','Crazy eyes');
-INSERT INTO Squadra VALUES('Space Jam', 'Calcio','EhmCheSuccedeAmico?',30,6,'azzurro','i like carrots');
-INSERT INTO Squadra VALUES('Izalith Deamons', 'Calcio','PraiseTheSun',30,6,'arancione','Let the flame guide your way');
+INSERT INTO Squadra VALUES('The North Remembers','Calcio','YouKnowNothing',12,6,'bianco','The King of the north');
+INSERT INTO Squadra VALUES('Guardians of the Galaxy','Calcio','StarLord',12,6,'rosso','Rocket mi ha rubato di nuovo il pc?');
+INSERT INTO Squadra VALUES('Ordine della Fenice','Calcio','Pagina394',12,6,'verde','Giuro solennemente di non avere buone intenzioni');
+INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Calcio','HobbitCoraggioso',12,6,'viola','il mio tesoro');
+INSERT INTO Squadra VALUES('Team Alexandria','Calcio','LaMiaLucille',12,6,'giallo','Ambarabaccicicoco');
+INSERT INTO Squadra VALUES('Virtus Piscatella', 'Calcio','CantaStorie',12,6,'blu','Crazy eyes');
+INSERT INTO Squadra VALUES('Space Jam', 'Calcio','EhmCheSuccedeAmico?',12,6,'azzurro','i like carrots');
+INSERT INTO Squadra VALUES('Izalith Deamons', 'Calcio','PraiseTheSun',12,6,'arancione','Let the flame guide your way');
 
 
 /*pallavolo*/
 
-INSERT INTO Squadra VALUES('The North Remembers','Pallavolo','YouKnowNothing',20,6,'bianco','The King of the north');
-INSERT INTO Squadra VALUES('Guardians of the Galaxy','Pallavolo','StarLord',20,6,'rosso','Rocket mi ha rubato di nuovo il pc?');
-INSERT INTO Squadra VALUES('Ordine della Fenice','Pallavolo','Pagina394',20,6,'verde','Giuro solennemente di non avere buone intenzioni');
-INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Pallavolo','HobbitCoraggioso',20,6,'viola','il mio tesoro');
-INSERT INTO Squadra VALUES('Team Alexandria','Pallavolo','LaMiaLucille',20,6,'giallo','Ambarabaccicicoco');
-INSERT INTO Squadra VALUES('Virtus Piscatella', 'Pallavolo','CantaStorie',20,6,'blu','Crazy eyes');
-INSERT INTO Squadra VALUES('Space Jam', 'Pallavolo','EhmCheSuccedeAmico?',20,6,'azzurro','i like carrots');
-INSERT INTO Squadra VALUES('Izalith Deamons', 'Pallavolo','PraiseTheSun',20,6,'arancione','Let the flame guide your way');
+INSERT INTO Squadra VALUES('The North Remembers','Pallavolo','YouKnowNothing',12,6,'bianco','The King of the north');
+INSERT INTO Squadra VALUES('Guardians of the Galaxy','Pallavolo','StarLord',12,6,'rosso','Rocket mi ha rubato di nuovo il pc?');
+INSERT INTO Squadra VALUES('Ordine della Fenice','Pallavolo','Pagina394',12,6,'verde','Giuro solennemente di non avere buone intenzioni');
+INSERT INTO Squadra VALUES('Compagnia dell''anello', 'Pallavolo','HobbitCoraggioso',12,6,'viola','il mio tesoro');
+INSERT INTO Squadra VALUES('Team Alexandria','Pallavolo','LaMiaLucille',12,6,'giallo','Ambarabaccicicoco');
+INSERT INTO Squadra VALUES('Virtus Piscatella', 'Pallavolo','CantaStorie',12,6,'blu','Crazy eyes');
+INSERT INTO Squadra VALUES('Space Jam', 'Pallavolo','EhmCheSuccedeAmico?',12,6,'azzurro','i like carrots');
+INSERT INTO Squadra VALUES('Izalith Deamons', 'Pallavolo','PraiseTheSun',12,6,'arancione','Let the flame guide your way');
 
 
 
@@ -430,6 +431,12 @@ INSERT INTO IscrittoATorneo VALUES (00001,'DontKnowWhereSoulGemIs');
 INSERT INTO IscrittoATorneo VALUES (00001,'Nebula');
 INSERT INTO IscrittoATorneo VALUES (00001,'LordThanos');
 
+INSERT INTO IscrittoATorneo VALUES (00001,'Sociopath');
+INSERT INTO IscrittoATorneo VALUES (00001,'Sherlocked');
+INSERT INTO IscrittoATorneo VALUES (00001,'CavaliereCipolla');
+INSERT INTO IscrittoATorneo VALUES (00001,'EriComeUnFratello');
+
+
 
 INSERT INTO PartecipaATorneo VALUES (00001,'The North Remembers','Calcio');
 INSERT INTO PartecipaATorneo VALUES (00001,'Guardians of the Galaxy','Calcio');
@@ -452,6 +459,25 @@ INSERT INTO Evento VALUES(15694,'09/01/2018','chiuso',90,'Terminus','Calcio','a 
 
 --finale
 INSERT INTO Evento VALUES(15695,'15/01/2018','chiuso',90,'Castel Granito','Calcio','a squadre','EriComeUnFratello');--piscatella vs north
+
+
+
+INSERT INTO EventoInTorneo VALUES(00001,15689,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00001,15690,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00001,15691,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00001,15692,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00001,15693,'semifinale');
+INSERT INTO EventoInTorneo VALUES(00001,15694,'semifinale');
+INSERT INTO EventoInTorneo VALUES(00001,15695,'finale');
+
+INSERT INTO Iscrizione VALUES ('07/01/2018','confermato','CavaliereCipolla',15689,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/01/2018','confermato','BlueMeth22',15690,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/01/2018','confermato','Sherlocked',15691,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/01/2018','confermato','Sociopath',15692,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/01/2018','confermato','Sociopath',15693,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/01/2018','confermato','CavaliereCipolla',15694,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/01/2018','confermato','Sherlocked',15695,'arbitro');
+
 
 
 INSERT INTO SquadraPartecipaEv VALUES('Guardians of the Galaxy','Calcio',15689);
@@ -482,15 +508,6 @@ INSERT INTO EsitoSquadre Values(15693,'The North Remembers','Compagnia dell''ane
 INSERT INTO EsitoSquadre Values(15694,'Izalith Deamons','Virtus Piscatella','Calcio','Calcio',3,4);
 
 INSERT INTO EsitoSquadre Values(15695,'The North Remembers','Virtus Piscatella','Calcio','Calcio',1,2);
-
-
-INSERT INTO EventoInTorneo VALUES(00001,15689);
-INSERT INTO EventoInTorneo VALUES(00001,15690);
-INSERT INTO EventoInTorneo VALUES(00001,15691);
-INSERT INTO EventoInTorneo VALUES(00001,15692);
-INSERT INTO EventoInTorneo VALUES(00001,15693);
-INSERT INTO EventoInTorneo VALUES(00001,15694);
-INSERT INTO EventoInTorneo VALUES(00001,15695);
 
 
 
@@ -606,6 +623,14 @@ INSERT INTO IscrittoATorneo VALUES (00002,'DontKnowWhereSoulGemIs');
 INSERT INTO IscrittoATorneo VALUES (00002,'Nebula');
 INSERT INTO IscrittoATorneo VALUES (00002,'LordThanos');
 
+INSERT INTO IscrittoATorneo VALUES (00002,'Sociopath');
+INSERT INTO IscrittoATorneo VALUES (00002,'Sherlocked');
+INSERT INTO IscrittoATorneo VALUES (00002,'CavaliereCipolla');
+INSERT INTO IscrittoATorneo VALUES (00002,'EriComeUnFratello');
+
+
+
+
 
 INSERT INTO PartecipaATorneo VALUES (00002,'The North Remembers','Pallavolo');
 INSERT INTO PartecipaATorneo VALUES (00002,'Guardians of the Galaxy','Pallavolo');
@@ -628,6 +653,26 @@ INSERT INTO Evento VALUES(16694,'17/06/2018','chiuso',60,'Terminus','Pallavolo',
 
 --finale
 INSERT INTO Evento VALUES(16695,'24/06/2018','chiuso',60,'Castel Granito','Pallavolo','a squadre','IlDottore');
+
+
+INSERT INTO EventoInTorneo VALUES(00002,16689,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00002,16690,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00002,16691,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00002,16692,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00002,16693,'semifinale');
+INSERT INTO EventoInTorneo VALUES(00002,16694,'semifinale');
+INSERT INTO EventoInTorneo VALUES(00002,16695,'finale');
+
+
+INSERT INTO Iscrizione VALUES ('07/06/2018','confermato','CavaliereCipolla',16689,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/06/2018','confermato','BlueMeth22',16690,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/06/2018','confermato','Sherlocked',16691,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/06/2018','confermato','Sociopath',16692,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/06/2018','confermato','Sociopath',16693,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/06/2018','confermato','CavaliereCipolla',16694,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/06/2018','confermato','Sherlocked',16695,'arbitro');
+
+
 
 
 INSERT INTO SquadraPartecipaEv VALUES('Virtus Piscatella','Pallavolo',16689); 
@@ -659,16 +704,6 @@ INSERT INTO EsitoSquadre VALUES(16694,'Izalith Deamons','Guardians of the Galaxy
 
 INSERT INTO EsitoSquadre VALUES(16695,'Izalith Deamons','Virtus Piscatella','Pallavolo','Pallavolo',99,98);
 
-
-
-
-INSERT INTO EventoInTorneo VALUES(00002,16689);
-INSERT INTO EventoInTorneo VALUES(00002,16690);
-INSERT INTO EventoInTorneo VALUES(00002,16691);
-INSERT INTO EventoInTorneo VALUES(00002,16692);
-INSERT INTO EventoInTorneo VALUES(00002,16693);
-INSERT INTO EventoInTorneo VALUES(00002,16694);
-INSERT INTO EventoInTorneo VALUES(00002,16695);
 
 
 
@@ -752,6 +787,10 @@ INSERT INTO IscrittoATorneo VALUES (00003,'NonHoPiùFantasia');
 INSERT INTO IscrittoATorneo VALUES (00003,'YouShallNotPass');
 INSERT INTO IscrittoATorneo VALUES (00003,'MercyPrevailsWrath');
 INSERT INTO IscrittoATorneo VALUES (00003,'BlueMeth22');
+INSERT INTO IscrittoATorneo VALUES (00003,'Sociopath');
+INSERT INTO IscrittoATorneo VALUES (00003,'Sherlocked');
+INSERT INTO IscrittoATorneo VALUES (00003,'CavaliereCipolla');
+INSERT INTO IscrittoATorneo VALUES (00003,'EriComeUnFratello');
 
 
 
@@ -767,13 +806,13 @@ INSERT INTO Evento VALUES(17694,'25/03/2018','chiuso',15,'Terminus','Scacchi','s
 --finale
 INSERT INTO Evento VALUES(17695,'29/03/2018','chiuso',15,'Castel Granito','Scacchi','singolo','PraiseTheSun');
 
-INSERT INTO EventoInTorneo VALUES(00003,17689);
-INSERT INTO EventoInTorneo VALUES(00003,17690);
-INSERT INTO EventoInTorneo VALUES(00003,17691);
-INSERT INTO EventoInTorneo VALUES(00003,17692);
-INSERT INTO EventoInTorneo VALUES(00003,17693);
-INSERT INTO EventoInTorneo VALUES(00003,17694);
-INSERT INTO EventoInTorneo VALUES(00003,17695);
+INSERT INTO EventoInTorneo VALUES(00003,17689,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00003,17690,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00003,17691,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00003,17692,'quarti di finale');
+INSERT INTO EventoInTorneo VALUES(00003,17693,'semifinale');
+INSERT INTO EventoInTorneo VALUES(00003,17694,'semifinale');
+INSERT INTO EventoInTorneo VALUES(00003,17695,'finale');
 
 
 /*
@@ -783,22 +822,31 @@ studente varchar(25) not null,
 evento numeric(8) not null,*/
 
 
-INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','IoSonoReek',17689);
-INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','OhSieteNeiGuaiStaVolta',17689);
-INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','IAmGroot',17690);
-INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','Pennsatucky',17690);
-INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','NonHoPiùFantasia',17691);
-INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','YouShallNotPass',17691);
-INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','BlueMeth22',17692);
-INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','MercyPrevailsWrath',17692);
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','IoSonoReek',17689,'giocatore');
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','OhSieteNeiGuaiStaVolta',17689,'giocatore');
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','IAmGroot',17690,'giocatore');
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','Pennsatucky',17690,'giocatore');
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','NonHoPiùFantasia',17691,'giocatore');
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','YouShallNotPass',17691,'giocatore');
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','BlueMeth22',17692,'giocatore');
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','MercyPrevailsWrath',17692,'giocatore');
 
-INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','IoSonoReek',17693);
-INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','IAmGroot',17693);
-INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','NonHoPiùFantasia',17694);
-INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','MercyPrevailsWrath',17694);
+INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','IoSonoReek',17693,'giocatore');
+INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','IAmGroot',17693,'giocatore');
+INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','NonHoPiùFantasia',17694,'giocatore');
+INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','MercyPrevailsWrath',17694,'giocatore');
 
-INSERT INTO Iscrizione VALUES ('27/02/2018','confermato','IAmGroot',17695);
-INSERT INTO Iscrizione VALUES ('27/02/2018','confermato','MercyPrevailsWrath',17695);
+INSERT INTO Iscrizione VALUES ('27/02/2018','confermato','IAmGroot',17695,'giocatore');
+INSERT INTO Iscrizione VALUES ('27/02/2018','confermato','MercyPrevailsWrath',17695,'giocatore');
+
+INSERT INTO Iscrizione VALUES ('07/02/2018','confermato','CavaliereCipolla',17689,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/02/2018','confermato','EriComeUnFratello',17690,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/02/2018','confermato','Sherlocked',17691,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/02/2018','confermato','Sociopath',17692,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/02/2018','confermato','Sociopath',17693,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/02/2018','confermato','CavaliereCipolla',17694,'arbitro');
+INSERT INTO Iscrizione VALUES ('07/02/2018','confermato','Sherlocked',17695,'arbitro');
+
 
 
 
@@ -850,6 +898,8 @@ INSERT INTO Post values ('03/12/2011','Potter è un mezzosangue',false,'Pagina39
 INSERT INTO Post values ('10/02/2012','IO SONO GROOT',false,'IAmGroot','Economia','Scacchi');
 INSERT INTO Post values ('10/02/2012','Groot smettila di usare il computer',false,'StarLord','Economia','Scacchi');
 INSERT INTO Post values ('12/04/2016','è vero che non so niente, ma secondo me questo forum è obsoleto',false,'YouKnowNothing','Chimica','Quiddich');
+
+
 
 
 
