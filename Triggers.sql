@@ -1,6 +1,4 @@
 set search_path to 'ProgettoBD';
-
-
 --solo un utente premium può creare una squadra
 CREATE OR REPLACE FUNCTION check_premium_for_teams() RETURNS trigger AS
 $check_premium_for_teams$
@@ -14,7 +12,7 @@ $check_premium_for_teams$
 LANGUAGE plpgsql;
 
 
---il numero minimo massimo di giocatori di una squadra non può essere minore del numero minimo previsto per quella categoria
+--il numero massimo di giocatori di una squadra non può essere minore del numero minimo previsto per quella categoria
 CREATE OR REPLACE FUNCTION check_players_number() RETURNS trigger AS
 $check_players_number$
 BEGIN
@@ -25,6 +23,7 @@ BEGIN
 END;
 $check_players_number$
 LANGUAGE plpgsql;
+
 
 --ci si può valutare solamente se l'evento si è chiuso
 CREATE OR REPLACE FUNCTION check_state_event() RETURNS trigger AS
@@ -43,19 +42,14 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION check_rating_for_player() RETURNS trigger AS
 $check_rating_for_player$
 BEGIN
-	IF (NEW.usernameValutatore IN (SELECT studente FROM Iscrizione
-					WHERE evento = NEW.idEv
-					AND stato = 'confermato')
-		AND NEW.usernameValutato IN (SELECT studente FROM Iscrizione
-					WHERE evento = NEW.idEv
-					AND stato = 'confermato'))
-	THEN return NEW;
-	ELSE RAISE EXCEPTION 'il giocatore % e il giocatore % devono aver partecipato all''evento % per valutare o essere valutati', NEW.usernameValutatore, NEW.usernameValutato, NEW.idEv;
+	IF NEW.usernameValutatore IN (SELECT username  FROM UtenteSingoloGioca 
+					WHERE idEv IN (SELECT idEv FROM UtenteSingoloGioca WHERE username = NEW.usernameValutato))
+		THEN return NEW;
+	ELSE RAISE EXCEPTION 'i dati di giocatore valutato o di chi valuta non sono corretti';
 	END IF;
 END;
 $check_rating_for_player$
 LANGUAGE plpgsql;
-
 
 
 -- un impianto non puo ospitare due eventi contemporaneamente --
@@ -273,24 +267,40 @@ BEGIN
 	ELSE RETURN NEW;
 	
 	END IF;
-END 
+END ;
 $check_sum_of_points$
 LANGUAGE plpgsql;											  
+
 
 --non si possono iscrivere più giocatori all'evento se il numero max di gioc per quell'evento è stato raggiunto
 CREATE OR REPLACE FUNCTION check_subscription_max_players() RETURNS trigger AS
 $check_subscription_max_players$
 BEGIN
-	IF ((SELECT COUNT(studente) FROM Iscrizione WHERE evento = NEW.evento) <
-		(SELECT DISTINCT (numGiocatori) FROM Categoria C JOIN Evento E ON C.nome = E.categoria	WHERE E.id = NEW.evento))
+	
+	IF NEW.tipo = 'arbitro' AND NEW.stato = 'confermato'
+	 THEN IF (select count(studente) FROM Iscrizione WHERE evento = NEW.evento and tipo = 'arbitro' and stato = 'confermato') = 1
+	 	THEN RAISE EXCEPTION 'c''è già un arbitro per questo evento %', NEW.evento;
+	 		ELSE RETURN NEW;
+	 		END IF;
+	ELSE  IF NEW.tipo = 'arbitro' AND NEW.stato = 'rifiutato'
 		THEN RETURN NEW;
-	ELSE  RAISE EXCEPTION 'Numero massimo di giocatori iscritti all''evento % raggiunto, impossibile inserirne altri',NEW.evento;
+		ELSE
+
+		IF ((SELECT COUNT(studente) FROM Iscrizione WHERE evento = NEW.evento AND stato ='confermato' AND tipo = 'giocatore') <
+			(SELECT  numGiocatori FROM Categoria WHERE nome IN (SELECT categoria FROM Evento WHERE id = NEW.evento)))
+			THEN RETURN NEW;
+		ELSE  RAISE EXCEPTION 'Numero massimo di giocatori iscritti all''evento % raggiunto, impossibile inserirne altri,
+	 		numero giocatori iscritti % , numero previsti : %',NEW.evento,
+	 		(SELECT COUNT(studente) FROM Iscrizione WHERE evento = NEW.evento AND stato ='confermato' AND tipo = 'giocatore'),
+			(SELECT  numGiocatori FROM Categoria WHERE nome IN (SELECT categoria FROM Evento WHERE id = NEW.evento));
+		END IF;
 	END IF;
+END IF;
 END;
 $check_subscription_max_players$
-LANGUAGE plpgsql;							    
-								    
-										  
+LANGUAGE plpgsql;			    
+		
+
 --trigger che riempe in automatico le iscrizioni ad un evento con i membri di una squadra che partecipa!
 CREATE OR REPLACE FUNCTION player_subscription_autofiller() RETURNS trigger AS
 $player_subscription_autofiller$
@@ -298,11 +308,11 @@ DECLARE
  dataIscrizione date;
  temp varchar(25);
 BEGIN
-	dataIscrizione = (SELECT data from  Evento WHERE id = NEW.evento);
+	dataIscrizione = (SELECT data from  Evento WHERE id = NEW.idEV);
 	
 	for temp in SELECT candidato FROM Candidatura WHERE Squadra = NEW.nomeSquadra AND categoria = NEW.nomeC AND stato = 'accettata'
 	loop
-		INSERT INTO Iscrizione VALUES (dataIscrizione,'confermato',temp ,NEW.evento);
+		INSERT INTO Iscrizione VALUES (dataIscrizione,'confermato',temp ,NEW.idEV,'giocatore');
 	END LOOP;
 
   RETURN NEW;
@@ -317,9 +327,9 @@ CREATE OR REPLACE FUNCTION check_subscription_for_match_result() RETURNS trigger
 $check_subscription_for_match_result$
 BEGIN
 	IF (NEW.giocatore1 IN (SELECT studente FROM Iscrizione
-			WHERE studente = NEW.giocatore1 AND evento = NEW.idEV)
+			WHERE studente = NEW.giocatore1 AND evento = NEW.idEV AND stato = 'confermato' AND tipo='giocatore')
 		AND NEW.giocatore2 IN (SELECT studente FROM Iscrizione 
-			WHERE studente = NEW.giocatore2 AND evento = NEW.idEv))
+			WHERE studente = NEW.giocatore2 AND evento = NEW.idEv AND stato = 'confermato' AND tipo='giocatore'))
 	THEN RETURN NEW;
 	ELSE  RAISE EXCEPTION 'Non è possibile inserire l''esito dell''evento % a cui i giocatori % e % non sono iscritti',NEW.idEv, NEW.giocatore1,NEW.giocatore2;
 	END IF;
@@ -332,14 +342,10 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION check_subscription_for_match_in_tournament() RETURNS trigger AS
 $check_subscription_for_match_in_tournament$
 BEGIN
-
-	IF NEW.evento NOT IN (SELECT idEv FROM EventoInTorneo)
-		OR NEW.evento IN (SELECT idEv FROM EventoInTorneo
-				JOIN IscrittoATorneo ON torneo = idT
-				AND idEv = NEW.evento 
-				AND studente = NEW.studente)
-		THEN RETURN NEW;
-	ELSE  RAISE EXCEPTION '% deve essere iscritto al torneo per partecipare all''evento %',NEW.studente,NEW.evento;
+	IF NEW.studente IN (SELECT studente FROM IscrittoATorneo WHERE torneo IN(SELECT torneo FROM EventoInTorneo WHERE
+		IdEv = NEW.evento) AND studente = NEW.studente)		
+	THEN RETURN NEW;
+	ELSE  RAISE EXCEPTION 'Non è possibile iscrivere % all''evento % se % non è iscritto al torneo in cui è svolto l''evento',NEW.studente, NEW.evento,NEW.studente;
 	END IF;
 END;
 $check_subscription_for_match_in_tournament$
@@ -424,10 +430,26 @@ BEGIN
 END;
 $check_team_for_match_partecipations$
 LANGUAGE plpgsql;
-								   
+
+
+--non può esserci più di un arbitro per evento
+CREATE OR REPLACE FUNCTION check_one_referee_only() RETURNS trigger AS
+$check_one_referee_only$
+BEGIN
+	IF (SELECT count(studente) From Iscrizione WHERE stato = 'confermato' AND tipo = 'arbitro' AND evento = NEW.evento) = 1
+		THEN IF(NEW.stato = 'confermato')
+			THEN RAISE EXCEPTION 'ci può essere al massimo un arbitro per evento!';
+			ELSE RETURN NEW;
+			END IF;
+	ELSE RETURN NEW;
+	END IF;
+END;
+$check_one_referee_only$
+LANGUAGE plpgsql;
+
+
 
  			 /* da controllare, dà errore con autofiller 
-
 --non si può inserire l'esito di un evento a squadre a cui le squadre non sono iscritte
 CREATE OR REPLACE FUNCTION check_subscription_teams_for_match_result() RETURNS trigger AS
 $check_subscription_teams_for_match_result$
@@ -446,7 +468,6 @@ BEGIN
 END;
 $check_subscription_teams_for_match_result$
 LANGUAGE plpgsql;
-
 						*/
 --una squadra può partecipare ad un evento solo se ha un minimo di giocatori								   
 CREATE OR REPLACE FUNCTION check_min_players() RETURNS trigger AS
@@ -459,7 +480,8 @@ BEGIN
 	END IF;
 END;
 $check_min_players$
-language plpgsql;							   
+language plpgsql; 
+
 
 ---------------------------------TRIGGER----------------------------------------------------------------
 
@@ -518,7 +540,7 @@ FOR EACH ROW
 EXECUTE PROCEDURE check_premium_for_tournament();
 
 --solo un utente premium può accettare o rifiutare le candidature
-CREATE TRIGGER check_premium_accepts_applications
+CREATE TRIGGER check_premius_accepts_applications
 BEFORE INSERT OR UPDATE ON Candidatura
 FOR EACH ROW
 EXECUTE PROCEDURE check_premium_accepts_applications();
@@ -633,6 +655,13 @@ BEFORE INSERT OR UPDATE ON SquadraPartecipaEv
 FOR EACH ROW
 EXECUTE PROCEDURE check_team_for_match_partecipations(); 
 
+--non può esserci più di un arbitro per evento
+CREATE TRIGGER check_one_referee_only
+BEFORE INSERT OR UPDATE ON Iscrizione
+FOR EACH ROW
+EXECUTE PROCEDURE check_one_referee_only(); 
+
+
 			 /* da controllare, dà errore con autofiller 
 					 
 --non si può inserire l'esito di un evento a squadre a cui le squadre non sono iscritte
@@ -640,7 +669,6 @@ CREATE TRIGGER check_subscription_teams_for_match_result
 BEFORE INSERT OR UPDATE ON EsitoSquadre
 FOR EACH ROW
 EXECUTE PROCEDURE check_subscription_teams_for_match_result(); 
-
 					 */
 
 
