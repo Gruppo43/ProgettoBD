@@ -1,6 +1,3 @@
-set search_path to 'ProgettoBD';
-
-
 CREATE TABLE Utente(
 username varchar(25) primary key,
 psw varchar(20) not null,
@@ -61,6 +58,7 @@ check(minGiocatori > 0)
 
 
 
+
 CREATE TABLE Impianto (
 nome varchar(25) primary key,
 via varchar(50) not null,
@@ -103,7 +101,9 @@ primary key(nomeSquadra, nomeC, idEv)
 CREATE TABLE EventoInTorneo(
 idT numeric(8) references Torneo (id) on delete  no action on update cascade,
 idEv numeric(8) references Evento (id) on delete  no action on update cascade,
-primary key(idT, idEv)
+fase varchar(30) not null,
+primary key(idT, idEv),
+check(fase = 'gironi' or fase = 'quarti di finale' or fase = 'semifinale' or fase = 'finale');
 );
 
 CREATE TABLE EsitoSingolo(
@@ -182,10 +182,12 @@ data date,
 stato varchar(20) not null,
 studente varchar(25) not null,
 evento numeric(8) not null,
+tipo varchar(9) not null,
 foreign key (studente)references Utente(username) on delete  no action on update cascade,
 foreign key (evento)references Evento(id) on delete  no action on update cascade,
 primary key (data,studente,evento),
 check (stato = 'confermato' or stato = 'rifiutato'),
+check (tipo =  'arbitro' or tipo = 'giocatore'),
 check(data <= current_date)
 );
 
@@ -209,7 +211,19 @@ primary key (torneo,studente)
 CREATE TABLE UtenteFaPunti(
 Username varchar(25) references Utente(Username) on delete no action on update cascade,
 IdEvento numeric(8) references Evento(Id) on delete no action on update cascade,
-Punti numeric(3),
+Punti numeric(2),
 primary key(Username,IdEvento),
 check(Punti>=0)
 );
+
+
+
+
+
+
+
+
+
+
+
+
