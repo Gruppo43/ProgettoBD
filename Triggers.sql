@@ -1,3 +1,6 @@
+set search_path to 'ProgettoBD';
+
+
 --solo un utente premium può creare una squadra
 CREATE OR REPLACE FUNCTION check_premium_for_teams() RETURNS trigger AS
 $check_premium_for_teams$
