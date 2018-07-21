@@ -327,7 +327,7 @@ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION check_subscription_for_match_in_tournament() RETURNS trigger AS
 $check_subscription_for_match_in_tournament$
 BEGIN
-	IF NEW.studente IN (SELECT studente FROM IscrittoATorneo WHERE Toreno IN(SELECT torneo FROM EventoInTorneo WHERE
+	IF NEW.studente IN (SELECT studente FROM IscrittoATorneo WHERE Torneo IN(SELECT torneo FROM EventoInTorneo WHERE
 		IdEv = NEW.evento) AND studente = NEW.studente)		
 	THEN RETURN NEW;
 	ELSE  RAISE EXCEPTION 'Non è possibile iscrivere % all''evento % se % non è iscritto al torneo in cui è svolto l''evento',NEW.studente, NEW.evento,NEW.studente;
