@@ -1,6 +1,5 @@
 
 
-
 /* USER INSERTIONS */
 
 
@@ -431,6 +430,17 @@ INSERT INTO IscrittoATorneo VALUES (00001,'DontKnowWhereSoulGemIs');
 INSERT INTO IscrittoATorneo VALUES (00001,'Nebula');
 INSERT INTO IscrittoATorneo VALUES (00001,'LordThanos');
 
+
+INSERT INTO PartecipaATorneo VALUES (00001,'The North Remembers','Calcio');
+INSERT INTO PartecipaATorneo VALUES (00001,'Guardians of the Galaxy','Calcio');
+INSERT INTO PartecipaATorneo VALUES (00001,'Ordine della Fenice','Calcio');
+INSERT INTO PartecipaATorneo VALUES (00001,'Compagnia dell''anello','Calcio');
+INSERT INTO PartecipaATorneo VALUES (00001,'Space Jam','Calcio');
+INSERT INTO PartecipaATorneo VALUES (00001,'Izalith Deamons','Calcio');
+INSERT INTO PartecipaATorneo VALUES (00001,'Virtus Piscatella','Calcio');
+INSERT INTO PartecipaATorneo VALUES (00001,'Team Alexandria','Calcio');
+
+
 --quarti finale--
 INSERT INTO Evento VALUES(15689,'08/01/2018','chiuso',90,'Accademia Beauxbaton','Calcio','a squadre','EriComeUnFratello');--guard vs north
 INSERT INTO Evento VALUES(15690,'08/01/2018','chiuso',90,'Terminus','Calcio','a squadre','Sociopath'); --ordine vs compagnia
@@ -597,6 +607,14 @@ INSERT INTO IscrittoATorneo VALUES (00002,'Nebula');
 INSERT INTO IscrittoATorneo VALUES (00002,'LordThanos');
 
 
+INSERT INTO PartecipaATorneo VALUES (00002,'The North Remembers','Pallavolo');
+INSERT INTO PartecipaATorneo VALUES (00002,'Guardians of the Galaxy','Pallavolo');
+INSERT INTO PartecipaATorneo VALUES (00002,'Ordine della Fenice','Pallavolo');
+INSERT INTO PartecipaATorneo VALUES (00002,'Compagnia dell''anello','Pallavolo');
+INSERT INTO PartecipaATorneo VALUES (00002,'Space Jam','Pallavolo');
+INSERT INTO PartecipaATorneo VALUES (00002,'Izalith Deamons','Pallavolo');
+INSERT INTO PartecipaATorneo VALUES (00002,'Virtus Piscatella','Pallavolo');
+INSERT INTO PartecipaATorneo VALUES (00002,'Team Alexandria','Pallavolo');
 
 
 --quarti finale--
@@ -736,6 +754,7 @@ INSERT INTO IscrittoATorneo VALUES (00003,'MercyPrevailsWrath');
 INSERT INTO IscrittoATorneo VALUES (00003,'BlueMeth22');
 
 
+
 --quarti finale--
 INSERT INTO Evento VALUES(17689,'21/03/2018','chiuso',15,'Accademia Beauxbaton','Scacchi','singolo','PraiseTheSun');
 INSERT INTO Evento VALUES(17690,'21/03/2018','chiuso',15,'Terminus','Scacchi','singolo','Taystee'); 
@@ -747,6 +766,41 @@ INSERT INTO Evento VALUES(17694,'25/03/2018','chiuso',15,'Terminus','Scacchi','s
 
 --finale
 INSERT INTO Evento VALUES(17695,'29/03/2018','chiuso',15,'Castel Granito','Scacchi','singolo','PraiseTheSun');
+
+INSERT INTO EventoInTorneo VALUES(00003,17689);
+INSERT INTO EventoInTorneo VALUES(00003,17690);
+INSERT INTO EventoInTorneo VALUES(00003,17691);
+INSERT INTO EventoInTorneo VALUES(00003,17692);
+INSERT INTO EventoInTorneo VALUES(00003,17693);
+INSERT INTO EventoInTorneo VALUES(00003,17694);
+INSERT INTO EventoInTorneo VALUES(00003,17695);
+
+
+/*
+data date,
+stato varchar(20) not null,
+studente varchar(25) not null,
+evento numeric(8) not null,*/
+
+
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','IoSonoReek',17689);
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','OhSieteNeiGuaiStaVolta',17689);
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','IAmGroot',17690);
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','Pennsatucky',17690);
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','NonHoPiùFantasia',17691);
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','YouShallNotPass',17691);
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','BlueMeth22',17692);
+INSERT INTO Iscrizione VALUES ('18/02/2018','confermato','MercyPrevailsWrath',17692);
+
+INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','IoSonoReek',17693);
+INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','IAmGroot',17693);
+INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','NonHoPiùFantasia',17694);
+INSERT INTO Iscrizione VALUES ('23/02/2018','confermato','MercyPrevailsWrath',17694);
+
+INSERT INTO Iscrizione VALUES ('27/02/2018','confermato','IAmGroot',17695);
+INSERT INTO Iscrizione VALUES ('27/02/2018','confermato','MercyPrevailsWrath',17695);
+
+
 
 INSERT INTO EsitoSingolo VALUES (17689,'IoSonoReek',2,'OhSieteNeiGuaiStaVolta',0);
 INSERT INTO EsitoSingolo VALUES (17690,'IAmGroot',2,'Pennsatucky',1);
@@ -762,15 +816,45 @@ INSERT INTO EsitoSingolo VALUES (17695,'IAmGroot',2,'MercyPrevailsWrath',1);
 
 
 
-INSERT INTO EventoInTorneo VALUES(00003,17689);
-INSERT INTO EventoInTorneo VALUES(00003,17690);
-INSERT INTO EventoInTorneo VALUES(00003,17691);
-INSERT INTO EventoInTorneo VALUES(00003,17692);
-INSERT INTO EventoInTorneo VALUES(00003,17693);
-INSERT INTO EventoInTorneo VALUES(00003,17694);
-INSERT INTO EventoInTorneo VALUES(00003,17695);
+
 
 /* ////////////////////////////////////////// FINE TORNEO /////////////////////////////////////////////////////// */
+
+
+
+INSERT INTO  Forum values ('Informatica','Calcio');
+INSERT INTO  Forum values ('Informatica','Pallavolo');
+INSERT INTO  Forum values ('Informatica','Scacchi');
+INSERT INTO  Forum values ('Informatica','Quiddich');
+INSERT INTO  Forum values ('Chimica','Calcio');
+INSERT INTO  Forum values ('Chimica','Pallavolo');
+INSERT INTO  Forum values ('Chimica','Scacchi');
+INSERT INTO  Forum values ('Chimica','Quiddich');
+INSERT INTO  Forum values ('Stregoneria','Calcio');
+INSERT INTO  Forum values ('Stregoneria','Pallavolo');
+INSERT INTO  Forum values ('Stregoneria','Scacchi');
+INSERT INTO  Forum values ('Stregoneria','Quiddich');
+INSERT INTO  Forum values ('Filosofia','Calcio');
+INSERT INTO  Forum values ('Filosofia','Pallavolo');
+INSERT INTO  Forum values ('Filosofia','Scacchi');
+INSERT INTO  Forum values ('Filosofia','Quiddich');
+INSERT INTO  Forum values ('Economia','Calcio');
+INSERT INTO  Forum values ('Economia','Pallavolo');
+INSERT INTO  Forum values ('Economia','Scacchi');
+INSERT INTO  Forum values ('Economia','Quiddich');
+
+
+INSERT INTO Post values ('01/11/2008','come si fa una domanda?',false,'NonHoPiùFantasia','Stregoneria','Calcio');
+INSERT INTO Post values ('01/11/2008','non lo so, ma tu sai come si rispone?',false,'LordThanos','Stregoneria','Calcio');
+INSERT INTO Post values ('03/12/2011','Potter è un mezzosangue',false,'Pagina394','Informatica','Pallavolo');
+INSERT INTO Post values ('10/02/2012','IO SONO GROOT',false,'IAmGroot','Economia','Scacchi');
+INSERT INTO Post values ('10/02/2012','Groot smettila di usare il computer',false,'StarLord','Economia','Scacchi');
+INSERT INTO Post values ('12/04/2016','è vero che non so niente, ma secondo me questo forum è obsoleto',false,'YouKnowNothing','Chimica','Quiddich');
+
+
+
+
+
 
 /*  
                         error --> Premium Creator, correct it (test it before uploading)
