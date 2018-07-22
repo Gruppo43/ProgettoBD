@@ -103,7 +103,7 @@ idT numeric(8) references Torneo (id) on delete  no action on update cascade,
 idEv numeric(8) references Evento (id) on delete  no action on update cascade,
 fase varchar(30) not null,
 primary key(idT, idEv),
-check(fase = 'gironi' or fase = 'quarti di finale' or fase = 'semifinale' or fase = 'finale');
+check(fase = 'gironi' or fase = 'quarti di finale' or fase = 'semifinale' or fase = 'finale')
 );
 
 CREATE TABLE EsitoSingolo(
