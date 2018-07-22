@@ -60,15 +60,15 @@ order by eventointorneo.idT asc;
 
 
 CREATE OR REPLACE VIEW Programma
-(NomeImpianto,Mese,Categoria,NumeroTornei,NumeroEventi,NumeroPartecipanti,NumCorsiDiStudio,TempoUtilizzo) AS
-SELECT durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria, MonthCounter.numTornei,
- MonthCounter.numEventi,numberOfPlayers.numGiocatori,numberOfPlayers.numCorsi,
-	 durataPerMese.durata FROM durataPerMese JOIN evento ON evento.impianto = durataPerMese.impianto 
-	 JOIN  MonthCounter ON  MonthCounter.impianto = durataPerMese.impianto AND MonthCounter.mese = durataPerMese.mese
-	 JOIN numberOfPlayers ON MonthCounter.impianto = numberOfPlayers.impianto AND numberOfPlayers.mese = durataPerMese.mese
-	 group by durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria,MonthCounter.numTornei,
- 	 MonthCounter.numEventi,numberOfPlayers.numGiocatori,numberOfPlayers.numCorsi,durataPerMese.durata ORDER BY 
-	 durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria asc;
+(NomeImpianto,Mese,Categoria,NumeroTornei,NumeroEventi,NumeroPartecipanti,NumCorsiDiStudio,TempoUtilizzo, PercentualeUtilizzo) AS
+SELECT durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria,COUNT(DISTINCT EventoInTorneo.idT),
+	COUNT(DISTINCT evento.id),COUNT(DISTINCT iscrizione.studente),COUNT(DISTINCT utente.corsoDiStudio),
+	 durataPerMese.durata, (durataPerMese.durata/(1400*(CURRENT_DATE - '2018/01/01'))*100) FROM durataPerMese JOIN evento ON evento.impianto = durataPerMese.impianto
+	 JOIN EventoInTorneo ON evento.id = EventoInTorneo.idEv JOIN Iscrizione ON  evento.id = Iscrizione.evento 
+	 JOIN Utente ON utente.username = iscrizione.studente
+	 WHERE Iscrizione.stato = 'confermato' AND evento.stato = 'chiuso'
+	 group by durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria,durataPerMese.durata, durataPerMese.durata/(1400*(CURRENT_DATE - '2018/01/01'))*100 ORDER BY 
+durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria asc;
 
 /*select * From Programma; */
 
