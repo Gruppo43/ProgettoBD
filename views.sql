@@ -19,9 +19,29 @@ order by iscrizione.evento asc;
 
 
 
+
 create or replace view durataPerMese(impianto,mese,durata,categoria) as
 select evento.impianto,EXTRACT(MONTH FROM evento.data),sum(evento.durata),evento.categoria From Evento WHERE stato = 'chiuso'
 group by impianto,EXTRACT(MONTH FROM evento.data),categoria order by impianto,EXTRACT(MONTH FROM evento.data)asc;
+
+
+create or replace view MonthCounter(impianto,mese,numEventi,NumTornei) as
+select evento.impianto, EXTRACT(MONTH FROM evento.data),count(distinct eventoInTorneo.idEv),count(distinct eventoINTorneo.idT)
+FROM Evento JOIN eventoINTorneo ON eventoInTorneo.idEv = evento.id WHERE evento.stato ='chiuso' 
+group by  evento.impianto, EXTRACT(MONTH FROM evento.data) order by  evento.impianto,
+EXTRACT(MONTH FROM evento.data) asc;
+
+
+create or replace view numberOfPlayers(impianto,mese,numGiocatori,numCorsi) as
+select evento.impianto,EXTRACT(MONTH FROM evento.data),count(DISTINCT iscrizione.studente),
+count(DISTINCT utente.corsoDiStudio)FROM Evento JOIN Iscrizione ON iscrizione.evento = evento.id
+JOIN Utente ON utente.username = iscrizione.studente WHERE iscrizione.stato = 'confermato' AND
+iscrizione.tipo = 'giocatore' AND evento.stato = 'chiuso'
+GROUP BY evento.impianto,EXTRACT(MONTH FROM evento.data) ORDER BY
+evento.impianto,EXTRACT(MONTH FROM evento.data);
+
+
+
 
 
 
@@ -41,11 +61,16 @@ order by eventointorneo.idT asc;
 
 CREATE OR REPLACE VIEW Programma
 (NomeImpianto,Mese,Categoria,NumeroTornei,NumeroEventi,NumeroPartecipanti,NumCorsiDiStudio,TempoUtilizzo) AS
-SELECT durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria,COUNT(DISTINCT EventoInTorneo.idT),
-	COUNT(DISTINCT evento.id),COUNT(DISTINCT iscrizione.studente),COUNT(DISTINCT utente.corsoDiStudio),
-	 durataPerMese.durata FROM durataPerMese JOIN evento ON evento.impianto = durataPerMese.impianto
-	 JOIN EventoInTorneo ON evento.id = EventoInTorneo.idEv JOIN Iscrizione ON  evento.id = Iscrizione.evento 
-	 JOIN Utente ON utente.username = iscrizione.studente
-	 WHERE Iscrizione.stato = 'confermato' AND evento.stato = 'chiuso'
-	 group by durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria,durataPerMese.durata ORDER BY 
+SELECT durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria, MonthCounter.numTornei,
+ MonthCounter.numEventi,numberOfPlayers.numGiocatori,numberOfPlayers.numCorsi,
+	 durataPerMese.durata FROM durataPerMese JOIN evento ON evento.impianto = durataPerMese.impianto 
+	 JOIN  MonthCounter ON  MonthCounter.impianto = durataPerMese.impianto AND MonthCounter.mese = durataPerMese.mese
+	 JOIN numberOfPlayers ON MonthCounter.impianto = numberOfPlayers.impianto AND numberOfPlayers.mese = durataPerMese.mese
+	 group by durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria,MonthCounter.numTornei,
+ 	 MonthCounter.numEventi,numberOfPlayers.numGiocatori,numberOfPlayers.numCorsi,durataPerMese.durata ORDER BY 
 	 durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria asc;
+
+/*select * From Programma; */
+
+
+
