@@ -39,7 +39,7 @@ INSERT INTO Utente VALUES ('Pennsatucky', 'jskJK893As', 'Tiffany', 'Doggett', '1
 
 /* GuardiansOfTheGalaxy */
 
-INSERT INTO Utente VALUES ('IAmGroot', 'I Am Groot', 'I Am', 'Groot', '06/11/1988', 'I Am Groot', true , '399765553', 'S89071134', 'IAmGroot' , 'standard');
+INSERT INTO Utente VALUES ('IAmGroot', 'I Am Groot', 'I Am', 'Groot', '06/11/1988', 'I Am Groot', true , '399765553', 'S89071134', 'Chimica' , 'standard');
 INSERT INTO Utente VALUES ('StarLord', 'GhOOgj830', 'Peter Jason', 'Quill', '30/01/1965', 'Denver', true , '399765432', 'S8907319', 'Filosofia' , 'premium');
 INSERT INTO Utente VALUES ('DontKnowWhereSoulGemIs', 'Khdo97jd54', 'Gamora', 'Ben Titan', '23/09/1999', 'Planet Zen-Whoberi', true , '3996663331', 'S8395512', 'Informatica', 'standard' );
 INSERT INTO Utente VALUES ('Boomer', 'htT67yygj990', 'Rocket', 'Raccoon', '06/11/1997', 'Somewhere in the space', true , '909765332', 'S0277319', 'Informatica' , 'premium');
