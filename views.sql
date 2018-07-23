@@ -1,3 +1,4 @@
+
 	/* AUXILIARY VIEWS */
 	
 CREATE OR REPLACE VIEW Arbitro(Evento,Arbitro) AS
@@ -16,7 +17,6 @@ CREATE OR REPLACE VIEW Partecipanti(evento, partecipanti) as
 select iscrizione.evento, string_agg(studente,', ') FROM Iscrizione WHERE stato = 'confermato' AND tipo='giocatore' GROUP BY
 iscrizione.evento
 order by iscrizione.evento asc;
-
 
 
 
@@ -39,6 +39,28 @@ JOIN Utente ON utente.username = iscrizione.studente WHERE iscrizione.stato = 'c
 iscrizione.tipo = 'giocatore' AND evento.stato = 'chiuso'
 GROUP BY evento.impianto,EXTRACT(MONTH FROM evento.data) ORDER BY
 evento.impianto,EXTRACT(MONTH FROM evento.data);
+
+
+
+
+CREATE OR REPLACE VIEW Albo(categoria,tipo,vincitore) as
+	(select evento.categoria,evento.tipo,
+	(CASE WHEN Esitosquadre.puntisq1 > Esitosquadre.puntisq2 THEN Esitosquadre.nomeSquadra1
+      WHEN Esitosquadre.puntisq1 < Esitosquadre.puntisq2 THEN Esitosquadre.nomeSquadra2 END) as Vincitore
+	From Evento JOIN Esitosquadre ON esitosquadre.idEv = evento.id JOIN eventointorneo ON eventointorneo.idEV = evento.id
+	WHERE evento.stato = 'chiuso' AND eventointorneo.fase = 'finale'
+	group by evento.categoria, evento.tipo,Vincitore order by evento.categoria)
+	
+	Union 
+	
+	(select evento.categoria,evento.tipo,
+	(CASE WHEN EsitoSIngolo.punteggiogiocatore1 > EsitoSingolo.punteggiogiocatore2 THEN EsitoSIngolo.giocatore1
+      WHEN EsitoSingolo.punteggiogiocatore1 < EsitoSingolo.punteggiogiocatore2 THEN EsitoSingolo.giocatore2 END) as Vincitore
+	From Evento JOIN EsitoSingolo ON esitoSingolo.idEv = evento.id JOIN eventointorneo ON eventointorneo.idEV = evento.id
+	WHERE evento.stato = 'chiuso' AND eventointorneo.fase = 'finale'
+	group by evento.categoria, evento.tipo,Vincitore order by evento.categoria);
+	
+
 
 CREATE OR REPLACE VIEW PlayersMerge(giocatore,punteggio,evento) as
 (select esitosingolo.giocatore1,esitosingolo.punteggiogiocatore1,esitosingolo.idEv From Esitosingolo)
@@ -67,11 +89,15 @@ group by TabellaScore.categoria,TabellaScore.corsostudi;
 
 
 
-create or replace view BestCorso (Categoria,corsoDistudi,max) as
-select puntipercorso.categoria,puntipercorso.corsodistudi, puntipercorso.puntitotali From puntipercorso
-group by puntipercorso.categoria,puntipercorso.corsodistudi,puntipercorso.puntitotali having
-puntipercorso.puntitotali >= ALL(select max(puntipercorso.puntitotali) from puntipercorso p where
-								  p.categoria = categoria);
+
+create or replace view BestCorso (Categoria,corsoDistudi) as
+select puntipercorso.categoria,puntipercorso.corsodistudi From puntipercorso
+where puntipercorso.corsodistudi in (select p.corsodistudi from puntipercorso p  where
+									 p.puntitotali = (select max(s.puntitotali) from puntipercorso s
+													  where s.categoria = categoria )group by
+												p.corsodistudi);
+
+
 
 
 
@@ -89,7 +115,8 @@ ResultMerge.puntiospite,evento.data,evento.tipo,evento.impianto,arbitro.arbitro,
 partecipanti.partecipanti
 order by eventointorneo.idT asc;
 
-/* select * From ProgrammaTorneo; */
+select * From ProgrammaTorneo;
+
 
 CREATE OR REPLACE VIEW Programma
 (NomeImpianto,Mese,Categoria,NumeroTornei,NumeroEventi,NumeroPartecipanti,NumCorsiDiStudio,TempoUtilizzo,percentualeUtilizzo) AS
@@ -102,15 +129,14 @@ SELECT durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria, MonthC
  	 MonthCounter.numEventi,numberOfPlayers.numGiocatori,numberOfPlayers.numCorsi,durataPerMese.durata ORDER BY 
 	 durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria asc;
 
-
 /*select * From Programma; */
 
-CREATE OR REPLACE VIEW Medagliere(Categoria,Tipo,HallOfFame) AS
-	SELECT evento.categoria,evento.tipo,albo.vincitore From Evento Natural join Albo
-	Group by evento.categoria,evento.tipo,albo.vincitore HAVING count(albo.vincitore) >= ALL(select count(albo.vincitore)
+
+
+CREATE OR REPLACE VIEW Medagliere(Categoria,Tipo,HallOfFame,CorsoMigliore) AS
+	SELECT evento.categoria,evento.tipo,albo.vincitore,bestcorso.corsodistudi From Evento Natural join Albo
+	Natural join bestcorso
+	Group by evento.categoria,evento.tipo,albo.vincitore,bestcorso.corsodistudi HAVING count(albo.vincitore) >= ALL(select count(albo.vincitore)
 															 FROM ALBO where categoria = evento.categoria )
 	 order by evento.categoria;
-
-select * from Medagliere;
-
 
