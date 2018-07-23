@@ -139,4 +139,3 @@ CREATE OR REPLACE VIEW Medagliere(Categoria,Tipo,HallOfFame,CorsoMigliore) AS
 	Group by evento.categoria,evento.tipo,albo.vincitore,bestcorso.corsodistudi HAVING count(albo.vincitore) >= ALL(select count(albo.vincitore)
 															 FROM ALBO where categoria = evento.categoria )
 	 order by evento.categoria;
-
