@@ -460,7 +460,9 @@ INSERT INTO Evento VALUES(15694,'09/01/2018','chiuso',90,'Terminus','Calcio','a 
 --finale
 INSERT INTO Evento VALUES(15695,'15/01/2018','chiuso',90,'Castel Granito','Calcio','a squadre','EriComeUnFratello');--piscatella vs north
 
-
+--eventi aperti
+INSERT INTO Evento VALUES('17696','2018-08-30','aperto','90','Castel Granito','Calcio','a squadre','IlDottore');
+INSERT INTO Evento VALUES('17697','2018-11-27','aperto','15','Terminus','Scacchi','singolo','PraiseTheSun');
 
 INSERT INTO EventoInTorneo VALUES(00001,15689,'quarti di finale');
 INSERT INTO EventoInTorneo VALUES(00001,15690,'quarti di finale');
