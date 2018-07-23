@@ -40,12 +40,45 @@ iscrizione.tipo = 'giocatore' AND evento.stato = 'chiuso'
 GROUP BY evento.impianto,EXTRACT(MONTH FROM evento.data) ORDER BY
 evento.impianto,EXTRACT(MONTH FROM evento.data);
 
+CREATE OR REPLACE VIEW PlayersMerge(giocatore,punteggio,evento) as
+(select esitosingolo.giocatore1,esitosingolo.punteggiogiocatore1,esitosingolo.idEv From Esitosingolo)
+	union
+(select esitosingolo.giocatore2,esitosingolo.punteggiogiocatore2,esitosingolo.idEv From Esitosingolo);
+
+
+CREATE OR REPLACE VIEW TabellaScore(Utente,corsoStudi,punti,categoria) as
+(select playersMerge.giocatore, utente.corsodistudio,sum(playersMerge.punteggio),evento.categoria 
+	From Evento JOIN PlayersMerge ON PLayersMerge.evento= evento.id
+	JOIN utente ON utente.username = playersMerge.giocatore
+	group by  PlayersMerge.giocatore, utente.corsodistudio,evento.categoria
+	Order by evento.categoria,PlayersMerge.giocatore, utente.corsodistudio asc)
+		
+union
+
+(select utentefapunti.username,utente.corsodistudio,sum(utentefapunti.punti),evento.categoria FROM
+	Evento JOIN utentefapunti ON  evento.id = utentefapunti.idEvento JOIN utente ON utente.username = utentefapunti.username
+group by utentefapunti.username,utente.corsodistudio,evento.categoria);
+		
+		
+		
+create or replace view puntiPerCorso (Categoria,corsoDistudi,puntiTotali) as
+select TabellaScore.categoria,TabellaScore.corsostudi, sum(tabellascore.punti) From TabellaScore
+group by TabellaScore.categoria,TabellaScore.corsostudi;
+
+
+
+create or replace view BestCorso (Categoria,corsoDistudi,max) as
+select puntipercorso.categoria,puntipercorso.corsodistudi, puntipercorso.puntitotali From puntipercorso
+group by puntipercorso.categoria,puntipercorso.corsodistudi,puntipercorso.puntitotali having
+puntipercorso.puntitotali >= ALL(select max(puntipercorso.puntitotali) from puntipercorso p where
+								  p.categoria = categoria);
 
 
 
 
 
    /* MAIN VIEWS */
+   
 CREATE OR REPLACE VIEW ProgrammaTorneo (Torneo,Evento,Fase,PuntiCasa,PuntiOspite,Data,Tipologia,Impianto,Arbitro,Partecipanti) as
 Select eventointorneo.idT,eventointorneo.idEv,eventointorneo.fase,ResultMerge.punticasa,
 ResultMerge.puntiospite,evento.data,evento.tipo,evento.impianto,arbitro.arbitro,partecipanti.partecipanti FROM
@@ -72,5 +105,12 @@ SELECT durataPerMese.impianto,durataPerMese.mese,durataPerMese.categoria, MonthC
 
 /*select * From Programma; */
 
+CREATE OR REPLACE VIEW Medagliere(Categoria,Tipo,HallOfFame) AS
+	SELECT evento.categoria,evento.tipo,albo.vincitore From Evento Natural join Albo
+	Group by evento.categoria,evento.tipo,albo.vincitore HAVING count(albo.vincitore) >= ALL(select count(albo.vincitore)
+															 FROM ALBO where categoria = evento.categoria )
+	 order by evento.categoria;
+
+select * from Medagliere;
 
 
