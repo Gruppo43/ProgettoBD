@@ -1,21 +1,12 @@
 ﻿/*INTERROGAZIONI SEMPLICI*/
 set search_path to 'ProgettoBD';
 
-/* AAA NON FUNZIONA
-a. determinare le categorie per cui ci sono eventi non ancora chiusi in programma in un
-certo impianto insieme al numero di posti giocatori ancora disponibili per quell’evento
-NOTE: + 1 è perchè anche l'arbitro è iscritto all'evento */
-SELECT Evento.categoria, id, studente, Iscrizione.tipo, Categoria.numgiocatori - COUNT(Iscrizione.studente) AS posti_ancora_disponibili, Evento.impianto FROM Evento 
-JOIN Categoria ON categoria = nome
-LEFT OUTER JOIN Iscrizione ON id = evento
-WHERE Evento.stato = 'aperto'
-AND Iscrizione.stato ='confermato'
---AND Iscrizione.studente NOT IN (SELECT studente FROM Iscrizione WHERE stato = 'rifiutato')
-GROUP BY categoria, numgiocatori, studente, impianto, id, Iscrizione.tipo;
-
+-- lista di giocatori che non hanno partecipato neanche ad un evento
+select distinct  username from utente where username not in (select studente from  iscrizione where iscrizione.stato = 'confermato' and 
+					  iscrizione.tipo = 'giocatore');
 /*
 b. determinare gli impianti disponibili in una certa data che siano
-percentualmente meno utilizzati (vedi vista 1.)
+percentualmente meno utilizzati 
 */
 
 SELECT nome FROM Impianto
