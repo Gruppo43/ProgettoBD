@@ -1,16 +1,13 @@
 ﻿/* Interrogazioni di analisi */
 set search_path to 'ProgettoBD';
 
-/*
-a. determinare il torneo di più successo (in termini di partecipazione) e quella più “ricca”
-in termini di diverse attività proposte.
-*/
+--torneo/i con piu affluenza e con piu attivita proposte
 SELECT I.torneo FROM IscrittoATorneo I
 GROUP BY torneo
 HAVING COUNT(studente) >= ALL (SELECT COUNT(studente) FROM IscrittoATorneo
 				GROUP BY torneo)
 INTERSECT
--- ? attività proposte ???? --
+
 SELECT idT FROM EventoInTorneo
 GROUP BY idT
 HAVING COUNT(idEv) >= ALL (SELECT COUNT(idEv) FROM EventoInTorneo GROUP BY idT);
