@@ -50,22 +50,13 @@ GROUP BY categoria
 HAVING COUNT(id) >= ALL (SELECT COUNT(E.id) FROM Evento E  WHERE categoria = E.categoria
 GROUP BY E.categoria);
 
-
 /* c. determinare per ogni categoria e corso di studi la frazione di partecipanti a eventi di
-quella categoria con età < 20 anni sul totale dei partecipanti provenienti da quel
-corso di studi.
+quella categoria con età < 20 anni 
 */
 
-SELECT categoria, CorsoDiStudio, COUNT(studente) AS partecipanti_ventenni FROM Iscrizione
+SELECT categoria, CorsoDiStudio, COUNT(DISTINCT username) FROM Utente 
+JOIN Iscrizione ON studente = username
 JOIN Evento ON id = evento
-JOIN Utente U ON studente = username
-GROUP BY categoria, CorsoDiStudio
-HAVING COUNT(studente) = (SELECT COUNT(username) FROM Utente 
-				WHERE  (CURRENT_DATE - annon)/365 <= 20
-				AND U.CorsoDIStudio = CorsoDiStudio
-				GROUP BY CorsoDiStudio);
-
-
-SELECT COUNT(username), CorsoDiStudio FROM Utente 
+AND Iscrizione.stato = 'confermato'
 WHERE  (CURRENT_DATE - annon)/365 <= 20
-GROUP BY CorsoDiStudio;
+GROUP BY categoria, CorsoDiStudio;
